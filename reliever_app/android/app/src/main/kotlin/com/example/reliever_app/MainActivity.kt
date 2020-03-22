@@ -1,4 +1,4 @@
-package com.example.relieverapp
+package com.example.reliever_app
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
