@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widget/side_manu.dart';
 
 class ResultScreen extends StatelessWidget {
   static const routeResult = '/result-screen';
@@ -9,6 +10,7 @@ class ResultScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('The Result'),
       ),
+      drawer: SideManu(),
       body: Center(
         child: Text(
           'measure stress',
