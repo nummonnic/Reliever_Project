@@ -14,6 +14,8 @@ class OpenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      // appBar: new AppBar(
+      //       backgroundColor: Colors.orangeAccent[100], elevation: 0.0),
         body: ListView(children: <Widget>[
       Container(
         child: Stack(
@@ -21,8 +23,8 @@ class OpenPage extends StatelessWidget {
             Container(
               color: Colors.orangeAccent[100],
               alignment: Alignment.center,
-              width: 420,
-              height: 660,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
               child: CustomPaint(
                 painter: OpenBack(),
                 child: Align(

@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
               Container(
                 color: Colors.orangeAccent[100],
                 // alignment: Alignment.center,
-                width: 420,
+                width: MediaQuery.of(context).size.width,
                 // height: 660,
                 height: MediaQuery.of(context).size.height,
                 child: CustomPaint(
@@ -50,10 +50,11 @@ class LoginPage extends StatelessWidget {
               ),
               Container(
                   child: Positioned(
-                      left: 155,
-                      top: 180,
+                      left: MediaQuery.of(context).size.width*0.4,
+                      top:  MediaQuery.of(context).size.height*0.28,
                       width: 100,
                       height: 100,
+                      // height: MediaQuery.of(context).size.height,
                       child: Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
@@ -63,12 +64,16 @@ class LoginPage extends StatelessWidget {
                         child: LoginFun(),
                       ),
               Container(
+                // child: Positioned(
+                //       left: MediaQuery.of(context).size.width*0.4,
+                //       top:  MediaQuery.of(context).size.height*0.28,
                 padding: EdgeInsets.fromLTRB(80, 540, 0, 0),
                 child: Text('You don\'t have any account?\n',
                     style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
                         color: Colors.indigo[700])),
+                //)
               ),
               Container(
                   child: GoToSignUpFun(),

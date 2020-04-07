@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:relieverapp/screen/login_screen.dart';
+//import 'package:relieverapp/screen/login_screen.dart';
+import 'package:relieverapp/screen/open_screen.dart';
+import '../screen/diary_screen.dart';
+import '../screen/result_screen.dart';
 class SideManu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -32,6 +35,28 @@ class SideManu extends StatelessWidget {
                                 children: <Widget>[
                                   Divider(),
                                   ListTile(
+                                      leading: Icon(Icons.score),
+                                      title: Text('Score'),
+                                      onTap: () {
+                                        Navigator.of(context).pushNamed(ResultScreen.routeResult);
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             OpenScreen()));
+                                      }),
+                                  ListTile(
+                                      leading: Icon(Icons.calendar_today),
+                                      title: Text('Diary'),
+                                      onTap: () {
+                                        Navigator.of(context).pushNamed(DiaryScreen.routeDiary);
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             OpenScreen()));
+                                      }),
+                                  ListTile(
                                       leading: Icon(Icons.exit_to_app),
                                       title: Text('Logout'),
                                       onTap: () {
@@ -39,15 +64,13 @@ class SideManu extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    LogInScreen()));
+                                                    OpenScreen()));
                                       })
                                 ],
                               ))))
                     ],
                   ))),
-        );
-       
-               
+        );      
             
   }
 }

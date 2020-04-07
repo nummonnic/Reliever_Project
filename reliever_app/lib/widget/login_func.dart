@@ -42,7 +42,7 @@ class LoginFun extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20)),
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute());
+                  // Navigator.push(context, MaterialPageRoute());
                 }),
           )
         ],

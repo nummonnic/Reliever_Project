@@ -14,10 +14,10 @@ class homeScreen extends StatelessWidget {
       Container(
         child: Stack(
           children: <Widget>[
-            BackGround(),
-            info(),
-            diary_item(),
-            result_item(),
+            BackGround(), //background
+            info(), //pic
+            diary_item(), //button
+            result_item(), //button
           ],
         ),
       ),

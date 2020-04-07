@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //import './screen/home_screen.dart';
-import './screen/homepage_screen.dart';
+//import './screen/homepage_screen.dart';
 import './screen/diary_screen.dart';
 import './screen/tabs_screen.dart';
 import './screen/result_screen.dart';

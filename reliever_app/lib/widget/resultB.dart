@@ -15,6 +15,12 @@ class GoToResult extends StatelessWidget {
         color: Colors.orangeAccent[100],
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+        onPressed: (){
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => new LogInScreen()));
+                  }
       ),
     );
   }

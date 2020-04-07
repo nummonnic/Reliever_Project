@@ -16,6 +16,12 @@ class GoToDiary extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+          onPressed: (){
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => new LogInScreen()));
+                  }
         ));
   }
 }

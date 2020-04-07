@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:relieverapp/widget/main_drawer.dart';
+//import 'package:relieverapp/widget/main_drawer.dart';
 import './diary_screen.dart';
 import 'result_screen.dart';
 import '../screen/homepage_screen.dart';
-import '../widget/main_drawer.dart';
-
+//import '../widget/main_drawer.dart';
+import '../widget/side_manu.dart';
 class TabScreen extends StatefulWidget {
   TabScreen({Key key}) : super(key: key);
 
@@ -20,7 +20,7 @@ class _TabScreenState extends State<TabScreen> {
         child: Scaffold(
           appBar:
               AppBar(backgroundColor: Colors.orangeAccent[100], elevation: 0.0),
-          drawer: MainDrawer(),
+          drawer: SideManu(),
           body: TabBarView(children: <Widget>[
             homeScreen(),
             DiaryScreen(),
