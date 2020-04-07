@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'dart:ui' as ui;
-// import 'package:relieverapp/login.dart';
-import 'package:relieverapp/screen/open_screen.dart';
+
+//import './screen/home_screen.dart';
+import './screen/homepage_screen.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -9,6 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: new OpenScreen());
+      title: 'reliever',
+      home: homeScreen(),
+    );
   }
 }

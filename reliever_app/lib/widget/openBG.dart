@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
+//import 'dart:ui' as ui;
 
 class OpenBack extends CustomPainter {
   @override
-  void paint(ui.Canvas canvas, ui.Size size) {
+  void paint(Canvas canvas, Size size) {
     //final width = size.width;
 
     Paint paint = Paint();
