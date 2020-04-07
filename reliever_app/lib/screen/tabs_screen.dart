@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'diary_screen.dart';
+import 'package:relieverapp/widget/main_drawer.dart';
+import './diary_screen.dart';
+import 'result_screen.dart';
+import '../screen/homepage_screen.dart';
+import '../widget/main_drawer.dart';
 
 class TabScreen extends StatefulWidget {
   TabScreen({Key key}) : super(key: key);
@@ -12,24 +16,15 @@ class _TabScreenState extends State<TabScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 2,
+        length: 3,
         child: Scaffold(
-          appBar: AppBar(
-            title: Text('Reliever'),
-            bottom: TabBar(tabs: <Widget>[
-              Tab(
-                icon: Icon(Icons.category),
-                text: 'category',
-              ),
-              Tab(
-                icon: Icon(Icons.star),
-                text: 'favorite',
-              )
-            ]),
-          ),
+          appBar:
+              AppBar(backgroundColor: Colors.orangeAccent[100], elevation: 0.0),
+          drawer: MainDrawer(),
           body: TabBarView(children: <Widget>[
+            homeScreen(),
             DiaryScreen(),
-            DiaryScreen(),
+            ResultScreen(),
           ]),
         ));
   }

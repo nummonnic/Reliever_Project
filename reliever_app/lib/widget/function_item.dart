@@ -6,15 +6,9 @@ import '../screen/diary_screen.dart';
 import '../screen/result_screen.dart';
 
 class diary_Item extends StatelessWidget {
-  const diary_Item({Key key}) : super(key: key);
-
   void selectDiary(BuildContext ctx) {
-    Navigator.of(ctx).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return DiaryScreen();
-        },
-      ),
+    Navigator.of(ctx).pushNamed(
+      DiaryScreen.routeDiary,
     );
   }
 
@@ -28,15 +22,9 @@ class diary_Item extends StatelessWidget {
 }
 
 class result_item extends StatelessWidget {
-  const result_item({Key key}) : super(key: key);
-
   void selectResult(BuildContext ctx) {
-    Navigator.of(ctx).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return ResultScreen();
-        },
-      ),
+    Navigator.of(ctx).pushNamed(
+      ResultScreen.routeResult,
     );
   }
 
