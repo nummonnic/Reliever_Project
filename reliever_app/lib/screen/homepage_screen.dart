@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../template/background.dart';
-import '../widget/function_item.dart';
+import '../router/diary-route.dart';
+import '../router/result-route.dart';
 
 class homeScreen extends StatelessWidget {
   const homeScreen({Key key}) : super(key: key);
@@ -13,9 +14,9 @@ class homeScreen extends StatelessWidget {
       Container(
         child: Stack(
           children: <Widget>[
-            info(),
             BackGround(),
-            diary_Item(),
+            info(),
+            diary_item(),
             result_item(),
           ],
         ),
