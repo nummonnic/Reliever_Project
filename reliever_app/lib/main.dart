@@ -24,7 +24,8 @@ class HomeScreen extends StatelessWidget {
               color: Colors.orangeAccent[100],
               alignment: Alignment.center,
               width: 420,
-              height: 660,
+              //height: 660,
+              height: MediaQuery.of(context).size.height,
               child: CustomPaint(
                 painter: MyPainter(),
                 child: Align(
@@ -129,9 +130,9 @@ class HomeScreen extends StatelessWidget {
             //   ],
             // )
             Container(
-              //width: 500.0,
-              //height: 600.0,
-              constraints: BoxConstraints.expand(),
+              width: 500.0,
+              height: 600.0,
+              //constraints: BoxConstraints.expand(),
               padding: EdgeInsets.only(left: 65, right: 50, top: 550),
               child: RaisedButton(
                   child: Text('Let\'s Login\n',
