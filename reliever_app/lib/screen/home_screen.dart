@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< Updated upstream
-=======
 // import 'package:relieverapp/login.dart';
 //import 'package:relieverapp/screen/login_screen.dart';
 import 'package:relieverapp/widget/homeBG.dart';
@@ -62,4 +60,3 @@ class HomePage extends StatelessWidget {
   }
 }
 
->>>>>>> Stashed changes

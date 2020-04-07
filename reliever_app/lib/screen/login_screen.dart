@@ -26,7 +26,8 @@ class LoginPage extends StatelessWidget {
                 color: Colors.orangeAccent[100],
                 // alignment: Alignment.center,
                 width: 420,
-                height: 660,
+                // height: 660,
+                height: MediaQuery.of(context).size.height,
                 child: CustomPaint(
                   painter: LogInBack(),
                 ),
