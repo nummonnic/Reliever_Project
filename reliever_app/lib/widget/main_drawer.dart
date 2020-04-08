@@ -46,10 +46,10 @@ class MainDrawer extends StatelessWidget {
             Navigator.of(context).pushNamed('/');
           }),
           buildListTile('diary', Icons.calendar_today, () {
-            Navigator.of(context).pushNamed(DiaryScreen.routeDiary);
+            Navigator.of(context).pushNamed(DiaryScreen.routeName);
           }),
           buildListTile('result', Icons.score, () {
-            Navigator.of(context).pushNamed(ResultScreen.routeResult);
+            Navigator.of(context).pushNamed(ResultScreen.routeName);
           }),
         ],
       ),

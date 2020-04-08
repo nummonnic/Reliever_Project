@@ -16,15 +16,15 @@ class _TabScreenState extends State<TabScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
+        length: 1,
         child: Scaffold(
           appBar:
               AppBar(backgroundColor: Colors.orangeAccent[100], elevation: 0.0),
           drawer: SideManu(),
           body: TabBarView(children: <Widget>[
             homeScreen(),
-            DiaryScreen(),
-            ResultScreen(),
+            //DiaryScreen(),
+            //ResultScreen(),
           ]),
         ));
   }

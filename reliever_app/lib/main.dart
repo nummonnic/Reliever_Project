@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'reliever',
       //home: homeScreen(),
       routes: {
-        '/': (ctx) => ResultScreen(),
-        DiaryScreen.routeDiary: (ctx) => DiaryScreen(),
-        ResultScreen.routeResult: (ctx) => ResultScreen(),
+        '/': (ctx) => TabScreen(),
+        DiaryScreen.routeName: (ctx) => DiaryScreen(),
+        ResultScreen.routeName: (ctx) => ResultScreen(),
       },
     );
   }

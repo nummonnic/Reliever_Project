@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widget/side_manu.dart';
 
 class ResultScreen extends StatelessWidget {
-  static const routeResult = '/result-screen';
+  static const routeName = '/result-screen';
 
   @override
   Widget build(BuildContext context) {

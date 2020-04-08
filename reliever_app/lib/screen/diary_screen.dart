@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widget/side_manu.dart';
 
 class DiaryScreen extends StatelessWidget {
-  static const routeDiary = '/diary-screen';
+  static const routeName = '/diary-screen';
   @override
   Widget build(BuildContext context) {
     //final routeArgs = ModalRoute.of(context).settings

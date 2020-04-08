@@ -5,9 +5,7 @@ import '../widget/diaryB.dart';
 
 class diary_item extends StatelessWidget {
   void selectDiary(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(
-      DiaryScreen.routeDiary,
-    );
+    Navigator.of(ctx).pushNamed(DiaryScreen.routeName);
   }
 
   @override
