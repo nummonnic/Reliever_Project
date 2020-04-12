@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,6 +14,7 @@ class _calendaState extends State<calenda> {
   Map<DateTime, List<dynamic>> _events;
   List<dynamic> _selectedEvents;
   TextEditingController _eventController;
+  SharedPreferences prefs;
 
   @override
   void initState() {
@@ -22,6 +24,15 @@ class _calendaState extends State<calenda> {
     _events = {};
     _eventController = TextEditingController();
     _selectedEvents = [];
+    initPrefs();
+  }
+
+  initPrefs() async {
+    prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _events = Map<DateTime, List<dynamic>>.from(
+          decodeMap(json.decode(prefs.getString("events") ?? "{}")));
+    });
   }
 
   Map<String, dynamic> encodeMap(Map<DateTime, dynamic> map) {
@@ -59,9 +70,11 @@ class _calendaState extends State<calenda> {
                   fontSize: 17,
                 )),
             onDaySelected: (date, events) {
-              //print(date.toIso8601String());
+              //print(events.toString());
               setState(() {
                 _selectedEvents = events;
+                //print("Date state: " + date.toString());
+                //print("Event state: " + events.toString());
               });
             },
             builders: CalendarBuilders(
@@ -112,6 +125,18 @@ class _calendaState extends State<calenda> {
                           _eventController.text
                         ];
                       }
+                      //prefs.setString(
+                      //    "events", json.encode(encodeMap(_events)));
+
+                      print(".............................");
+                      // for (var key in _events.keys) {
+                      //   print("sample test");
+                      //   print(key);
+                      // }
+
+                      _events.forEach(
+                          (key, value) => print("key: $key and value: $value"));
+
                       _eventController.clear();
                       Navigator.pop(context);
                     });
