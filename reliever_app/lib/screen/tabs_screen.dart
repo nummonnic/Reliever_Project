@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 //import 'package:relieverapp/widget/main_drawer.dart';
-import './diary_screen.dart';
-import 'result_screen.dart';
 import '../screen/homepage_screen.dart';
 //import '../widget/main_drawer.dart';
 import '../widget/side_manu.dart';
+
 class TabScreen extends StatefulWidget {
   TabScreen({Key key}) : super(key: key);
 

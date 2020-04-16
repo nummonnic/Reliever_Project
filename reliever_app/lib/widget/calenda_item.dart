@@ -1,20 +1,21 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 
-class calenda extends StatefulWidget {
+import '../screen/add_event_screen.dart';
+import '../screen/view_event.dart';
+
+class Calenda extends StatefulWidget {
   @override
   _calendaState createState() => _calendaState();
 }
 
-class _calendaState extends State<calenda> {
+class _calendaState extends State<Calenda> {
   CalendarController _controller;
   Map<DateTime, List<dynamic>> _events;
   List<dynamic> _selectedEvents;
-  TextEditingController _eventController;
-  SharedPreferences prefs;
+  //TextEditingController _eventController;
+  //SharedPreferences prefs;
 
   @override
   void initState() {
@@ -22,33 +23,9 @@ class _calendaState extends State<calenda> {
     super.initState();
     _controller = CalendarController();
     _events = {};
-    _eventController = TextEditingController();
+    //_eventController = TextEditingController();
     _selectedEvents = [];
-    initPrefs();
-  }
-
-  initPrefs() async {
-    prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _events = Map<DateTime, List<dynamic>>.from(
-          decodeMap(json.decode(prefs.getString("events") ?? "{}")));
-    });
-  }
-
-  Map<String, dynamic> encodeMap(Map<DateTime, dynamic> map) {
-    Map<String, dynamic> newMap = {};
-    map.forEach((key, value) {
-      newMap[key.toString()] = map[key];
-    });
-    return newMap;
-  }
-
-  Map<DateTime, dynamic> decodeMap(Map<String, dynamic> map) {
-    Map<DateTime, dynamic> newMap = {};
-    map.forEach((key, value) {
-      newMap[DateTime.parse(key)] = map[key];
-    });
-    return newMap;
+    //initPrefs();
   }
 
   @override
@@ -70,7 +47,6 @@ class _calendaState extends State<calenda> {
                   fontSize: 17,
                 )),
             onDaySelected: (date, events) {
-              //print(events.toString());
               setState(() {
                 _selectedEvents = events;
                 //print("Date state: " + date.toString());
@@ -94,55 +70,21 @@ class _calendaState extends State<calenda> {
           ),
           ..._selectedEvents.map((event) => ListTile(
                 title: Text(event),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => EventDetailsPage(
+                                event: event,
+                              )));
+                },
               )),
         ],
       )),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: _showAddDialog,
+        onPressed: () => Navigator.pushNamed(context, AddEventPage.routeName),
       ),
     );
-  }
-
-  _showAddDialog() {
-    showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              content: TextField(
-                controller: _eventController,
-              ),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('save'),
-                  onPressed: () {
-                    if (_eventController.text.isEmpty) return;
-                    setState(() {
-                      if (_events[_controller.selectedDay] != null) {
-                        _events[_controller.selectedDay]
-                            .add(_eventController.text);
-                      } else {
-                        _events[_controller.selectedDay] = [
-                          _eventController.text
-                        ];
-                      }
-                      //prefs.setString(
-                      //    "events", json.encode(encodeMap(_events)));
-
-                      print(".............................");
-                      // for (var key in _events.keys) {
-                      //   print("sample test");
-                      //   print(key);
-                      // }
-
-                      _events.forEach(
-                          (key, value) => print("key: $key and value: $value"));
-
-                      _eventController.clear();
-                      Navigator.pop(context);
-                    });
-                  },
-                )
-              ],
-            ));
   }
 }

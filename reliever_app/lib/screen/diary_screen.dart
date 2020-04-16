@@ -24,7 +24,7 @@ class DiaryScreen extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(50.0),
           alignment: Alignment.center,
-          child: calenda(),
+          child: Calenda(),
           decoration:
               BoxDecoration(shape: BoxShape.circle, color: Colors.brown[200]),
         )
