@@ -5,7 +5,11 @@ class GoToSignUpFun extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-                  padding: EdgeInsets.only(left: 260, top: 525),
+      child: Positioned(
+      //width: MediaQuery.of(context).size.width*0.65,
+      top: MediaQuery.of(context).size.height*0.797,
+      left: MediaQuery.of(context).size.width*0.63,
+                  //padding: EdgeInsets.only(left: 260, top: 525),
                   child: FlatButton(
                     onPressed: () {
                       Navigator.push(
@@ -18,7 +22,9 @@ class GoToSignUpFun extends StatelessWidget {
                             fontSize: 17,
                             fontWeight: FontWeight.w900,
                             color: Colors.indigo[700])),
-                  ));
+                  )
+    )
+    );
              
   
   }
