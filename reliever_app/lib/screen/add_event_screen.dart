@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../model/event.dart';
+import 'package:relieverapp/database/event_firestore_service.dart';
 
 class AddEventPage extends StatefulWidget {
   final EventModel note;
@@ -14,11 +15,11 @@ class AddEventPage extends StatefulWidget {
 }
 
 class _AddEventPageState extends State<AddEventPage> {
-  //TextStyle style = TextStyle(fontFamily: 'Mon')
+  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   TextEditingController _title;
   TextEditingController _description;
   DateTime _eventDate;
-  final _formkey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   final _key = GlobalKey<ScaffoldState>();
   bool processing;
 
@@ -41,7 +42,7 @@ class _AddEventPageState extends State<AddEventPage> {
       ),
       key: _key,
       body: Form(
-        key: _formkey,
+        key: _formKey,
         child: Container(
           alignment: Alignment.center,
           child: ListView(
@@ -53,7 +54,7 @@ class _AddEventPageState extends State<AddEventPage> {
                   controller: _title,
                   validator: (value) =>
                       (value.isEmpty) ? "Please Enter title" : null,
-                  //style: style,
+                  style: style,
                   decoration: InputDecoration(
                       labelText: "Title",
                       filled: true,
@@ -71,7 +72,7 @@ class _AddEventPageState extends State<AddEventPage> {
                   maxLines: 5,
                   validator: (value) =>
                       (value.isEmpty) ? "Please Enter description" : null,
-                  //style: style,
+                  style: style,
                   decoration: InputDecoration(
                       labelText: "description",
                       border: OutlineInputBorder(
@@ -104,15 +105,24 @@ class _AddEventPageState extends State<AddEventPage> {
                       child: Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(30.0),
-                        color: Colors.blueAccent,
+                        color: Theme.of(context).primaryColor,
                         child: MaterialButton(
                           onPressed: () async {
-                            if (_formkey.currentState.validate()) {
+                            if (_formKey.currentState.validate()) {
                               setState(() {
                                 processing = true;
                               });
                               if (widget.note != null) {
-                                //database
+                                await eventDBS.updateItem(EventModel(
+                                    id: widget.note.id,
+                                    title: _title.text,
+                                    description: _description.text,
+                                    eventDate: widget.note.eventDate));
+                              } else {
+                                await eventDBS.createItem(EventModel(
+                                    title: _title.text,
+                                    description: _description.text,
+                                    eventDate: _eventDate));
                               }
                               Navigator.pop(context);
                               setState(() {
@@ -122,7 +132,9 @@ class _AddEventPageState extends State<AddEventPage> {
                           },
                           child: Text(
                             "Save",
-                            //style:
+                            style: style.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),

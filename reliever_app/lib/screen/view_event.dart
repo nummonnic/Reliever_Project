@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../model/event.dart';
+import 'package:relieverapp/model/event.dart';
 
 class EventDetailsPage extends StatelessWidget {
   final EventModel event;
@@ -11,7 +10,7 @@ class EventDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Note details"),
+        title: Text('Note details'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -20,6 +19,7 @@ class EventDetailsPage extends StatelessWidget {
           children: <Widget>[
             Text(
               event.title,
+              style: Theme.of(context).textTheme.display1,
             ),
             SizedBox(height: 20.0),
             Text(event.description)
