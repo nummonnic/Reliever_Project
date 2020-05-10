@@ -1,15 +1,13 @@
-
 import 'package:flutter/material.dart';
 
 import '../widget/side_manu.dart';
 import '../widget/homeBG.dart';
 import '../widget/showMood.dart';
 import '../widget/chooseClip.dart';
+import '../database/stress_level_handler.dart';
 //import 'package:video_player/video_player.dart';
 // import 'package:chewie/chewie.dart';
 //import '../widget/showVideo.dart';
-
-
 
 class ResultScreen extends StatelessWidget {
   static const routeName = '/result-screen';
@@ -30,6 +28,7 @@ class ResultScreen extends StatelessWidget {
             ShowLevel(),
             ActivityText(),
             ActivityClip(),
+            StressLevelHandler(),
           ])),
         ]));
   }
@@ -72,4 +71,3 @@ class ActivityText extends StatelessWidget {
         ));
   }
 }
-
