@@ -13,8 +13,7 @@ class StressLevelHandler extends StatefulWidget {
 class _stressLevelHandlerState extends State<StressLevelHandler> {
   final dbRef = FirebaseDatabase.instance.reference();
   var lists = new List();
-  final url =
-      "https://reliever-gkkdtw.firebaseio.com/.json?auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiZXhwIjoxNTg5MTE4MTk2LCJpYXQiOjE1ODkxMTQ1OTYsInYiOjB9.bjLgBNB4V0BWWhiNApSeUBvpq6lGot014QnXHoTy3XA&download=reliever-gkkdtw-export.json&format=export&print=pretty";
+  final url = "https://reliever-gkkdtw.firebaseio.com/.json";
 
   @override
   void initState() {
@@ -48,16 +47,22 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
             values.forEach((key, value) {
               lists.add(value);
             });
+            var stress = lists[0] + lists[1] + lists[2] + lists[3] + lists[4];
+            var stressPercent = (stress / 25) * 100;
             return new ListView(shrinkWrap: true, children: [
               Card(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("Answer 1: " + lists[0].toString()),
-                    Text("Answer 2: " + lists[1].toString()),
-                    Text("Answer 3: " + lists[2].toString()),
-                    Text("Answer 4: " + lists[3].toString()),
-                    Text("Answer 5: " + lists[4].toString()),
+                    Text("Stress Level: " + stress.toString()),
+                    Text("Percent of stress level: " +
+                        stressPercent.toString() +
+                        "%"),
+//                    Text("Answer 1: " + lists[0].toString()),
+//                    Text("Answer 2: " + lists[1].toString()),
+//                    Text("Answer 3: " + lists[2].toString()),
+//                    Text("Answer 4: " + lists[3].toString()),
+//                    Text("Answer 5: " + lists[4].toString()),
                   ],
                 ),
               )
