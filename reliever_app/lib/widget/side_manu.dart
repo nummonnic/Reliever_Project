@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:relieverapp/screen/open_screen.dart';
 import '../screen/diary_screen.dart';
 import '../screen/result_screen.dart';
+import '../screen/trackProgress_screen.dart';
+//import '../screen/homepage_screen.dart';
 
 class SideManu extends StatelessWidget {
   @override
@@ -40,7 +42,7 @@ class SideManu extends StatelessWidget {
                                   title: Text('Score'),
                                   onTap: () {
                                     Navigator.of(context)
-                                        .pushNamed(ResultScreen.routeName);
+                                        .pushNamed(ResultScreen.route);
                                     // Navigator.push(
                                     //     context,
                                     //     MaterialPageRoute(
@@ -53,6 +55,18 @@ class SideManu extends StatelessWidget {
                                   onTap: () {
                                     Navigator.of(context)
                                         .pushNamed(DiaryScreen.routeName);
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) =>
+                                    //             OpenScreen()));
+                                  }),
+                              ListTile(
+                                  leading: Icon(Icons.attachment),
+                                  title: Text('Progrss'),
+                                  onTap: () {
+                                    Navigator.of(context)
+                                        .pushNamed(TrackProgress.routeName);
                                     // Navigator.push(
                                     //     context,
                                     //     MaterialPageRoute(

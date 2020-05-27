@@ -6,7 +6,7 @@ import '../screen/result_screen.dart';
 class result_item extends StatelessWidget {
   void selectResult(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      ResultScreen.routeName,
+      ResultScreen.route,
     );
   }
 

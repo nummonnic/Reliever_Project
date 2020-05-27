@@ -80,6 +80,7 @@ class _AddEventPageState extends State<AddEventPage> {
                 ),
               ),
               const SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               ListTile(
                 title: Text("Date (YYYY-MM-DD)"),
                 subtitle: Text(

@@ -5,34 +5,49 @@ import '../widget/homeBG.dart';
 import '../widget/showMood.dart';
 import '../widget/chooseClip.dart';
 import '../database/stress_level_handler.dart';
-//import 'package:video_player/video_player.dart';
-// import 'package:chewie/chewie.dart';
-//import '../widget/showVideo.dart';
+
+import 'drawerScreen.dart';
+import '../widget/detail_Result.dart';
 
 class ResultScreen extends StatelessWidget {
-  static const routeName = '/result-screen';
+  static const route = '/result-screen';
+  const ResultScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: Text('The Result'),
-            backgroundColor: Colors.brown,
-            elevation: 0.0),
-        drawer: SideManu(),
-        body: ListView(children: <Widget>[
-          Container(
-              child: Stack(children: <Widget>[
-            Background(),
-            MoodText(),
-            ShowLevel(),
-            ActivityText(),
-            ActivityClip(),
-            StressLevelHandler(),
-          ])),
-        ]));
+      body: Stack(children: [
+        DrawerScreen(),
+        DescriptionResult(),
+      ]),
+    );
   }
 }
+
+//class ResultScreen extends StatelessWidget {
+//  static const route = '/result-screen';
+
+//  @override
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//        appBar: AppBar(
+//            title: Text('The Result'),
+//            backgroundColor: Colors.brown,
+//            elevation: 0.0),
+//        drawer: SideManu(),
+//        body: ListView(children: <Widget>[
+//          Container(
+//              child: Stack(children: <Widget>[
+//            //Background(),
+//            MoodText(),
+//            ShowLevel(),
+//            ActivityText(),
+//            ActivityClip(),
+//StressLevelHandler(), //tell the stress level
+//          ])),
+//        ]));
+//  }
+//}
 
 class MoodText extends StatelessWidget {
   const MoodText({Key key}) : super(key: key);

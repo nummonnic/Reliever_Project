@@ -29,8 +29,7 @@ class ShowLevel extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage("assets/images/stress.png"))),
-              )
-              ));
+              )));
     } else if (score >= 5) {
       return Container(
           child: Positioned(

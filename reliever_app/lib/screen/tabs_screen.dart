@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'package:relieverapp/widget/main_drawer.dart';
-import '../screen/homepage_screen.dart';
+//import '../screen/homepage_screen.dart';
 //import '../widget/main_drawer.dart';
 import '../widget/side_manu.dart';
 
@@ -21,7 +21,7 @@ class _TabScreenState extends State<TabScreen> {
               AppBar(backgroundColor: Colors.orangeAccent[100], elevation: 0.0),
           drawer: SideManu(),
           body: TabBarView(children: <Widget>[
-            homeScreen(),
+            //homeScreen(),
             //DiaryScreen(),
             //ResultScreen(),
           ]),

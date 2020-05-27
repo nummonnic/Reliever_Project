@@ -49,7 +49,7 @@ class MainDrawer extends StatelessWidget {
             Navigator.of(context).pushNamed(DiaryScreen.routeName);
           }),
           buildListTile('result', Icons.score, () {
-            Navigator.of(context).pushNamed(ResultScreen.routeName);
+            Navigator.of(context).pushNamed(ResultScreen.route);
           }),
         ],
       ),

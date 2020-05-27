@@ -63,6 +63,15 @@ flutter:
    - assets/happy.png
    - assets/vi1.mp4
    - assets/vi3.mp4
+
+fonts: 
+  - family: Circular
+    fonts: 
+      - asset: fonts/CircularStd-Medium.ttf
+      - asset: fonts/CircularStd-Bold.ttf
+        weight: 500
+      - asset: fonts/Circular Air Light.ttf
+        weight: 100
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
