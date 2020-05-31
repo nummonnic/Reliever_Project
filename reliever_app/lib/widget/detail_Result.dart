@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'showMood.dart';
+import '../widget/chooseClip.dart';
+import '../database/stress_level_handler.dart';
 
 class DescriptionResult extends StatefulWidget {
   //static const routeName = '/desResult-screen';
@@ -96,20 +98,26 @@ class _DescriptionResultState extends State<DescriptionResult> {
                   topRight: Radius.circular(60),
                 ),
               ),
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
-                child: Column(
+              //child: Padding(
+                //padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
+                child: ListView(
                   children: <Widget>[
+              //       Container(
+              // child: Stack(children: <Widget>[
                     MoodText(),
+                    StressLevelHandler(),
+                    ActivityText(),
+                    ActivityClip(),
                     Row(
                       children: <Widget>[
                         SizedBox(height: 10),
                       ],
                     )
                     //ShowLevel(),
+                    // ]))
                   ],
                 ),
-              ),
+              //),
             ),
           ),
         ],
@@ -124,7 +132,11 @@ class MoodText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    
+    return 
+    Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+    child: Container(
         //height: MediaQuery.of(context).size.height,
         //width: MediaQuery.of(context).size.height,
         child: Column(
@@ -136,25 +148,30 @@ class MoodText extends StatelessWidget {
                 fontWeight: FontWeight.w700,
                 color: Colors.brown)),
       ],
-    ));
+    )));
   }
 }
 
 class ActivityText extends StatelessWidget {
   const ActivityText({Key key}) : super(key: key);
 
-  @override
+@override
   Widget build(BuildContext context) {
-    return Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.height,
-        child: Align(
-          alignment: Alignment(0, -0.2),
-          child: Text('Suggested Activities',
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.brown)),
-        ));
+    return 
+    Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+    child: Container(
+        //height: MediaQuery.of(context).size.height,
+        //width: MediaQuery.of(context).size.height,
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Text('Suggested Activities',
+            style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w700,
+                color: Colors.brown)),
+      ],
+    )));
   }
 }

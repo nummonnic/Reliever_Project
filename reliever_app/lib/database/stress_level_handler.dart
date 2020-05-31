@@ -48,25 +48,98 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
               lists.add(value);
             });
             var stress = lists[0] + lists[1] + lists[2] + lists[3] + lists[4];
-            var stressPercent = (stress / 25) * 100;
-            return new ListView(shrinkWrap: true, children: [
-              Card(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text("Stress Level: " + stress.toString()),
-                    Text("Percent of stress level: " +
-                        stressPercent.toString() +
-                        "%"),
-//                    Text("Answer 1: " + lists[0].toString()),
-//                    Text("Answer 2: " + lists[1].toString()),
-//                    Text("Answer 3: " + lists[2].toString()),
-//                    Text("Answer 4: " + lists[3].toString()),
-//                    Text("Answer 5: " + lists[4].toString()),
-                  ],
-                ),
+            var stressPercent = (stress / 15) * 100;
+           if (stress >= 10) {
+      return 
+       Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      child: Container(
+          // child: Positioned(
+          //     left: MediaQuery.of(context).size.width * 0.32,
+          //     top: MediaQuery.of(context).size.height * 0.11,
+              width: 150,
+              height: 150,
+
+              child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/bad1.png"))),
               )
-            ]);
+              //)
+              )
+       );
+    } else if (stress >= 8) {
+      return 
+       Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      child: Container(
+          // child: Positioned(
+          //     left: MediaQuery.of(context).size.width * 0.32,
+          //     top: MediaQuery.of(context).size.height * 0.11,
+              width: 150,
+              height: 150,
+              child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/stress.png"))),
+              )
+              //)
+       ));
+    } else if (stress >= 5) {
+      return 
+       Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      child: Container(
+          // child: Positioned(
+          //     left: MediaQuery.of(context).size.width * 0.32,
+          //     top: MediaQuery.of(context).size.height * 0.11,
+              width: 150,
+              height: 150,
+              child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/normal.png"))),
+              )
+              //)
+       ));
+    } else {
+      return 
+       Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      child: Container(
+          // child: Positioned(
+          //     left: MediaQuery.of(context).size.width * 0.32,
+          //     top: MediaQuery.of(context).size.height * 0.11,
+              width: 150,
+              height: 150,
+              child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/happy.png"))),
+              )
+              //)
+              ));
+    }
+      
+
+            // return new ListView(shrinkWrap: true, children: [
+            //   Card(
+            //     child: Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: <Widget>[
+            //         Text("Stress Level: " + stress.toString()),
+            //         Text("Percent of stress level: " +
+            //             stressPercent.toString() +
+            //             "%"),
+// //                    Text("Answer 1: " + lists[0].toString()),
+// //                    Text("Answer 2: " + lists[1].toString()),
+// //                    Text("Answer 3: " + lists[2].toString()),
+// //                    Text("Answer 4: " + lists[3].toString()),
+// //                    Text("Answer 5: " + lists[4].toString()),
+            //       ],
+            //     ),
+            //   )
+            // ]);
           }
           return CircularProgressIndicator();
         });

@@ -23,7 +23,7 @@ class _ActivityState extends State<ActivityClip> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(right: 10, left: 10, top: 350),
+        margin: const EdgeInsets.only(right: 10, left: 10, top: 300),
         height: MediaQuery.of(context).size.height * 0.3,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,

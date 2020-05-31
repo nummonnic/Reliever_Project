@@ -21,14 +21,16 @@ class ChewieListItem extends StatefulWidget{
 }
 
 class _ChewieListItemState extends State<ChewieListItem>{
-  String urlVideo = 'assets/vi1.mp4';
+  //String urlVideo = 'assets/vi1.mp4';
+  String urlVideo = 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4';
   VideoPlayerController videoPlayerController;
   ChewieController _chewieController;
 
   @override
   void initState(){
     super.initState();
-    videoPlayerController = VideoPlayerController.asset(urlVideo);
+    //videoPlayerController = VideoPlayerController.asset(urlVideo);
+    videoPlayerController = VideoPlayerController.network(urlVideo);
     
     _chewieController = ChewieController(
       videoPlayerController: videoPlayerController,

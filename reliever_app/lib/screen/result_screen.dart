@@ -19,12 +19,14 @@ class ResultScreen extends StatelessWidget {
       body: Stack(children: [
         DrawerScreen(),
         DescriptionResult(),
+        // StressLevelHandler(),
+        //ActivityText(),
       ]),
     );
   }
 }
 
-//class ResultScreen extends StatelessWidget {
+// class ResultScreen extends StatelessWidget {
 //  static const route = '/result-screen';
 
 //  @override
@@ -43,11 +45,11 @@ class ResultScreen extends StatelessWidget {
 //            ShowLevel(),
 //            ActivityText(),
 //            ActivityClip(),
-//StressLevelHandler(), //tell the stress level
+// StressLevelHandler(), //tell the stress level
 //          ])),
 //        ]));
 //  }
-//}
+// }
 
 class MoodText extends StatelessWidget {
   const MoodText({Key key}) : super(key: key);
