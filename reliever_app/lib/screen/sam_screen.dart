@@ -12,7 +12,7 @@ class Sam extends StatelessWidget {
     return Scaffold(
       body: Stack(children: [
         DrawerScreen(),
-        tryOn(),
+        //tryOn(),
       ]),
     );
   }

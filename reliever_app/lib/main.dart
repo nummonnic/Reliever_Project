@@ -6,6 +6,7 @@ import './screen/add_event_screen.dart';
 import './screen/trackProgress_screen.dart';
 import './screen/sam_screen.dart';
 import './template/homeScreen.dart';
+import './widget/try.dart';
 //import './screen/homepage_screen.dart';
 
 void main() => runApp(MyApp());
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         '/': (ctx) => ResultScreen(),
         DiaryScreen.routeName: (ctx) => DiaryScreen(),
         ResultScreen.route: (ctx) => ResultScreen(),
-        AddEventPage.routeName: (ctx) => AddEventPage(),
+        AddEventScreen.routeName: (ctx) => AddEventScreen(),
+        //AddEventPage.routeName: (ctx) => AddEventPage(),
         TrackProgress.routeName: (ctx) => TrackProgress(),
         HomeScreen.routeName: (ctx) => HomeScreen(),
         Sam.routeName: (ctx) => Sam(),
