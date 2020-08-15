@@ -4,9 +4,8 @@ import './screen/diary_screen.dart';
 import './screen/result_screen.dart';
 import './screen/add_event_screen.dart';
 import './screen/trackProgress_screen.dart';
-import './screen/sam_screen.dart';
 import './template/homeScreen.dart';
-import './widget/try.dart';
+import './screen/test.dart';
 //import './screen/homepage_screen.dart';
 
 void main() => runApp(MyApp());
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
         //AddEventPage.routeName: (ctx) => AddEventPage(),
         TrackProgress.routeName: (ctx) => TrackProgress(),
         HomeScreen.routeName: (ctx) => HomeScreen(),
-        Sam.routeName: (ctx) => Sam(),
+        SampleTest.routeName: (ctx) => SampleTest(), 
       },
     );
   }

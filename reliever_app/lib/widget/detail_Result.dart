@@ -20,9 +20,7 @@ class _DescriptionResultState extends State<DescriptionResult> {
 
   @override
   Widget build(BuildContext context) {
-    return //Scaffold(
-        //backgroundColor: Colors.yellow,
-        //body:
+    return 
         AnimatedContainer(
       decoration: BoxDecoration(
         color: Color(0xff27496d),
@@ -99,24 +97,24 @@ class _DescriptionResultState extends State<DescriptionResult> {
                 ),
               ),
               //child: Padding(
-                //padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
-                child: ListView(
-                  children: <Widget>[
-              //       Container(
-              // child: Stack(children: <Widget>[
-                    MoodText(),
-                    StressLevelHandler(),
-                    ActivityText(),
-                    ActivityClip(),
-                    Row(
-                      children: <Widget>[
-                        SizedBox(height: 10),
-                      ],
-                    )
-                    //ShowLevel(),
-                    // ]))
-                  ],
-                ),
+              //padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
+              child: ListView(
+                children: <Widget>[
+                  //       Container(
+                  // child: Stack(children: <Widget>[
+                  MoodText(),
+                  StressLevelHandler(),
+                  ActivityText(),
+                  ActivityClip(),
+                  Row(
+                    children: <Widget>[
+                      SizedBox(height: 10),
+                    ],
+                  )
+                  //ShowLevel(),
+                  // ]))
+                ],
+              ),
               //),
             ),
           ),
@@ -132,46 +130,47 @@ class MoodText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-    return 
-    Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-    child: Container(
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      child: Container(
         //height: MediaQuery.of(context).size.height,
         //width: MediaQuery.of(context).size.height,
         child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        Text('Your Current Mood',
-            style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.w700,
-                color: Colors.brown)),
-      ],
-    )));
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Your Current Mood',
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.brown),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
 class ActivityText extends StatelessWidget {
   const ActivityText({Key key}) : super(key: key);
 
-@override
+  @override
   Widget build(BuildContext context) {
-    return 
-    Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-    child: Container(
-        //height: MediaQuery.of(context).size.height,
-        //width: MediaQuery.of(context).size.height,
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        Text('Suggested Activities',
-            style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.w700,
-                color: Colors.brown)),
-      ],
-    )));
+    return Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+        child: Container(
+            //height: MediaQuery.of(context).size.height,
+            //width: MediaQuery.of(context).size.height,
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Text('Suggested Activities',
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.brown)),
+          ],
+        )));
   }
 }

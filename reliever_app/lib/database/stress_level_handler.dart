@@ -1,4 +1,5 @@
 import 'dart:convert';
+//import 'dart:html';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class StressLevelHandler extends StatefulWidget {
 class _stressLevelHandlerState extends State<StressLevelHandler> {
   final dbRef = FirebaseDatabase.instance.reference();
   var lists = new List();
+  var timestampList = new List();
   final url = "https://reliever-gkkdtw.firebaseio.com/.json";
 
   @override
@@ -41,86 +43,94 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             lists.clear();
+            timestampList.clear();
             //Map<dynamic, dynamic> values = snapshot.data.value;
             final values =
                 json.decode(snapshot.data.body) as Map<String, dynamic>;
             values.forEach((key, value) {
-              lists.add(value);
+              value.forEach((key, data) {
+                if (key == "value")
+                  lists.add(data);
+                else
+                  timestampList.add(data);
+              });
             });
-            var stress = lists[0] + lists[1] + lists[2] + lists[3] + lists[4];
+            // print(lists);
+            var stress = lists[0] +
+                lists[1] +
+                lists[2] +
+                lists[3] +
+                lists[4];
+            // lists.forEach((value) {
+            //   print(value.value);
+            // });
+            // var stress = 0;
             var stressPercent = (stress / 15) * 100;
-           if (stress >= 10) {
-      return 
-       Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-      child: Container(
-          // child: Positioned(
-          //     left: MediaQuery.of(context).size.width * 0.32,
-          //     top: MediaQuery.of(context).size.height * 0.11,
-              width: 150,
-              height: 150,
-
-              child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/bad1.png"))),
-              )
-              //)
-              )
-       );
-    } else if (stress >= 8) {
-      return 
-       Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-      child: Container(
-          // child: Positioned(
-          //     left: MediaQuery.of(context).size.width * 0.32,
-          //     top: MediaQuery.of(context).size.height * 0.11,
-              width: 150,
-              height: 150,
-              child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/stress.png"))),
-              )
-              //)
-       ));
-    } else if (stress >= 5) {
-      return 
-       Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-      child: Container(
-          // child: Positioned(
-          //     left: MediaQuery.of(context).size.width * 0.32,
-          //     top: MediaQuery.of(context).size.height * 0.11,
-              width: 150,
-              height: 150,
-              child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/normal.png"))),
-              )
-              //)
-       ));
-    } else {
-      return 
-       Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-      child: Container(
-          // child: Positioned(
-          //     left: MediaQuery.of(context).size.width * 0.32,
-          //     top: MediaQuery.of(context).size.height * 0.11,
-              width: 150,
-              height: 150,
-              child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/happy.png"))),
-              )
-              //)
-              ));
-    }
-      
+            if (stress >= 10) {
+              return Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  child: Container(
+                      // child: Positioned(
+                      //     left: MediaQuery.of(context).size.width * 0.32,
+                      //     top: MediaQuery.of(context).size.height * 0.11,
+                      width: 150,
+                      height: 150,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/bad1.png"))),
+                      )
+                      //)
+                      ));
+            } else if (stress >= 8) {
+              return Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  child: Container(
+                      // child: Positioned(
+                      //     left: MediaQuery.of(context).size.width * 0.32,
+                      //     top: MediaQuery.of(context).size.height * 0.11,
+                      width: 150,
+                      height: 150,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/stress.png"))),
+                      )
+                      //)
+                      ));
+            } else if (stress >= 5) {
+              return Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  child: Container(
+                      // child: Positioned(
+                      //     left: MediaQuery.of(context).size.width * 0.32,
+                      //     top: MediaQuery.of(context).size.height * 0.11,
+                      width: 150,
+                      height: 150,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/normal.png"))),
+                      )
+                      //)
+                      ));
+            } else {
+              return Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  child: Container(
+                      // child: Positioned(
+                      //     left: MediaQuery.of(context).size.width * 0.32,
+                      //     top: MediaQuery.of(context).size.height * 0.11,
+                      width: 150,
+                      height: 150,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/happy.png"))),
+                      )
+                      //)
+                      ));
+            }
 
             // return new ListView(shrinkWrap: true, children: [
             //   Card(

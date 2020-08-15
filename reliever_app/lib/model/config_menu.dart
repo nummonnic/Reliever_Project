@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:relieverapp/screen/sam_screen.dart';
 
 import '../screen/result_screen.dart';
 import '../screen/diary_screen.dart';
 import '../screen/trackProgress_screen.dart';
-//import '../screen/homepage_screen.dart';
+import '../screen/test.dart';
 
 List<Map> drawerItems = [
   {
@@ -28,7 +27,7 @@ List<Map> drawerItems = [
   {
     'icon': Icons.add_shopping_cart,
     'title': 'Sample Test',
-    'route': Sam.routeName,
+    'route': SampleTest.routeName,
     'selectState': 4
   },
 ];
