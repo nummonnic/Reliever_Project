@@ -14,7 +14,7 @@ class _ProcessingQuestionState extends State<ProcessingQuestion> {
   section(state) {
     setState(() {
       if (state == 1) {
-        _process = "Question 1";
+        _process = "Q. 1";
         //print(i);
         //i = 1;
       } else if (state == 2) {
@@ -43,37 +43,41 @@ class _ProcessingQuestionState extends State<ProcessingQuestion> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Test Loading Page"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              width: 200,
-              height: 200,
-              child: FloatingActionButton(
-                onPressed: () {
-                  section(i);
-                  // print(i);
-                },
-                tooltip: 'Section',
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(Icons.access_alarm),
-                    SizedBox(height: 20),
-                    Text(
-                      '$_process',
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            width: 200,
+            height: 200,
+            child: FloatingActionButton(
+              backgroundColor: Colors.white,
+              onPressed: () {
+                section(i);
+                // print(i);
+              },
+              tooltip: 'Section',
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.access_alarm,
+                    color: Colors.black,
+                    size: 50,
+                  ),
+                  SizedBox(height: 25),
+                  Text(
+                    '$_process',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //import '../widget/sample.dart';
-import '../widget/processing_question.dart';
+import '../widget/processing.dart';
 import 'drawerScreen.dart';
 
 class SampleTest extends StatelessWidget {
@@ -13,8 +13,8 @@ class SampleTest extends StatelessWidget {
     return Scaffold(
         body: Stack(
       children: <Widget>[
-        //DrawerScreen(),
-        ProcessingQuestion(),
+        DrawerScreen(),
+        Processing(),
       ],
     ));
   }

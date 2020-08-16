@@ -96,8 +96,8 @@ class _DiaryDetailState extends State<DiaryDetail> {
               ),
               child: ListView(
                 children: <Widget>[
-                  // calenda(),
-                  Text("WOW")
+                  calenda(),
+                  // Text("WOW")
                 ],
               ),
             ),
@@ -151,120 +151,120 @@ class _calendaState extends State<calenda> {
     return Container(
       child: Padding(
         padding: EdgeInsets.fromLTRB(
-            width - 410, height - 790, width - 410, height - 795),
+            width - 300, height - 600, width - 300, height - 600),
         child: Scaffold(
-          body: StreamBuilder<List<EventModel>>(
-            stream: eventDBS.streamList(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                List<EventModel> allEvents = snapshot.data;
-                if (allEvents.isNotEmpty) {
-                  _events = _groupEvents(allEvents);
-                }
-              }
-              return SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          child: TableCalendar(
-                            events: _events,
-                            calendarStyle: CalendarStyle(
-                              todayColor: Colors.orangeAccent[100],
-                              selectedColor: Colors.blueGrey,
-                              todayStyle: TextStyle(
-                                color: Colors.brown,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17,
-                              ),
-                            ),
-                            headerStyle: HeaderStyle(
-                              centerHeaderTitle: true,
-                              titleTextStyle: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xff27496d),
-                              ),
-                              formatButtonDecoration:
-                                  BoxDecoration(color: Colors.white),
-                              formatButtonTextStyle: TextStyle(),
-                            ),
-                            onDaySelected: (date, events) {
-                              setState(
-                                () {
-                                  _selectedEvents = events;
-                                },
-                              );
-                            },
-                            builders: CalendarBuilders(
-                              selectedDayBuilder: (context, date, events) =>
-                                  Container(
-                                margin: EdgeInsets.all(height - 810),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: Colors.brown,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Text(
-                                  date.day.toString(),
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            ),
-                            calendarController: _controller,
-                          ),
-                        ),
-                        ..._selectedEvents.map(
-                          (event) => Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: height - 780,
-                              vertical: width - 420,
-                            ),
-                            child: Card(
-                              color: Color(0xfff5b971),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              elevation: 5,
-                              child: Padding(
-                                padding: EdgeInsets.all(height - 814),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    ListTile(
-                                      title: Text(
-                                        event.title,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 19,
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (_) => EventDetailsPage(
-                                              event: event,
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
+          // body: StreamBuilder<List<EventModel>>(
+          //   stream: eventDBS.streamList(),
+          //   builder: (context, snapshot) {
+          //     if (snapshot.hasData) {
+          //       List<EventModel> allEvents = snapshot.data;
+          //       if (allEvents.isNotEmpty) {
+          //         _events = _groupEvents(allEvents);
+          //       }
+          //     }
+          //     return SingleChildScrollView(
+          //       child: Column(
+          //         children: <Widget>[
+          //           Column(
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Container(
+          //                 child: TableCalendar(
+          //                   events: _events,
+          //                   calendarStyle: CalendarStyle(
+          //                     todayColor: Colors.orangeAccent[100],
+          //                     selectedColor: Colors.blueGrey,
+          //                     todayStyle: TextStyle(
+          //                       color: Colors.brown,
+          //                       fontWeight: FontWeight.bold,
+          //                       fontSize: 17,
+          //                     ),
+          //                   ),
+          //                   headerStyle: HeaderStyle(
+          //                     centerHeaderTitle: true,
+          //                     titleTextStyle: TextStyle(
+          //                       fontSize: 25,
+          //                       fontWeight: FontWeight.bold,
+          //                       color: Color(0xff27496d),
+          //                     ),
+          //                     formatButtonDecoration:
+          //                         BoxDecoration(color: Colors.white),
+          //                     formatButtonTextStyle: TextStyle(),
+          //                   ),
+          //                   onDaySelected: (date, events) {
+          //                     setState(
+          //                       () {
+          //                         _selectedEvents = events;
+          //                       },
+          //                     );
+          //                   },
+          //                   builders: CalendarBuilders(
+          //                     selectedDayBuilder: (context, date, events) =>
+          //                         Container(
+          //                       margin: EdgeInsets.all(height - 810),
+          //                       alignment: Alignment.center,
+          //                       decoration: BoxDecoration(
+          //                         color: Colors.brown,
+          //                         shape: BoxShape.circle,
+          //                       ),
+          //                       child: Text(
+          //                         date.day.toString(),
+          //                         style: TextStyle(color: Colors.white),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                   calendarController: _controller,
+          //                 ),
+          //               ),
+          //               ..._selectedEvents.map(
+          //                 (event) => Padding(
+          //                   padding: EdgeInsets.symmetric(
+          //                     horizontal: height - 700,
+          //                     vertical: width - 400,
+          //                   ),
+          //                   child: Card(
+          //                     color: Color(0xfff5b971),
+          //                     shape: RoundedRectangleBorder(
+          //                       borderRadius: BorderRadius.circular(15.0),
+          //                     ),
+          //                     elevation: 5,
+          //                     child: Padding(
+          //                       padding: EdgeInsets.all(height - 800),
+          //                       child: Column(
+          //                         mainAxisSize: MainAxisSize.min,
+          //                         children: [
+          //                           ListTile(
+          //                             title: Text(
+          //                               event.title,
+          //                               style: TextStyle(
+          //                                 color: Colors.white,
+          //                                 fontSize: 19,
+          //                               ),
+          //                             ),
+          //                             onTap: () {
+          //                               Navigator.push(
+          //                                 context,
+          //                                 MaterialPageRoute(
+          //                                   builder: (_) => EventDetailsPage(
+          //                                     event: event,
+          //                                   ),
+          //                                 ),
+          //                               );
+          //                             },
+          //                           ),
+          //                         ],
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //         ],
+          //       ),
+          //     );
+          //   },
+          // ),
         ), // Scaffold
       ),
     );
