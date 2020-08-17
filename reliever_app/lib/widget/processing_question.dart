@@ -15,7 +15,8 @@ class _ProcessingQuestionState extends State<ProcessingQuestion> {
     setState(() {
       if (state == 1) {
         _process = "Q. 1";
-        //print(i);
+        print(MediaQuery.of(context).size.width);
+        print(MediaQuery.of(context).size.height);
         //i = 1;
       } else if (state == 2) {
         _process = "Question 2";

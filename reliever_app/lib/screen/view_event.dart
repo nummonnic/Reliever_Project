@@ -15,132 +15,18 @@ class EventDetailsPage extends StatelessWidget {
     var height = screenSize.height;
 
     return Scaffold(
-      body: SafeArea(
+      body: Padding(
+        padding: EdgeInsets.all(0),
         child: Stack(
           children: <Widget>[
-            Positioned(
-              top: height - 686,
-              left: width - 332,
+            Padding(
+              padding: EdgeInsets.only(left: 120, top: 180),
               child: Text(
                 event.eventDate.day.toString(),
                 style: TextStyle(
                   fontSize: 160,
-                  color: Colors.grey.withOpacity(0.12),
+                  color: Colors.grey.withOpacity(0.20),
                   fontWeight: FontWeight.w900,
-                ),
-              ),
-            ),
-            Positioned(
-              right: width - 472,
-              top: height - 796,
-              child: Image.asset(
-                'assets/images/Asset7.png',
-              ),
-            ),
-            SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.all(32.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(
-                      height: height - 516,
-                    ),
-                    Text(
-                      event.title,
-                      style: TextStyle(
-                        fontSize: 56,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w900,
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                    Text(
-                      event.eventDate.year.toString() +
-                          " - " +
-                          event.eventDate.month.toString() +
-                          " - " +
-                          event.eventDate.day.toString(),
-                      style: TextStyle(
-                        fontSize: 23,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w300,
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                    Divider(
-                      color: Colors.black38,
-                    ),
-                    SizedBox(
-                      height: height - 796,
-                    ),
-                    Text(
-                      event.description,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: height - 716,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: GestureDetector(
-                        child: Container(
-                          height: height - 750,
-                          margin: EdgeInsets.symmetric(horizontal: 130),
-                          decoration: BoxDecoration(
-                            color: Color(0xff27496d),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Delete",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 23,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ),
-                        onTap: () {
-                          _deleteDiary(context, event.id);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.grey[500],
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(80),
-                    topRight: Radius.circular(80),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: width - 430),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
                 ),
               ),
             ),
@@ -148,6 +34,141 @@ class EventDetailsPage extends StatelessWidget {
         ),
       ),
     );
+
+    // return Scaffold(
+    //   body: SafeArea(
+    //     child: Stack(
+    //       children: <Widget>[
+    //         Positioned(
+    //           top: height - 686,
+    //           left: width - 332,
+    //           child: Text(
+    //             event.eventDate.day.toString(),
+    //             style: TextStyle(
+    //               fontSize: 160,
+    //               color: Colors.grey.withOpacity(0.12),
+    //               fontWeight: FontWeight.w900,
+    //             ),
+    //           ),
+    //         ),
+    //         Positioned(
+    //           right: width - 472,
+    //           top: height - 796,
+    //           child: Image.asset(
+    //             'assets/images/Asset7.png',
+    //           ),
+    //         ),
+    //         SingleChildScrollView(
+    //           child: Padding(
+    //             padding: EdgeInsets.all(32.0),
+    //             child: Column(
+    //               crossAxisAlignment: CrossAxisAlignment.start,
+    //               children: <Widget>[
+    //                 SizedBox(
+    //                   height: height - 516,
+    //                 ),
+    //                 Text(
+    //                   event.title,
+    //                   style: TextStyle(
+    //                     fontSize: 56,
+    //                     color: Colors.black,
+    //                     fontWeight: FontWeight.w900,
+    //                   ),
+    //                   textAlign: TextAlign.left,
+    //                 ),
+    //                 Text(
+    //                   event.eventDate.year.toString() +
+    //                       " - " +
+    //                       event.eventDate.month.toString() +
+    //                       " - " +
+    //                       event.eventDate.day.toString(),
+    //                   style: TextStyle(
+    //                     fontSize: 23,
+    //                     color: Colors.black,
+    //                     fontWeight: FontWeight.w300,
+    //                   ),
+    //                   textAlign: TextAlign.left,
+    //                 ),
+    //                 Divider(
+    //                   color: Colors.black38,
+    //                 ),
+    //                 SizedBox(
+    //                   height: height - 796,
+    //                 ),
+    //                 Text(
+    //                   event.description,
+    //                   style: TextStyle(
+    //                     fontSize: 20,
+    //                     color: Colors.black,
+    //                     fontWeight: FontWeight.w500,
+    //                   ),
+    //                   textAlign: TextAlign.left,
+    //                 ),
+    //               ],
+    //             ),
+    //           ),
+    //         ),
+    //         Align(
+    //           alignment: Alignment.bottomCenter,
+    //           child: Container(
+    //             height: height - 716,
+    //             child: Row(
+    //               children: [
+    //                 Expanded(
+    //                   child: GestureDetector(
+    //                     child: Container(
+    //                       height: height - 750,
+    //                       margin: EdgeInsets.symmetric(horizontal: 130),
+    //                       decoration: BoxDecoration(
+    //                         color: Color(0xff27496d),
+    //                         borderRadius: BorderRadius.circular(20),
+    //                       ),
+    //                       child: Center(
+    //                         child: Text(
+    //                           "Delete",
+    //                           style: TextStyle(
+    //                               color: Colors.white,
+    //                               fontSize: 23,
+    //                               fontWeight: FontWeight.w500),
+    //                         ),
+    //                       ),
+    //                     ),
+    //                     onTap: () {
+    //                       _deleteDiary(context, event.id);
+    //                     },
+    //                   ),
+    //                 ),
+    //               ],
+    //             ),
+    //             decoration: BoxDecoration(
+    //               color: Colors.grey[500],
+    //               borderRadius: BorderRadius.only(
+    //                 topLeft: Radius.circular(80),
+    //                 topRight: Radius.circular(80),
+    //               ),
+    //             ),
+    //           ),
+    //         ),
+    //         Container(
+    //           margin: EdgeInsets.only(top: width - 430),
+    //           child: Align(
+    //             alignment: Alignment.topCenter,
+    //             child: Row(
+    //               children: [
+    //                 IconButton(
+    //                   icon: Icon(Icons.arrow_back_ios),
+    //                   onPressed: () {
+    //                     Navigator.pop(context);
+    //                   },
+    //                 ),
+    //               ],
+    //             ),
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 
   void _deleteDiary(BuildContext context, String id) async {

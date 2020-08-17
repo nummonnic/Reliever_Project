@@ -34,8 +34,9 @@ class _DiaryDetailState extends State<DiaryDetail> {
       duration: Duration(milliseconds: 250),
       child: Column(
         children: <Widget>[
-          SizedBox(height: 40),
+          SizedBox(height: 10),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               isDrawerOpen
                   ? IconButton(
@@ -57,14 +58,25 @@ class _DiaryDetailState extends State<DiaryDetail> {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        setState(() {
-                          xOffset = 230;
-                          yOffset = 150;
-                          scaleFactor = 0.6;
-                          isDrawerOpen = true;
-                        });
+                        setState(
+                          () {
+                            xOffset = 230;
+                            yOffset = 150;
+                            scaleFactor = 0.6;
+                            isDrawerOpen = true;
+                          },
+                        );
                       },
-                    )
+                    ),
+              IconButton(
+                icon: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                  size: 40,
+                ),
+                onPressed: () =>
+                    Navigator.pushNamed(context, AddEventScreen.routeName),
+              ),
             ],
           ),
           Padding(
@@ -76,7 +88,7 @@ class _DiaryDetailState extends State<DiaryDetail> {
                   'My Diary',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 40.0,
+                    fontSize: 30.0,
                     fontFamily: "Circular Air Light",
                     letterSpacing: 1.0,
                   ),
@@ -96,7 +108,8 @@ class _DiaryDetailState extends State<DiaryDetail> {
               ),
               child: ListView(
                 children: <Widget>[
-                  calenda(),
+                  DiaryCalenda(),
+                  //calenda(),
                   // Text("WOW")
                 ],
               ),
@@ -108,14 +121,14 @@ class _DiaryDetailState extends State<DiaryDetail> {
   }
 }
 
-class calenda extends StatefulWidget {
-  calenda({Key key}) : super(key: key);
+class DiaryCalenda extends StatefulWidget {
+  DiaryCalenda({Key key}) : super(key: key);
 
   @override
-  _calendaState createState() => _calendaState();
+  _DiaryCalendaState createState() => _DiaryCalendaState();
 }
 
-class _calendaState extends State<calenda> {
+class _DiaryCalendaState extends State<DiaryCalenda> {
   CalendarController _controller;
   Map<DateTime, List<dynamic>> _events;
   List<dynamic> _selectedEvents;
@@ -144,132 +157,296 @@ class _calendaState extends State<calenda> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var width = screenSize.width;
-    var height = screenSize.height;
-
     return Container(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(
-            width - 300, height - 600, width - 300, height - 600),
-        child: Scaffold(
-          // body: StreamBuilder<List<EventModel>>(
-          //   stream: eventDBS.streamList(),
-          //   builder: (context, snapshot) {
-          //     if (snapshot.hasData) {
-          //       List<EventModel> allEvents = snapshot.data;
-          //       if (allEvents.isNotEmpty) {
-          //         _events = _groupEvents(allEvents);
-          //       }
-          //     }
-          //     return SingleChildScrollView(
-          //       child: Column(
-          //         children: <Widget>[
-          //           Column(
-          //             crossAxisAlignment: CrossAxisAlignment.start,
-          //             children: [
-          //               Container(
-          //                 child: TableCalendar(
-          //                   events: _events,
-          //                   calendarStyle: CalendarStyle(
-          //                     todayColor: Colors.orangeAccent[100],
-          //                     selectedColor: Colors.blueGrey,
-          //                     todayStyle: TextStyle(
-          //                       color: Colors.brown,
-          //                       fontWeight: FontWeight.bold,
-          //                       fontSize: 17,
-          //                     ),
-          //                   ),
-          //                   headerStyle: HeaderStyle(
-          //                     centerHeaderTitle: true,
-          //                     titleTextStyle: TextStyle(
-          //                       fontSize: 25,
-          //                       fontWeight: FontWeight.bold,
-          //                       color: Color(0xff27496d),
-          //                     ),
-          //                     formatButtonDecoration:
-          //                         BoxDecoration(color: Colors.white),
-          //                     formatButtonTextStyle: TextStyle(),
-          //                   ),
-          //                   onDaySelected: (date, events) {
-          //                     setState(
-          //                       () {
-          //                         _selectedEvents = events;
-          //                       },
-          //                     );
-          //                   },
-          //                   builders: CalendarBuilders(
-          //                     selectedDayBuilder: (context, date, events) =>
-          //                         Container(
-          //                       margin: EdgeInsets.all(height - 810),
-          //                       alignment: Alignment.center,
-          //                       decoration: BoxDecoration(
-          //                         color: Colors.brown,
-          //                         shape: BoxShape.circle,
-          //                       ),
-          //                       child: Text(
-          //                         date.day.toString(),
-          //                         style: TextStyle(color: Colors.white),
-          //                       ),
-          //                     ),
-          //                   ),
-          //                   calendarController: _controller,
-          //                 ),
-          //               ),
-          //               ..._selectedEvents.map(
-          //                 (event) => Padding(
-          //                   padding: EdgeInsets.symmetric(
-          //                     horizontal: height - 700,
-          //                     vertical: width - 400,
-          //                   ),
-          //                   child: Card(
-          //                     color: Color(0xfff5b971),
-          //                     shape: RoundedRectangleBorder(
-          //                       borderRadius: BorderRadius.circular(15.0),
-          //                     ),
-          //                     elevation: 5,
-          //                     child: Padding(
-          //                       padding: EdgeInsets.all(height - 800),
-          //                       child: Column(
-          //                         mainAxisSize: MainAxisSize.min,
-          //                         children: [
-          //                           ListTile(
-          //                             title: Text(
-          //                               event.title,
-          //                               style: TextStyle(
-          //                                 color: Colors.white,
-          //                                 fontSize: 19,
-          //                               ),
-          //                             ),
-          //                             onTap: () {
-          //                               Navigator.push(
-          //                                 context,
-          //                                 MaterialPageRoute(
-          //                                   builder: (_) => EventDetailsPage(
-          //                                     event: event,
-          //                                   ),
-          //                                 ),
-          //                               );
-          //                             },
-          //                           ),
-          //                         ],
-          //                       ),
-          //                     ),
-          //                   ),
-          //                 ),
-          //               ),
-          //             ],
-          //           ),
-          //         ],
-          //       ),
-          //     );
-          //   },
-          // ),
-        ), // Scaffold
+        padding: const EdgeInsets.only(left: 30, right: 30),
+        child: Container(
+          child: StreamBuilder<List<EventModel>>(
+            stream: eventDBS.streamList(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<EventModel> allEvents = snapshot.data;
+                if (allEvents.isNotEmpty) {
+                  _events = _groupEvents(allEvents);
+                }
+              }
+              return SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          child: TableCalendar(
+                            events: _events,
+                            calendarStyle: CalendarStyle(
+                              outsideStyle: TextStyle(
+                                fontSize: 10,
+                              ),
+                              unavailableStyle: TextStyle(
+                                fontSize: 10,
+                              ),
+                              weekdayStyle: TextStyle(
+                                fontSize: 10,
+                              ),
+                              todayColor: Colors.orangeAccent[100],
+                              selectedColor: Colors.blueGrey,
+                              todayStyle: TextStyle(
+                                color: Colors.brown,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                              ),
+                            ),
+                            headerStyle: HeaderStyle(
+                              centerHeaderTitle: true,
+                              titleTextStyle: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xff27496d),
+                              ),
+                              formatButtonDecoration:
+                                  BoxDecoration(color: Colors.white),
+                              formatButtonTextStyle: TextStyle(),
+                            ),
+                            onDaySelected: (date, events) {
+                              setState(
+                                () {
+                                  _selectedEvents = events;
+                                },
+                              );
+                            },
+                            builders: CalendarBuilders(
+                              selectedDayBuilder: (context, date, events) =>
+                                  Container(
+                                margin: EdgeInsets.all(10),
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  color: Colors.brown,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Text(
+                                  date.day.toString(),
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            calendarController: _controller,
+                          ),
+                        ),
+                        ..._selectedEvents.map(
+                          (event) => Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Card(
+                              color: Color(0xfff5b971),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              elevation: 5,
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    ListTile(
+                                      title: Text(
+                                        event.title,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 19,
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) => EventDetailsPage(
+                                              event: event,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
 }
+
+// class calenda extends StatefulWidget {
+//   calenda({Key key}) : super(key: key);
+
+//   @override
+//   _calendaState createState() => _calendaState();
+// }
+
+// class _calendaState extends State<calenda> {
+//   CalendarController _controller;
+//   Map<DateTime, List<dynamic>> _events;
+//   List<dynamic> _selectedEvents;
+
+//   @override
+//   void initState() {
+//     // TODO: implement initState
+//     super.initState();
+//     _controller = CalendarController();
+//     _events = {};
+//     _selectedEvents = [];
+//   }
+
+//   Map<DateTime, List<dynamic>> _groupEvents(List<EventModel> events) {
+//     Map<DateTime, List<dynamic>> data = {};
+//     events.forEach(
+//       (event) {
+//         DateTime date = DateTime(event.eventDate.year, event.eventDate.month,
+//             event.eventDate.day, 12);
+//         if (data[date] == null) data[date] = [];
+//         data[date].add(event);
+//       },
+//     );
+//     return data;
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     var screenSize = MediaQuery.of(context).size;
+//     var width = screenSize.width;
+//     var height = screenSize.height;
+
+//     return Container(
+//       child: Padding(
+//         padding: EdgeInsets.fromLTRB(
+//             300, 100, 300, 100),
+//         child: Scaffold(
+//           body: StreamBuilder<List<EventModel>>(
+//             stream: eventDBS.streamList(),
+//             builder: (context, snapshot) {
+//               if (snapshot.hasData) {
+//                 List<EventModel> allEvents = snapshot.data;
+//                 if (allEvents.isNotEmpty) {
+//                   _events = _groupEvents(allEvents);
+//                 }
+//               }
+//               return SingleChildScrollView(
+//                 child: Column(
+//                   children: <Widget>[
+//                     Column(
+//                       crossAxisAlignment: CrossAxisAlignment.start,
+//                       children: [
+//                         Container(
+//                           child: TableCalendar(
+//                             events: _events,
+//                             calendarStyle: CalendarStyle(
+//                               todayColor: Colors.orangeAccent[100],
+//                               selectedColor: Colors.blueGrey,
+//                               todayStyle: TextStyle(
+//                                 color: Colors.brown,
+//                                 fontWeight: FontWeight.bold,
+//                                 fontSize: 17,
+//                               ),
+//                             ),
+//                             headerStyle: HeaderStyle(
+//                               centerHeaderTitle: true,
+//                               titleTextStyle: TextStyle(
+//                                 fontSize: 25,
+//                                 fontWeight: FontWeight.bold,
+//                                 color: Color(0xff27496d),
+//                               ),
+//                               formatButtonDecoration:
+//                                   BoxDecoration(color: Colors.white),
+//                               formatButtonTextStyle: TextStyle(),
+//                             ),
+//                             onDaySelected: (date, events) {
+//                               setState(
+//                                 () {
+//                                   _selectedEvents = events;
+//                                 },
+//                               );
+//                             },
+//                             builders: CalendarBuilders(
+//                               selectedDayBuilder: (context, date, events) =>
+//                                   Container(
+//                                 margin: EdgeInsets.all(10),
+//                                 alignment: Alignment.center,
+//                                 decoration: BoxDecoration(
+//                                   color: Colors.brown,
+//                                   shape: BoxShape.circle,
+//                                 ),
+//                                 child: Text(
+//                                   date.day.toString(),
+//                                   style: TextStyle(color: Colors.white),
+//                                 ),
+//                               ),
+//                             ),
+//                             calendarController: _controller,
+//                           ),
+//                         ),
+//                         ..._selectedEvents.map(
+//                           (event) => Padding(
+//                             padding: EdgeInsets.symmetric(
+//                               horizontal: 100,
+//                               vertical: 100,
+//                             ),
+//                             child: Card(
+//                               color: Color(0xfff5b971),
+//                               shape: RoundedRectangleBorder(
+//                                 borderRadius: BorderRadius.circular(15.0),
+//                               ),
+//                               elevation: 5,
+//                               child: Padding(
+//                                 padding: EdgeInsets.all(100),
+//                                 child: Column(
+//                                   mainAxisSize: MainAxisSize.min,
+//                                   children: [
+//                                     ListTile(
+//                                       title: Text(
+//                                         event.title,
+//                                         style: TextStyle(
+//                                           color: Colors.white,
+//                                           fontSize: 19,
+//                                         ),
+//                                       ),
+//                                       onTap: () {
+//                                         Navigator.push(
+//                                           context,
+//                                           MaterialPageRoute(
+//                                             builder: (_) => EventDetailsPage(
+//                                               event: event,
+//                                             ),
+//                                           ),
+//                                         );
+//                                       },
+//                                     ),
+//                                   ],
+//                                 ),
+//                               ),
+//                             ),
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               );
+//             },
+//           ),
+//         ), // Scaffold
+//       ),
+//     );
+//   }
+// }
 
 // class DiaryDetail extends StatefulWidget {
 //   DiaryDetail({Key key}) : super(key: key);
