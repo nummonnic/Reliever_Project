@@ -105,6 +105,8 @@ class _DescriptionResultState extends State<DescriptionResult> {
                   // child: Stack(children: <Widget>[
                   MoodText(),
                   StressLevelHandler(),
+                  PercentText(),
+                  PercentHandler(),
                   ActivityText(),
                   ActivityClip(),
                   Row(
@@ -144,7 +146,7 @@ class MoodText extends StatelessWidget {
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
-                  color: Colors.brown),
+                  color: Color(0xff27496d)),
             ),
           ],
         ),
@@ -170,7 +172,7 @@ class ActivityText extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
-                    color: Colors.brown)),
+                    color: Color(0xff27496d))),
           ],
         )));
   }

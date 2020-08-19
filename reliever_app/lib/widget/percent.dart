@@ -14,6 +14,7 @@ class PercentHandler extends StatefulWidget {
 class _percentHandlerState extends State<PercentHandler> {
   final dbRef = FirebaseDatabase.instance.reference();
   var lists = new List();
+  var timestampList = new List();
   final url = "https://reliever-gkkdtw.firebaseio.com/.json";
 
   @override
@@ -29,15 +30,29 @@ class _percentHandlerState extends State<PercentHandler> {
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             lists.clear();
+            timestampList.clear();
             //Map<dynamic, dynamic> values = snapshot.data.value;
             final values =
                 json.decode(snapshot.data.body) as Map<String, dynamic>;
             values.forEach((key, value) {
-              lists.add(value);
+              value.forEach((key, data) {
+                if (key == "value")
+                  lists.add(data);
+                else
+                  timestampList.add(data);
+              });
             });
-
-            var stress = lists[0] + lists[1] + lists[2] + lists[3] + lists[4];
-            var percent = (100/15)*stress;
+            // print(lists);
+            var stress = lists[0] +
+                lists[1] +
+                lists[2] +
+                lists[3] +
+                lists[4];
+            // lists.forEach((value) {
+            //   print(value.value);
+            // });
+            // var stress = 0;
+            var percent = (stress / 15) * 100;
            
             return
             // return ListView( shrinkWrap: true,
