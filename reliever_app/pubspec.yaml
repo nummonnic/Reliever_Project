@@ -36,6 +36,7 @@ dependencies:
   firebase_helpers: ^0.1.1
   firebase_database: ^3.1.5
   http: ^0.12.1
+  syncfusion_flutter_gauges: ^18.1.59
 
 dev_dependencies:
   flutter_test:
@@ -61,9 +62,18 @@ flutter:
    - assets/bad1.png
    - assets/normal.png
    - assets/stress.png
-   - assets/happy.png
+   - assets/Happy.png
+   - assets/Surprised.png
+   - assets/Funny.png
+   - assets/Calm.png
+   - assets/Sleepy.png
    - assets/vi1.mp4
    - assets/vi3.mp4
+   - assets/videos/meditation.mp4
+   - assets/happyLevel.png
+   - assets/normalLevel.png
+   - assets/stressLevel.png
+   - assets/vstressLevel.png
 
 fonts: 
   - family: Circular

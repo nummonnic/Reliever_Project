@@ -19,7 +19,7 @@ class ResultScreen extends StatelessWidget {
       body: Stack(children: [
         DrawerScreen(),
         DescriptionResult(),
-        // StressLevelHandler(),
+        //StressLevelHandler(),
         //ActivityText(),
       ]),
     );
@@ -40,16 +40,16 @@ class ResultScreen extends StatelessWidget {
 //        body: ListView(children: <Widget>[
 //          Container(
 //              child: Stack(children: <Widget>[
-//            //Background(),
+//            Background(),
 //            MoodText(),
-//            ShowLevel(),
+//            //ShowLevel(),
 //            ActivityText(),
 //            ActivityClip(),
 // StressLevelHandler(), //tell the stress level
 //          ])),
 //        ]));
 //  }
-// }
+//}
 
 class MoodText extends StatelessWidget {
   const MoodText({Key key}) : super(key: key);
@@ -79,7 +79,7 @@ class ActivityText extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.height,
         child: Align(
-          alignment: Alignment(0, -0.2),
+          alignment: Alignment(0, -0.3),
           child: Text('Suggested Activities',
               style: TextStyle(
                   fontSize: 30,
