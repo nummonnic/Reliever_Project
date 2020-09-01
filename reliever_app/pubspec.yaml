@@ -36,6 +36,9 @@ dependencies:
   firebase_helpers: ^0.1.1
   firebase_database: ^3.1.5
   http: ^0.12.1
+  speech_to_text: ^2.4.1
+  highlight_text: ^0.7.2
+  avatar_glow: ^1.2.0
   syncfusion_flutter_gauges: ^18.1.59
 
 dev_dependencies:
@@ -59,14 +62,10 @@ flutter:
     #- assets/
    - assets/LG5.png
    - assets/Asset7.png
-   - assets/bad1.png
+   - assets/images/bad1.png
    - assets/normal.png
    - assets/stress.png
-   - assets/Happy.png
-   - assets/Surprised.png
-   - assets/Funny.png
-   - assets/Calm.png
-   - assets/Sleepy.png
+   - assets/happy.png
    - assets/vi1.mp4
    - assets/vi3.mp4
    - assets/videos/meditation.mp4

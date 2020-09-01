@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import '../widget/processing.dart';
 import 'drawerScreen.dart';
 
-class SampleTest extends StatelessWidget {
-  static const routeName = '/test-screen';
-  const SampleTest({Key key}) : super(key: key);
+class LoadingProcess extends StatelessWidget {
+  static const routeName = '/loadingProcess-screen';
+  const LoadingProcess({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import '../model/event.dart';
 import '../database/event_firestore_service.dart';
 import '../template/background.dart';
+import '../screen/add_voice_screen.dart';
 
 class AddEventScreen extends StatefulWidget {
   final EventModel note;
@@ -68,10 +69,23 @@ class _AddEventScreenState extends State<AddEventScreen> {
                           Navigator.pop(context);
                         },
                       ),
+                      Row(
+                        children: <Widget>[
+                          IconButton(
+                            icon: Icon(
+                              Icons.mic,
+                              color: Colors.white,
+                              size: 40,
+                            ),
+                            onPressed: () => Navigator.pushNamed(
+                                context, AddVoiceScreen.routeName),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 30,
                   ),
                   Text(
                     "      Hello there, \n          Add My Diary",
@@ -155,6 +169,8 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                     setState(
                                       () {
                                         _eventDate = picked;
+                                        print("object");
+                                        print(widget.note);
                                       },
                                     );
                                   }
