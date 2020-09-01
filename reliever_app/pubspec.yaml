@@ -39,6 +39,7 @@ dependencies:
   speech_to_text: ^2.4.1
   highlight_text: ^0.7.2
   avatar_glow: ^1.2.0
+  syncfusion_flutter_gauges: ^18.2.55
 
 dev_dependencies:
   flutter_test:
