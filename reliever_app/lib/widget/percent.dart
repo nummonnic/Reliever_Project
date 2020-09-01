@@ -4,7 +4,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:syncfusion_flutter_gauges/gauges.dart';
+//import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class PercentHandler extends StatefulWidget {
   @override
@@ -52,66 +53,55 @@ class _percentHandlerState extends State<PercentHandler> {
             //   print(value.value);
             // });
             // var stress = 0;
-            var percent = (stress / 15) * 100;
+            double percent = (stress / 15);
+            //double percentText = percent * 100;
+            //var percentTextShow = percentText.toString();
+            var percentText = percent.toString();
+           return 
+            CircularPercentIndicator(
+               radius: 170.0,
+               progressColor: Colors.redAccent,
+              percent: percent,
+              animation: true,
+              lineWidth: 15,
+              circularStrokeCap: CircularStrokeCap.round,
+              center: Text(percentText,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+              //center: Text(percentTextShow+"%",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+           );
+          //  Container(
+          // alignment: Alignment(0, 0),
+          // child: Text(percentText+"%"))
+            
            
-            return
-            // return ListView( shrinkWrap: true,
-            //   children: <Widget>[
-               //Container(
-              // child: Stack(children: <Widget>[
-                Container(
-                  height: 300,
-                  width: 300,
-                  child: SfRadialGauge(
-       axes:<RadialAxis>[RadialAxis(minimum: 0, maximum: 100,
-       axisLineStyle: AxisLineStyle(thickness: 0.1,
-                thicknessUnit: GaugeSizeUnit.factor,
-                  gradient: const SweepGradient(
-                      colors: <Color>[Color(0xFFFF7676), Color(0xFFF54EA2)],
-                      stops: <double>[0.25, 0.75]
-                  ),
-                ),
-               pointers: <GaugePointer>[
-                 //RangePointer(value: percent, ), 
-                   MarkerPointer(value: percent, color: Colors.black),
-                   //NeedlePointer(value: percent)
-                  ],
-                  annotations: <GaugeAnnotation>[
-      GaugeAnnotation(angle: 270, positionFactor: 0.15,
-      widget: Text(percent.toStringAsFixed(2)+'%', style: TextStyle(fontWeight: FontWeight.bold, 
-          fontSize: 20),))]
-                )],
-       )
-       //])
-                );
-        // Container(
+      //       return
+         
+      //           Container(
+      //             height: 300,
+      //             width: 300,
+      //             child: SfRadialGauge(
+      //  axes:<RadialAxis>[RadialAxis(minimum: 0, maximum: 100,
+      //  axisLineStyle: AxisLineStyle(thickness: 0.1,
+      //           thicknessUnit: GaugeSizeUnit.factor,
+      //             gradient: const SweepGradient(
+      //                 colors: <Color>[Color(0xFFFF7676), Color(0xFFF54EA2)],
+      //                 stops: <double>[0.25, 0.75]
+      //             ),
+      //           ),
+      //          pointers: <GaugePointer>[
+      //            //RangePointer(value: percent, ), 
+      //              MarkerPointer(value: percent, color: Colors.black),
+      //              //NeedlePointer(value: percent)
+      //             ],
+      //             annotations: <GaugeAnnotation>[
+      // GaugeAnnotation(angle: 270, positionFactor: 0.15,
+      // widget: Text(percent.toStringAsFixed(2)+'%', style: TextStyle(fontWeight: FontWeight.bold, 
+      //     fontSize: 20),))]
+      //           )],
+      //  )
+       
+      //           );
+        
 
-        //       margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.62 ),
-        //       width: 150,
-        //       height: 150,
-
-        //       child: Container(
-        //         decoration: BoxDecoration(
-        //             image: DecorationImage(
-        //                 image: AssetImage("assets/images/bad1.png"))),
-        //       )
-        //       ),
-        //       Container(
-
-        //       margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.32 ),
-        //       width: 150,
-        //       height: 150,
-
-        //       child: Container(
-        //         decoration: BoxDecoration(
-        //             image: DecorationImage(
-        //                 image: AssetImage("assets/images/bad1.png"))),
-        //       )
-        //       )
-
-            // ])
-            //)
-            //]);
           }
           return CircularProgressIndicator();
         });
