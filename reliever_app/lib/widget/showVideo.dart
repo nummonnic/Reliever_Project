@@ -21,24 +21,24 @@ class ChewieListItem extends StatefulWidget{
 }
 
 class _ChewieListItemState extends State<ChewieListItem>{
-  //String urlVideo = 'assets/vi1.mp4';
-  String urlVideo = 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4';
+  String urlVideo = 'assets/videos/meditation.mp4';
+  //String urlVideo = 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4';
   VideoPlayerController videoPlayerController;
   ChewieController _chewieController;
 
   @override
   void initState(){
     super.initState();
-    //videoPlayerController = VideoPlayerController.asset(urlVideo);
-    videoPlayerController = VideoPlayerController.network(urlVideo);
+    videoPlayerController = VideoPlayerController.asset(urlVideo);
+    //videoPlayerController = VideoPlayerController.network(urlVideo);
     
     _chewieController = ChewieController(
       videoPlayerController: videoPlayerController,
-      aspectRatio: 3 / 2,
+      aspectRatio: 3/2 ,
       autoInitialize: true,
       //autoPlay: false,
       //looping: widget.looping,
-      autoPlay: true,
+      autoPlay: false,
       looping: true,
       // errorBuilder: (context, errorMessage){
       //   return Center(
@@ -82,7 +82,7 @@ class _ChewieListItemState extends State<ChewieListItem>{
 //   void initState() {
 //     super.initState();
 //     _controller = VideoPlayerController.asset(
-//         'assets/vi3.mp4')
+//         'assets/videos/meditation.mp4')
 //       ..initialize().then((_) {
 //         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
 //         setState(() {});

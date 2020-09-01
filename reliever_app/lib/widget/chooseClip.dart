@@ -23,7 +23,8 @@ class _ActivityState extends State<ActivityClip> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(right: 10, left: 10, top: 300),
+        //margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.75, right: MediaQuery.of(context).size.width * 0.01, left: MediaQuery.of(context).size.width * 0.01),
+        //margin: const EdgeInsets.only(right: 10, left: 10, top: 300),
         height: MediaQuery.of(context).size.height * 0.3,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -31,12 +32,12 @@ class _ActivityState extends State<ActivityClip> {
             itemBuilder: (context, index) {
               return Container(
                   width: 200,
-                  margin: const EdgeInsets.only(right: 10),
+                  margin: const EdgeInsets.only(right: 10, bottom: 20),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(18.0),
                     ),
-                    color: Colors.brown,
+                    color: Color(0xff27496d),
                     child: Container(
                       child: Center(
                           child: Text(
@@ -55,9 +56,10 @@ class _ActivityState extends State<ActivityClip> {
     showDialog(
         context: context,
         builder: (_) => new AlertDialog(
-              title: new Text("Video Dialog"),
+              title: new Text("Video Clip"),
               content:
-                  Container(height: 200, width: 400, child: ChewieListItem()),
+                  Container(height: MediaQuery.of(context).size.height * 0.27, width: MediaQuery.of(context).size.width * 0.8, child: ChewieListItem()),
+                  //Container(height: 200, width: 500, child: VideoApp()),
               actions: <Widget>[
                 FlatButton(
                   child: Text('Rate Video'),

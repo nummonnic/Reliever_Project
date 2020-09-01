@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'showMood.dart';
 import '../widget/chooseClip.dart';
+import '../widget/percent.dart';
 import '../database/stress_level_handler.dart';
 
 class DescriptionResult extends StatefulWidget {
@@ -104,6 +105,8 @@ class _DescriptionResultState extends State<DescriptionResult> {
                   // child: Stack(children: <Widget>[
                   MoodText(),
                   StressLevelHandler(),
+                  PercentText(),
+                  PercentHandler(),
                   ActivityText(),
                   ActivityClip(),
                   Row(
@@ -143,7 +146,7 @@ class MoodText extends StatelessWidget {
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w700,
-                  color: Colors.brown),
+                  color: Color(0xff27496d)),
             ),
           ],
         ),
@@ -169,8 +172,35 @@ class ActivityText extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w700,
-                    color: Colors.brown)),
+                    color: Color(0xff27496d))),
           ],
         )));
+  }
+}
+
+class PercentText extends StatelessWidget {
+  const PercentText({Key key}) : super(key: key);
+
+@override
+  Widget build(BuildContext context) {
+    return 
+    Padding(
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  child:Container(
+      child: Positioned(
+              left: MediaQuery.of(context).size.width * 0.17,
+              top: MediaQuery.of(context).size.height * 0.34,
+        //height: MediaQuery.of(context).size.height,
+        //width: MediaQuery.of(context).size.height,
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Text('Percentage of Stress',
+            style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w700,
+                color: Color(0xff27496d))),
+      ],
+    ))));
   }
 }

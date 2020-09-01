@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+//import '../widget/chooseClip.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -67,6 +68,7 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
             // var stress = 0;
             var stressPercent = (stress / 15) * 100;
             if (stress >= 10) {
+              //return ActivityClip();
               return Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: Container(
@@ -78,7 +80,7 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
                       child: Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("assets/images/bad1.png"))),
+                                image: AssetImage("assets/vstressLevel.png"))),
                       )
                       //)
                       ));
@@ -94,7 +96,7 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
                       child: Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("assets/images/stress.png"))),
+                                image: AssetImage("assets/stressLevel.png"))),
                       )
                       //)
                       ));
@@ -110,7 +112,7 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
                       child: Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("assets/images/normal.png"))),
+                                image: AssetImage("assets/normalLevel.png"))),
                       )
                       //)
                       ));
@@ -126,7 +128,7 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
                       child: Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("assets/images/happy.png"))),
+                                image: AssetImage("assets/happyLevel.png"))),
                       )
                       //)
                       ));
