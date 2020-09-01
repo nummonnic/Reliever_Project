@@ -37,9 +37,9 @@ class _AddEventPageState extends State<AddEventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.note != null ? "Edit Note" : "Add note"),
-      ),
+      // appBar: AppBar(
+      //   title: Text(widget.note != null ? "Edit Note" : "Add note"),
+      // ),
       key: _key,
       body: Form(
         key: _formKey,

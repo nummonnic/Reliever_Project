@@ -10,165 +10,164 @@ class EventDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var width = screenSize.width;
-    var height = screenSize.height;
-
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(0),
-        child: Stack(
+      body: Container(
+        padding: EdgeInsets.only(top: 30),
+        child: Column(
           children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Icon(
+                        Icons.arrow_back,
+                        color: Colors.black,
+                        size: 25.0,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        'Back',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
             Padding(
-              padding: EdgeInsets.only(left: 120, top: 180),
-              child: Text(
-                event.eventDate.day.toString(),
-                style: TextStyle(
-                  fontSize: 160,
-                  color: Colors.grey.withOpacity(0.20),
-                  fontWeight: FontWeight.w900,
+              padding: EdgeInsets.only(top: 30),
+              child: Container(
+                // height: 500,
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          height: 130,
+                          width: 130,
+                          color: Colors.brown,
+                          child: Center(
+                            child: Text(
+                              "photo",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(30.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.all(5.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      event.title,
+                                      style: TextStyle(
+                                        fontSize: 40,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                    ),
+                                    Text(
+                                      event.eventDate.year.toString() +
+                                          " - " +
+                                          event.eventDate.month.toString() +
+                                          " - " +
+                                          event.eventDate.day.toString(),
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w300,
+                                        fontStyle: FontStyle.italic,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(5.0),
+                                child: Container(
+                                  height: 1.0,
+                                  width: 250,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      event.description,
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.black87,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ],
         ),
       ),
+      bottomSheet: Container(
+        height: 100,
+        width: double.infinity,
+        color: Color(0xff27496d),
+        child: GestureDetector(
+          onTap: () {
+            _deleteDiary(context, event.id);
+          },
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 20),
+              child: Text(
+                'Delete Diary',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
-
-    // return Scaffold(
-    //   body: SafeArea(
-    //     child: Stack(
-    //       children: <Widget>[
-    //         Positioned(
-    //           top: height - 686,
-    //           left: width - 332,
-    //           child: Text(
-    //             event.eventDate.day.toString(),
-    //             style: TextStyle(
-    //               fontSize: 160,
-    //               color: Colors.grey.withOpacity(0.12),
-    //               fontWeight: FontWeight.w900,
-    //             ),
-    //           ),
-    //         ),
-    //         Positioned(
-    //           right: width - 472,
-    //           top: height - 796,
-    //           child: Image.asset(
-    //             'assets/images/Asset7.png',
-    //           ),
-    //         ),
-    //         SingleChildScrollView(
-    //           child: Padding(
-    //             padding: EdgeInsets.all(32.0),
-    //             child: Column(
-    //               crossAxisAlignment: CrossAxisAlignment.start,
-    //               children: <Widget>[
-    //                 SizedBox(
-    //                   height: height - 516,
-    //                 ),
-    //                 Text(
-    //                   event.title,
-    //                   style: TextStyle(
-    //                     fontSize: 56,
-    //                     color: Colors.black,
-    //                     fontWeight: FontWeight.w900,
-    //                   ),
-    //                   textAlign: TextAlign.left,
-    //                 ),
-    //                 Text(
-    //                   event.eventDate.year.toString() +
-    //                       " - " +
-    //                       event.eventDate.month.toString() +
-    //                       " - " +
-    //                       event.eventDate.day.toString(),
-    //                   style: TextStyle(
-    //                     fontSize: 23,
-    //                     color: Colors.black,
-    //                     fontWeight: FontWeight.w300,
-    //                   ),
-    //                   textAlign: TextAlign.left,
-    //                 ),
-    //                 Divider(
-    //                   color: Colors.black38,
-    //                 ),
-    //                 SizedBox(
-    //                   height: height - 796,
-    //                 ),
-    //                 Text(
-    //                   event.description,
-    //                   style: TextStyle(
-    //                     fontSize: 20,
-    //                     color: Colors.black,
-    //                     fontWeight: FontWeight.w500,
-    //                   ),
-    //                   textAlign: TextAlign.left,
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //         ),
-    //         Align(
-    //           alignment: Alignment.bottomCenter,
-    //           child: Container(
-    //             height: height - 716,
-    //             child: Row(
-    //               children: [
-    //                 Expanded(
-    //                   child: GestureDetector(
-    //                     child: Container(
-    //                       height: height - 750,
-    //                       margin: EdgeInsets.symmetric(horizontal: 130),
-    //                       decoration: BoxDecoration(
-    //                         color: Color(0xff27496d),
-    //                         borderRadius: BorderRadius.circular(20),
-    //                       ),
-    //                       child: Center(
-    //                         child: Text(
-    //                           "Delete",
-    //                           style: TextStyle(
-    //                               color: Colors.white,
-    //                               fontSize: 23,
-    //                               fontWeight: FontWeight.w500),
-    //                         ),
-    //                       ),
-    //                     ),
-    //                     onTap: () {
-    //                       _deleteDiary(context, event.id);
-    //                     },
-    //                   ),
-    //                 ),
-    //               ],
-    //             ),
-    //             decoration: BoxDecoration(
-    //               color: Colors.grey[500],
-    //               borderRadius: BorderRadius.only(
-    //                 topLeft: Radius.circular(80),
-    //                 topRight: Radius.circular(80),
-    //               ),
-    //             ),
-    //           ),
-    //         ),
-    //         Container(
-    //           margin: EdgeInsets.only(top: width - 430),
-    //           child: Align(
-    //             alignment: Alignment.topCenter,
-    //             child: Row(
-    //               children: [
-    //                 IconButton(
-    //                   icon: Icon(Icons.arrow_back_ios),
-    //                   onPressed: () {
-    //                     Navigator.pop(context);
-    //                   },
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 
   void _deleteDiary(BuildContext context, String id) async {
@@ -187,16 +186,26 @@ class EventDetailsPage extends StatelessWidget {
       context: context,
       barrierDismissible: true,
       builder: (context) => AlertDialog(
-        content: Text("Do you want to delete this diary or not ?"),
+        backgroundColor: Color(0xff27496d),
+        content: Text(
+          "Do you want to delete this diary or not ?",
+          style: TextStyle(color: Colors.white),
+        ),
         actions: <Widget>[
           FlatButton(
             color: Colors.red,
-            child: Text("delete"),
+            child: Text(
+              "delete",
+              style: TextStyle(color: Colors.white),
+            ),
             onPressed: () => Navigator.pop(context, true),
           ),
           FlatButton(
             color: Colors.blue,
-            child: Text("not"),
+            child: Text(
+              "not",
+              style: TextStyle(color: Colors.white),
+            ),
             onPressed: () => Navigator.pop(
               context,
               false,

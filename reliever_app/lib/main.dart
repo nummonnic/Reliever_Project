@@ -5,8 +5,10 @@ import './screen/result_screen.dart';
 import './screen/add_event_screen.dart';
 import './screen/trackProgress_screen.dart';
 import './template/homeScreen.dart';
-import './screen/test.dart';
-//import './screen/homepage_screen.dart';
+import './screen/loading_question.dart';
+import './screen/add_voice_screen.dart';
+import './screen/result_voice.dart';
+import './widget/voice_descript.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,7 +26,10 @@ class MyApp extends StatelessWidget {
         //AddEventPage.routeName: (ctx) => AddEventPage(),
         TrackProgress.routeName: (ctx) => TrackProgress(),
         HomeScreen.routeName: (ctx) => HomeScreen(),
-        SampleTest.routeName: (ctx) => SampleTest(), 
+        LoadingProcess.routeName: (ctx) => LoadingProcess(), 
+        AddVoiceScreen.routeName: (ctx) => AddVoiceScreen(),
+        ShowDiaryVoice.routeName: (ctx) => ShowDiaryVoice(),
+        DetailVoice.routeName: (ctx) => DetailVoice(),
       },
     );
   }

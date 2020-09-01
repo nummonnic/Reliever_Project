@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import '../screen/result_screen.dart';
 import '../screen/diary_screen.dart';
 import '../screen/trackProgress_screen.dart';
-import '../screen/test.dart';
+import '../screen/loading_question.dart';
 
 List<Map> drawerItems = [
   {
     'icon': Icons.portrait,
-    'title': 'Stress Level',
+    'title': 'Result',
     'route': ResultScreen.route,
     'selectState': 1
   },
@@ -25,9 +25,9 @@ List<Map> drawerItems = [
     'selectState': 3
   },
   {
-    'icon': Icons.add_shopping_cart,
-    'title': 'Sample Test',
-    'route': SampleTest.routeName,
+    'icon': Icons.cached,
+    'title': 'Measure ',
+    'route': LoadingProcess.routeName,
     'selectState': 4
   },
 ];
