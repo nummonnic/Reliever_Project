@@ -36,13 +36,10 @@ dependencies:
   firebase_helpers: ^0.1.1
   firebase_database: ^3.1.5
   http: ^0.12.1
-<<<<<<< HEAD
   speech_to_text: ^2.4.1
   highlight_text: ^0.7.2
   avatar_glow: ^1.2.0
-=======
   syncfusion_flutter_gauges: ^18.1.59
->>>>>>> master
 
 dev_dependencies:
   flutter_test:
@@ -68,7 +65,7 @@ flutter:
    - assets/images/bad1.png
    - assets/normal.png
    - assets/stress.png
-   - assets/Happy.png
+  #  - assets/Happy.png
    - assets/Surprised.png
    - assets/Funny.png
    - assets/Calm.png
