@@ -66,7 +66,7 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
             //   print(value.value);
             // });
             // var stress = 0;
-            var stressPercent = (stress / 15) * 100;
+            //var stressPercent = (stress / 15) * 100;
             if (stress >= 10) {
               //return ActivityClip();
               return Padding(

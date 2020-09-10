@@ -54,9 +54,9 @@ class _percentHandlerState extends State<PercentHandler> {
             // });
             // var stress = 0;
             double percent = (stress / 15);
-            //double percentText = percent * 100;
-            //var percentTextShow = percentText.toString();
-            var percentText = percent.toString();
+            double percentText = percent * 100;
+            var percentTextShow = percentText.toString();
+            //var percentText = percent.toString();
            return 
             CircularPercentIndicator(
                radius: 170.0,
@@ -65,8 +65,8 @@ class _percentHandlerState extends State<PercentHandler> {
               animation: true,
               lineWidth: 15,
               circularStrokeCap: CircularStrokeCap.round,
-              center: Text(percentText,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-              //center: Text(percentTextShow+"%",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+              //center: Text(percentText,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+              center: Text(percentTextShow+"%",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
            );
           //  Container(
           // alignment: Alignment(0, 0),

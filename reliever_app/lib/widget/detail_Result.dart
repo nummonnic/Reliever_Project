@@ -108,7 +108,7 @@ class _DescriptionResultState extends State<DescriptionResult> {
                   PercentText(),
                   PercentHandler(),
                   ActivityText(),
-                  //ChooseClipMain(),
+                  ChooseClipMain(),
                   Row(
                     children: <Widget>[
                       SizedBox(height: 10),

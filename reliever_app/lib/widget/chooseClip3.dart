@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 //import '../widget/clipDialog.dart';
 import '../widget/showVideo.dart';
 import '../widget/rateDialog.dart';
@@ -13,13 +14,7 @@ class ActivityClip3 extends StatefulWidget {
 }
 
 class _ActivityState extends State<ActivityClip3> {
-  final List<String> numbers = [
-    'Pray',
-    'Breathing',
-    'Relex'
-    'Soft Music',
-    'Meditation'
-  ];
+  final List<String> numbers = ['vi1', 'vi3', 'meditation'];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,37 +41,76 @@ class _ActivityState extends State<ActivityClip3> {
                       )),
                     ),
                     onPressed: () {
-                      _showMaterialDialog();
+                      //_showMaterialDialog();
+
+                      showDialog(
+                          context: context,
+                          builder: (_) => new AlertDialog(
+                                title: new Text("Video Clip"),
+                                content: Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.27,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    // child: ChewieListItem(
+                                    //   videoPlayerController:
+                                    //       VideoPlayerController.asset(
+                                    //           'assets/videos/' +
+                                    //               numbers[index].toString() +
+                                    //               '.mp4'),
+                                    child: ChewieListItem(
+                                      videoPlayerController:
+                                          VideoPlayerController.asset(
+                                              'assets/videos/meditation.mp4'),
+                                    )),
+                                //Container(height: 200, width: 500, child: VideoApp()),
+                                actions: <Widget>[
+                                  FlatButton(
+                                    child: Text('Rate Video'),
+                                    onPressed: () {
+                                      _showRateDialog();
+                                      //RateVideo();
+                                    },
+                                  ),
+                                  FlatButton(
+                                    child: Text('Close'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  )
+                                ],
+                              ));
                     },
                   ));
             }));
   }
 
-  _showMaterialDialog() {
-    showDialog(
-        context: context,
-        builder: (_) => new AlertDialog(
-              title: new Text("Video Clip"),
-              content:
-                  Container(height: MediaQuery.of(context).size.height * 0.27, width: MediaQuery.of(context).size.width * 0.8, child: ChewieListItem()),
-                  //Container(height: 200, width: 500, child: VideoApp()),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('Rate Video'),
-                  onPressed: () {
-                    _showRateDialog();
-                    //RateVideo();
-                  },
-                ),
-                FlatButton(
-                  child: Text('Close'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
-            ));
-  }
+  // _showMaterialDialog() {
+  //   showDialog(
+  //       context: context,
+  //       builder: (_) => new AlertDialog(
+  //             title: new Text("Video Clip"),
+  //             content:
+  //                 Container(height: MediaQuery.of(context).size.height * 0.27, width: MediaQuery.of(context).size.width * 0.8,
+  //                 child: ChewieListItem(videoPlayerController: VideoPlayerController.asset('assets/vi1.mp4'),)),
+  //                 //Container(height: 200, width: 500, child: VideoApp()),
+  //             actions: <Widget>[
+  //               FlatButton(
+  //                 child: Text('Rate Video'),
+  //                 onPressed: () {
+  //                   _showRateDialog();
+  //                   //RateVideo();
+  //                 },
+  //               ),
+  //               FlatButton(
+  //                 child: Text('Close'),
+  //                 onPressed: () {
+  //                   Navigator.of(context).pop();
+  //                 },
+  //               )
+  //             ],
+  //           ));
+  // }
 
   _showRateDialog() {
     showDialog(
@@ -95,3 +129,4 @@ class _ActivityState extends State<ActivityClip3> {
             ));
   }
 }
+

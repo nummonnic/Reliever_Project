@@ -7,56 +7,56 @@ import 'package:chewie/chewie.dart';
 
 class ChewieListItem extends StatefulWidget{
   //ChewieListItem({Key key}) : super(key: key);
-  //final VideoPlayerController videoPlayerController;
-  //final bool looping;
+  final VideoPlayerController videoPlayerController;
+  final bool looping;
 
-  // ChewieListItem({
-  //   @required this.videoPlayerController,
-  //   this.looping,
-  //   Key key,
-  // }) : super(key: key);
+  ChewieListItem({
+    @required this.videoPlayerController,
+    this.looping,
+    Key key,
+  }) : super(key: key);
 
   @override
   _ChewieListItemState createState() => _ChewieListItemState();
 }
 
 class _ChewieListItemState extends State<ChewieListItem>{
-  String urlVideo = 'assets/videos/meditation.mp4';
+  //String urlVideo = 'assets/vi1.mp4';
   //String urlVideo = 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4';
-  VideoPlayerController videoPlayerController;
+  //VideoPlayerController videoPlayerController;
   ChewieController _chewieController;
 
   @override
   void initState(){
     super.initState();
-    videoPlayerController = VideoPlayerController.asset(urlVideo);
+    //videoPlayerController = VideoPlayerController.asset(urlVideo);
     //videoPlayerController = VideoPlayerController.network(urlVideo);
     
     _chewieController = ChewieController(
-      videoPlayerController: videoPlayerController,
+      videoPlayerController: widget.videoPlayerController,
       aspectRatio: 3/2 ,
       autoInitialize: true,
       //autoPlay: false,
-      //looping: widget.looping,
+      looping: widget.looping,
       autoPlay: false,
-      looping: true,
-      // errorBuilder: (context, errorMessage){
-      //   return Center(
-      //     child: Text(errorMessage,
-      //     style: TextStyle(color: Colors.white),
-      //     ),
-      //   );
-      // }
+      //looping: true,
+      errorBuilder: (context, errorMessage){
+        return Center(
+          child: Text(errorMessage,
+          style: TextStyle(color: Colors.white),
+          ),
+        );
+      }
     );
   }
 
-  @override
-  void dispose(){
-    super.dispose();
-    videoPlayerController.dispose();
-    _chewieController.dispose();
-    //super.dispose();
-  }
+  // @override
+  // void dispose(){
+  //   super.dispose();
+  //   videoPlayerController.dispose();
+  //   _chewieController.dispose();
+  //   //super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context){
@@ -67,60 +67,13 @@ class _ChewieListItemState extends State<ChewieListItem>{
       ),
     );
   }
+  @override
+  void dispose(){
+    super.dispose();
+    widget.videoPlayerController.dispose();
+    _chewieController.dispose();
+    //super.dispose();
+  }
 }
 
 
-// class VideoApp extends StatefulWidget {
-//   @override
-//   _VideoAppState createState() => _VideoAppState();
-// }
-
-// class _VideoAppState extends State<VideoApp> {
-//   VideoPlayerController _controller;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _controller = VideoPlayerController.asset(
-//         'assets/videos/meditation.mp4')
-//       ..initialize().then((_) {
-//         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-//         setState(() {});
-//       });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Video Demo',
-//       home: Scaffold(
-//         body: Center(
-//           child: _controller.value.initialized
-//               ? AspectRatio(
-//                   aspectRatio: _controller.value.aspectRatio,
-//                   child: VideoPlayer(_controller),
-//                 )
-//               : Container(),
-//         ),
-//         floatingActionButton: FloatingActionButton(
-//           onPressed: () {
-//             setState(() {
-//               _controller.value.isPlaying
-//                   ? _controller.pause()
-//                   : _controller.play();
-//             });
-//           },
-//           child: Icon(
-//             _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-
-//   @override
-//   void dispose() {
-//     super.dispose();
-//     _controller.dispose();
-//   }
-// }

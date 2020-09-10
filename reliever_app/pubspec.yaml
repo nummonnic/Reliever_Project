@@ -67,8 +67,12 @@ flutter:
    - assets/normal.png
    - assets/stress.png
    - assets/Happy.png
-   - assets/vi1.mp4
-   - assets/vi3.mp4
+   - assets/Calm.png
+   - assets/Surprised.png
+   - assets/Funny.png
+   - assets/Sleepy.png
+   - assets/videos/vi1.mp4
+   - assets/videos/vi3.mp4
    - assets/videos/meditation.mp4
    - assets/happyLevel.png
    - assets/normalLevel.png
