@@ -20,7 +20,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
   String speechDiary;
   _ShowDiaryVoiceState(this.speechDiary);
 
-  List<bool> isSelected;
+  List<bool> isSelectedTitle;
   String _titleVoice = "";
   String _descriptVoice = "Test";
   List<String> state = ["good", "bad"];
@@ -34,7 +34,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
   @override
   void initState() {
     super.initState();
-    isSelected = [
+    isSelectedTitle = [
       false,
       false,
     ];
@@ -113,7 +113,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                             ToggleButtons(
                               children: <Widget>[
                                 Container(
-                                  color: isSelected[0]
+                                  color: isSelectedTitle[0]
                                       ? Colors.green
                                       : Colors.white,
                                   child: Padding(
@@ -126,7 +126,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                                           "Photo",
                                           style: TextStyle(
                                               fontSize: 15,
-                                              color: isSelected[0]
+                                              color: isSelectedTitle[0]
                                                   ? Colors.white
                                                   : Colors.black),
                                         ),
@@ -137,7 +137,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                                           "Good",
                                           style: TextStyle(
                                               fontSize: 20,
-                                              color: isSelected[0]
+                                              color: isSelectedTitle[0]
                                                   ? Colors.white
                                                   : Colors.black),
                                         )
@@ -146,7 +146,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                                   ),
                                 ),
                                 Container(
-                                  color: isSelected[1]
+                                  color: isSelectedTitle[1]
                                       ? Colors.red[800]
                                       : Colors.white,
                                   child: Padding(
@@ -159,7 +159,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                                           "Photo",
                                           style: TextStyle(
                                               fontSize: 15,
-                                              color: isSelected[1]
+                                              color: isSelectedTitle[1]
                                                   ? Colors.white
                                                   : Colors.black),
                                         ),
@@ -170,7 +170,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                                           "Bad",
                                           style: TextStyle(
                                               fontSize: 20,
-                                              color: isSelected[1]
+                                              color: isSelectedTitle[1]
                                                   ? Colors.white
                                                   : Colors.black),
                                         )
@@ -179,19 +179,19 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                                   ),
                                 ),
                               ],
-                              isSelected: isSelected,
+                              isSelected: isSelectedTitle,
                               onPressed: (index) {
                                 setState(
                                   () {
                                     for (var i = 0;
-                                        i < isSelected.length;
+                                        i < isSelectedTitle.length;
                                         i++) {
                                       if (i == index) {
-                                        isSelected[i] = true;
+                                        isSelectedTitle[i] = true;
                                         _titleVoice = state[i];
                                         print(_titleVoice);
                                       } else {
-                                        isSelected[i] = false;
+                                        isSelectedTitle[i] = false;
                                       }
                                     }
                                   },
@@ -203,6 +203,106 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                       ),
                     ],
                   ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: <Widget>[
+                  //     Padding(
+                  //       padding: EdgeInsets.all(50),
+                  //       child: Row(
+                  //         children: <Widget>[
+                  //           ToggleButtons(
+                  //             children: <Widget>[
+                  //               Container(
+                  //                 color: isSelectedFeedback[0]
+                  //                     ? Colors.green
+                  //                     : Colors.white,
+                  //                 child: Padding(
+                  //                   padding: EdgeInsets.all(30.0),
+                  //                   child: Column(
+                  //                     mainAxisAlignment:
+                  //                         MainAxisAlignment.center,
+                  //                     children: <Widget>[
+                  //                       Text(
+                  //                         "Photo",
+                  //                         style: TextStyle(
+                  //                             fontSize: 15,
+                  //                             color: isSelectedFeedback[0]
+                  //                                 ? Colors.white
+                  //                                 : Colors.black),
+                  //                       ),
+                  //                       SizedBox(
+                  //                         height: 10,
+                  //                       ),
+                  //                       Text(
+                  //                         "Good",
+                  //                         style: TextStyle(
+                  //                             fontSize: 20,
+                  //                             color: isSelectedFeedback[0]
+                  //                                 ? Colors.white
+                  //                                 : Colors.black),
+                  //                       )
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //               Container(
+                  //                 color: isSelectedFeedback[1]
+                  //                     ? Colors.red[800]
+                  //                     : Colors.white,
+                  //                 child: Padding(
+                  //                   padding: EdgeInsets.all(40.0),
+                  //                   child: Column(
+                  //                     mainAxisAlignment:
+                  //                         MainAxisAlignment.center,
+                  //                     children: <Widget>[
+                  //                       Text(
+                  //                         "Photo",
+                  //                         style: TextStyle(
+                  //                             fontSize: 15,
+                  //                             color: isSelectedFeedback[1]
+                  //                                 ? Colors.white
+                  //                                 : Colors.black),
+                  //                       ),
+                  //                       SizedBox(
+                  //                         height: 10,
+                  //                       ),
+                  //                       Text(
+                  //                         "Bad",
+                  //                         style: TextStyle(
+                  //                             fontSize: 20,
+                  //                             color: isSelectedFeedback[1]
+                  //                                 ? Colors.white
+                  //                                 : Colors.black),
+                  //                       )
+                  //                     ],
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //             isSelected: isSelectedFeedback,
+                  //             onPressed: (index) {
+                  //               setState(
+                  //                 () {
+                  //                   for (var i = 0;
+                  //                       i < isSelectedFeedback.length;
+                  //                       i++) {
+                  //                     if (i == index) {
+                  //                       isSelectedFeedback[i] = true;
+                  //                       _titleVoice = state[i];
+                  //                       print(_titleVoice);
+                  //                     } else {
+                  //                       isSelectedFeedback[i] = false;
+                  //                     }
+                  //                   }
+                  //                 },
+                  //               );
+                  //             },
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   ListTile(
                     title: Text("Date (YYYY-MM-DD)"),
                     subtitle: Text(
@@ -252,6 +352,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                         title: _titleVoice,
                         description: _descriptVoice,
                         eventDate: _eventDate,
+                        feedback: "test",
                       ),
                     );
                     Navigator.pushNamed(context, DiaryScreen.routeName);

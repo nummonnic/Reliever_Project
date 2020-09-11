@@ -13,11 +13,6 @@ class AddVoiceScreen extends StatelessWidget {
     return Material(
       child: SpeechScreen(),
     );
-    // MaterialApp(
-    //   title: 'Event Voice',
-    //   debugShowCheckedModeBanner: false,
-    //   home: SpeechScreen(),
-    // );
   }
 }
 
