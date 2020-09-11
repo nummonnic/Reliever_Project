@@ -55,7 +55,7 @@ class _percentHandlerState extends State<PercentHandler> {
             // var stress = 0;
             double percent = (stress / 15);
             double percentText = percent * 100;
-            var percentTextShow = percentText.toString();
+            var percentTextShow = percentText.toStringAsFixed(2);
             //var percentText = percent.toString();
            return 
             CircularPercentIndicator(
