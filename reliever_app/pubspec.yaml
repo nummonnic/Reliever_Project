@@ -65,12 +65,13 @@ flutter:
    - assets/Asset7.png
    - assets/images/bad1.png
    - assets/normal.png
-   - assets/stress.png
+   - assets/Stress.png
    - assets/Happy.png
    - assets/Calm.png
    - assets/Surprised.png
    - assets/Funny.png
    - assets/Sleepy.png
+   - assets/Bored.png
    - assets/videos/vi1.mp4
    - assets/videos/vi3.mp4
    - assets/videos/meditation.mp4
