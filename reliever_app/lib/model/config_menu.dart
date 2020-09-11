@@ -4,6 +4,7 @@ import '../screen/result_screen.dart';
 import '../screen/diary_screen.dart';
 import '../screen/trackProgress_screen.dart';
 import '../screen/loading_question.dart';
+import '../screen/add_feedback.dart';
 
 List<Map> drawerItems = [
   {
@@ -29,5 +30,11 @@ List<Map> drawerItems = [
     'title': 'Measure ',
     'route': LoadingProcess.routeName,
     'selectState': 4
+  },
+  {
+    'icon': Icons.favorite,
+    'title': 'Feedback',
+    'route': FeedBackScreen.routeName,
+    'selectState': 5
   },
 ];
