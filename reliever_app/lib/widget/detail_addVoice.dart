@@ -88,6 +88,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
                         ),
                       );
                     },
+                    
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,

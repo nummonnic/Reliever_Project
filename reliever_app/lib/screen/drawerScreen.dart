@@ -49,7 +49,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ),
             ],
           ),
-          Column(
+          Column( 
             children: drawerItems
                 .map((element) => GestureDetector(
                       onTap: () {},

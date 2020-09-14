@@ -41,6 +41,7 @@ dependencies:
   avatar_glow: ^1.2.0
   syncfusion_flutter_gauges: ^18.1.59
   percent_indicator: ^2.1.1
+  pie_chart: ^3.1.1
 
 dev_dependencies:
   flutter_test:
@@ -66,7 +67,7 @@ flutter:
    - assets/images/bad1.png
    - assets/normal.png
    - assets/stress.png
-   - assets/Happy.png
+  #  - assets/Happy.png
    - assets/Calm.png
    - assets/Surprised.png
    - assets/Funny.png

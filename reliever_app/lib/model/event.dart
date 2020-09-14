@@ -5,10 +5,9 @@ class EventModel extends DatabaseItem {
   final String title;
   final String description;
   final DateTime eventDate;
-  //
-  final String feedback;
+  
 
-  EventModel({this.id, this.title, this.description, this.eventDate, this.feedback})
+  EventModel({this.id, this.title, this.description, this.eventDate,})
       : super(id);
 
   factory EventModel.fromMap(Map data) {
@@ -16,7 +15,6 @@ class EventModel extends DatabaseItem {
       title: data['title'],
       description: data['description'],
       eventDate: data['event_date'],
-      feedback: data['feedback']
     );
   }
 
@@ -26,7 +24,7 @@ class EventModel extends DatabaseItem {
       title: data['title'],
       description: data['description'],
       eventDate: data['event_date'].toDate(),
-      feedback: data['feedback']
+      
     );
   }
 
@@ -36,7 +34,7 @@ class EventModel extends DatabaseItem {
       "description": description,
       "event_date": eventDate,
       "id": id,
-      "feedback": feedback,
+     
     };
   }
 }

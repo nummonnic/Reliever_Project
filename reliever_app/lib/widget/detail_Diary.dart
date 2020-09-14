@@ -209,6 +209,7 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
                               formatButtonTextStyle: TextStyle(),
                             ),
                             onDaySelected: (date, events) {
+                              print(snapshot);
                               setState(
                                 () {
                                   _selectedEvents = events;
@@ -284,4 +285,3 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
     );
   }
 }
-

@@ -203,106 +203,6 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                       ),
                     ],
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: <Widget>[
-                  //     Padding(
-                  //       padding: EdgeInsets.all(50),
-                  //       child: Row(
-                  //         children: <Widget>[
-                  //           ToggleButtons(
-                  //             children: <Widget>[
-                  //               Container(
-                  //                 color: isSelectedFeedback[0]
-                  //                     ? Colors.green
-                  //                     : Colors.white,
-                  //                 child: Padding(
-                  //                   padding: EdgeInsets.all(30.0),
-                  //                   child: Column(
-                  //                     mainAxisAlignment:
-                  //                         MainAxisAlignment.center,
-                  //                     children: <Widget>[
-                  //                       Text(
-                  //                         "Photo",
-                  //                         style: TextStyle(
-                  //                             fontSize: 15,
-                  //                             color: isSelectedFeedback[0]
-                  //                                 ? Colors.white
-                  //                                 : Colors.black),
-                  //                       ),
-                  //                       SizedBox(
-                  //                         height: 10,
-                  //                       ),
-                  //                       Text(
-                  //                         "Good",
-                  //                         style: TextStyle(
-                  //                             fontSize: 20,
-                  //                             color: isSelectedFeedback[0]
-                  //                                 ? Colors.white
-                  //                                 : Colors.black),
-                  //                       )
-                  //                     ],
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //               Container(
-                  //                 color: isSelectedFeedback[1]
-                  //                     ? Colors.red[800]
-                  //                     : Colors.white,
-                  //                 child: Padding(
-                  //                   padding: EdgeInsets.all(40.0),
-                  //                   child: Column(
-                  //                     mainAxisAlignment:
-                  //                         MainAxisAlignment.center,
-                  //                     children: <Widget>[
-                  //                       Text(
-                  //                         "Photo",
-                  //                         style: TextStyle(
-                  //                             fontSize: 15,
-                  //                             color: isSelectedFeedback[1]
-                  //                                 ? Colors.white
-                  //                                 : Colors.black),
-                  //                       ),
-                  //                       SizedBox(
-                  //                         height: 10,
-                  //                       ),
-                  //                       Text(
-                  //                         "Bad",
-                  //                         style: TextStyle(
-                  //                             fontSize: 20,
-                  //                             color: isSelectedFeedback[1]
-                  //                                 ? Colors.white
-                  //                                 : Colors.black),
-                  //                       )
-                  //                     ],
-                  //                   ),
-                  //                 ),
-                  //               ),
-                  //             ],
-                  //             isSelected: isSelectedFeedback,
-                  //             onPressed: (index) {
-                  //               setState(
-                  //                 () {
-                  //                   for (var i = 0;
-                  //                       i < isSelectedFeedback.length;
-                  //                       i++) {
-                  //                     if (i == index) {
-                  //                       isSelectedFeedback[i] = true;
-                  //                       _titleVoice = state[i];
-                  //                       print(_titleVoice);
-                  //                     } else {
-                  //                       isSelectedFeedback[i] = false;
-                  //                     }
-                  //                   }
-                  //                 },
-                  //               );
-                  //             },
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                   ListTile(
                     title: Text("Date (YYYY-MM-DD)"),
                     subtitle: Text(
@@ -316,6 +216,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                         lastDate: DateTime(_eventDate.year + 5),
                       );
                       if (picked != null) {
+                        
                         setState(
                           () {
                             _eventDate = picked;
@@ -352,9 +253,10 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                         title: _titleVoice,
                         description: _descriptVoice,
                         eventDate: _eventDate,
-                        feedback: "test",
+                        
                       ),
                     );
+
                     Navigator.pushNamed(context, DiaryScreen.routeName);
                     setState(
                       () {
