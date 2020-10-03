@@ -67,24 +67,25 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
             // });
             // var stress = 0;
             //var stressPercent = (stress / 15) * 100;
-            if (stress >= 10) {
-              //return ActivityClip();
-              return Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                  child: Container(
-                      // child: Positioned(
-                      //     left: MediaQuery.of(context).size.width * 0.32,
-                      //     top: MediaQuery.of(context).size.height * 0.11,
-                      width: 150,
-                      height: 150,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("assets/vstressLevel.png"))),
-                      )
-                      //)
-                      ));
-            } else if (stress >= 8) {
+            // if (stress >= 8) {
+            //   //return ActivityClip();
+            //   return Padding(
+            //       padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+            //       child: Container(
+            //           // child: Positioned(
+            //           //     left: MediaQuery.of(context).size.width * 0.32,
+            //           //     top: MediaQuery.of(context).size.height * 0.11,
+            //           width: 150,
+            //           height: 150,
+            //           child: Container(
+            //             decoration: BoxDecoration(
+            //                 image: DecorationImage(
+            //                     image: AssetImage("assets/vstressLevel.png"))),
+            //           )
+            //           //)
+            //           ));
+            // } 
+            if (stress >= 8) {
               return Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: Container(
