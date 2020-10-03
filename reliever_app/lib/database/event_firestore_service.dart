@@ -5,4 +5,3 @@ DatabaseService<EventModel> eventDBS = DatabaseService<EventModel>(
     "diary-record",
     fromDS: (id, data) => EventModel.fromDS(id, data),
     toMap: (event) => event.toMap());
-

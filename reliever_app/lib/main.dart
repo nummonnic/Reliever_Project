@@ -9,7 +9,7 @@ import './screen/loading_question.dart';
 import './screen/add_voice_screen.dart';
 import './screen/result_voice.dart';
 import './widget/voice_descript.dart';
-import './screen/add_feedback.dart';
+import './screen/feedback_progress.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         AddVoiceScreen.routeName: (ctx) => AddVoiceScreen(),
         ShowDiaryVoice.routeName: (ctx) => ShowDiaryVoice(),
         DetailVoice.routeName: (ctx) => DetailVoice(),
-        FeedBackScreen.routeName: (ctx) => FeedBackScreen(),
+        ProgressScreen.routeName: (ctx) => ProgressScreen(),
       },
     );
   }

@@ -5,7 +5,7 @@ import '../screen/diary_screen.dart';
 
 class EventDetailsPage extends StatelessWidget {
   final EventModel event;
-
+ 
   const EventDetailsPage({Key key, this.event}) : super(key: key);
 
   @override

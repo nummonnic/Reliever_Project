@@ -4,7 +4,7 @@ import '../screen/result_screen.dart';
 import '../screen/diary_screen.dart';
 import '../screen/trackProgress_screen.dart';
 import '../screen/loading_question.dart';
-import '../screen/add_feedback.dart';
+import '../screen/feedback_progress.dart';
 
 List<Map> drawerItems = [
   {
@@ -19,12 +19,12 @@ List<Map> drawerItems = [
     'route': DiaryScreen.routeName,
     'selectState': 2
   },
-  {
-    'icon': Icons.attachment,
-    'title': 'Progress',
-    'route': TrackProgress.routeName,
-    'selectState': 3
-  },
+  // {
+  //   'icon': Icons.attachment,
+  //   'title': 'Progress',
+  //   'route': TrackProgress.routeName,
+  //   'selectState': 3
+  // },
   {
     'icon': Icons.cached,
     'title': 'Measure ',
@@ -34,7 +34,7 @@ List<Map> drawerItems = [
   {
     'icon': Icons.favorite,
     'title': 'Feedback',
-    'route': FeedBackScreen.routeName,
+    'route': ProgressScreen.routeName,
     'selectState': 5
   },
 ];

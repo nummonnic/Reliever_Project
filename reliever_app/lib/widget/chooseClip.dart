@@ -5,15 +5,18 @@ import '../widget/showVideo.dart';
 import '../widget/rateDialog.dart';
 
 class ActivityClip extends StatefulWidget {
-  ActivityClip({Key key, this.title}) : super(key: key);
+  ActivityClip({Key key, this.title, this.rate}) : super(key: key);
 
   final String title;
+  final String rate;
 
   @override
-  _ActivityState createState() => _ActivityState();
+  _ActivityState createState() => _ActivityState(rate);
 }
 
 class _ActivityState extends State<ActivityClip> {
+  String rate;
+  _ActivityState(this.rate);
   final List<String> numbers = [
     'vi3',
     'meditation',
