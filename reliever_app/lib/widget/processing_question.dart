@@ -19,19 +19,19 @@ class _ProcessingQuestionState extends State<ProcessingQuestion> {
         print(MediaQuery.of(context).size.height);
         //i = 1;
       } else if (state == 2) {
-        _process = "Question 2";
+        _process = "Q. 2";
         //print(i);
         //i = 2;
       } else if (state == 3) {
-        _process = "Question 3";
+        _process = "Q. 3";
         //print(i);
         //i = 3;
       } else if (state == 4) {
-        _process = "Question 4";
+        _process = "Q. 4";
         //print(i);
         //i = 3;
       } else if (state == 5) {
-        _process = "Question 5";
+        _process = "Q. 5";
         //print(i);
         //i = 3;
       } else if (state == 6) {

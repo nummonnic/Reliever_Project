@@ -11,13 +11,21 @@ class DrawerScreen extends StatefulWidget {
 
 class _DrawerScreenState extends State<DrawerScreen> {
   int selectedMenu = 0;
+  // List<bool> isSelected;
+
+  @override
+  void initState() {
+    // isSelected = [false, false, false, false];
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(
     BuildContext context,
   ) {
     return Container(
-      color: Color(0xff698474),
+      color: Color(0xffba9378),
       padding: EdgeInsets.only(top: 50, bottom: 20, left: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,45 +57,47 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ),
             ],
           ),
-          Column( 
+          Column(
             children: drawerItems
                 .map((element) => GestureDetector(
                       onTap: () {},
                       child: Padding(
                         padding: const EdgeInsets.all(25.0),
-                        child: Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.of(context)
-                                    .pushNamed(element['route']);
-                                selectedMenu = element['selectState'];
-                                //print("Select: " + context.toString());
-                              },
-                              child: Icon(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(element['route']);
+                            selectedMenu = element['selectState'];
+                            // if (element['title'] != 'Result') {
+                            //   element['isSelected'] = false;
+                            // }
+                            // element['isSelected'] = true;
+                            //print("Select: " + context.toString());
+                          },
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
                                 element['icon'],
                                 color: Colors.white,
-                                size: 30,
+                                // element['isSelected']
+                                //     ? Colors.white
+                                //     : Colors.white54,
+                                size: 20,
                               ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            GestureDetector(
-                              child: Text(
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
                                 element['title'],
                                 style: TextStyle(
                                     color: Colors.white,
+                                    // element['isSelected']
+                                    //     ? Colors.white
+                                    //     : Colors.white54,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20),
                               ),
-                              onTap: () {
-                                Navigator.of(context)
-                                    .pushNamed(element['route']);
-                                selectedMenu = element['selectState'];
-                              },
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ))

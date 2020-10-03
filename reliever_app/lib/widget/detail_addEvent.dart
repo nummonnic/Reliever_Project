@@ -37,9 +37,6 @@ class _AddEventPageState extends State<AddEventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(widget.note != null ? "Edit Note" : "Add note"),
-      // ),
       key: _key,
       body: Form(
         key: _formKey,
@@ -63,6 +60,7 @@ class _AddEventPageState extends State<AddEventPage> {
                           borderRadius: BorderRadius.circular(10))),
                 ),
               ),
+              // Text("data"),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -79,8 +77,6 @@ class _AddEventPageState extends State<AddEventPage> {
                           borderRadius: BorderRadius.circular(10))),
                 ),
               ),
-              const SizedBox(height: 10.0),
-              const SizedBox(height: 10.0),
               ListTile(
                 title: Text("Date (YYYY-MM-DD)"),
                 subtitle: Text(

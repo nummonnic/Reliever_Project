@@ -49,19 +49,21 @@ class _SpeechScreenState extends State<SpeechScreen> {
         animate: _isListening,
         glowColor: Colors.brown,
         endRadius: 60.0,
-        duration: const Duration(milliseconds: 2000),
-        repeatPauseDuration: const Duration(milliseconds: 100),
+        duration: Duration(milliseconds: 2000),
+        repeatPauseDuration: Duration(milliseconds: 100),
         repeat: true,
         child: FloatingActionButton(
           onPressed: () {
             _listen();
-            // print()
           },
-          backgroundColor: Color(0xff27496d),
-          child: Icon(_isListening ? Icons.mic : Icons.mic_none),
+          backgroundColor: Color(0xffe6d4c0),
+          child: Icon(
+            _isListening ? Icons.mic : Icons.mic_none,
+            color: Colors.brown,
+          ),
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xff27496d),
       body: Form(
         child: Container(
           child: ListView(
@@ -72,7 +74,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
                   IconButton(
                     icon: Icon(
                       Icons.arrow_back_ios,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                     onPressed: () {
                       Navigator.pop(context);
@@ -88,51 +90,59 @@ class _SpeechScreenState extends State<SpeechScreen> {
                         ),
                       );
                     },
-                    
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Text(
-                          'Next',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18.0,
-                          ),
-                        ),
-                        SizedBox(width: 10.0),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Colors.black,
-                          size: 30.0,
-                        ),
-                      ],
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.white,
                     ),
                   ),
                 ],
               ),
               Padding(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(30.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "Diary: ",
-                      style: TextStyle(color: Colors.black, fontSize: 30),
+                      "      Hello there, \n          Add My Diary",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 30,
+                        color: Colors.white,
+                      ),
                     ),
-                    SingleChildScrollView(
-                      reverse: true,
-                      child: Container(
-                        padding:
-                            const EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 150.0),
-                        child: TextHighlight(
-                          text: _text,
-                          words: _highlights,
-                          textStyle: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w400,
-                          ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      // color: Colors.white,
+                      height: 400,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: SingleChildScrollView(
+                                reverse: true,
+                                child: Container(
+                                  child: TextHighlight(
+                                    text: _text,
+                                    words: _highlights,
+                                    textStyle: const TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -144,6 +154,108 @@ class _SpeechScreenState extends State<SpeechScreen> {
         ),
       ),
     );
+
+    // Scaffold(
+    //   floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    //   floatingActionButton: AvatarGlow(
+    //     animate: _isListening,
+    //     glowColor: Colors.brown,
+    //     endRadius: 60.0,
+    //     duration: const Duration(milliseconds: 2000),
+    //     repeatPauseDuration: const Duration(milliseconds: 100),
+    //     repeat: true,
+    //     child: FloatingActionButton(
+    //       onPressed: () {
+    //         _listen();
+    //         // print()
+    //       },
+    //       backgroundColor: Color(0xff27496d),
+    //       child: Icon(_isListening ? Icons.mic : Icons.mic_none),
+    //     ),
+    //   ),
+    //   backgroundColor: Colors.white,
+    //   body: Form(
+    //     child: Container(
+    //       child: ListView(
+    //         children: <Widget>[
+    //           Row(
+    //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //             children: <Widget>[
+    //               IconButton(
+    //                 icon: Icon(
+    //                   Icons.arrow_back_ios,
+    //                   color: Colors.black,
+    //                 ),
+    //                 onPressed: () {
+    //                   Navigator.pop(context);
+    //                 },
+    //               ),
+    //               FlatButton(
+    //                 onPressed: () {
+    //                   Navigator.push(
+    //                     context,
+    //                     MaterialPageRoute(
+    //                       builder: (context) =>
+    //                           ShowDiaryVoice(speechDiary: _text),
+    //                     ),
+    //                   );
+    //                 },
+
+    //                 child: Row(
+    //                   mainAxisAlignment: MainAxisAlignment.center,
+    //                   mainAxisSize: MainAxisSize.min,
+    //                   children: <Widget>[
+    //                     // Text(
+    //                     //   'Next',
+    //                     //   style: TextStyle(
+    //                     //     color: Colors.black,
+    //                     //     fontSize: 18.0,
+    //                     //   ),
+    //                     // ),
+    //                     SizedBox(width: 10.0),
+    //                     Icon(
+    //                       Icons.arrow_forward,
+    //                       color: Colors.black,
+    //                       size: 30.0,
+    //                     ),
+    //                   ],
+    //                 ),
+    //               ),
+    //             ],
+    //           ),
+    //           Padding(
+    //             padding: EdgeInsets.all(20),
+    //             child: Column(
+    //               crossAxisAlignment: CrossAxisAlignment.start,
+    //               children: <Widget>[
+    //                 Text(
+    //                   "Diary: ",
+    //                   style: TextStyle(color: Colors.black, fontSize: 30),
+    //                 ),
+    //                 SingleChildScrollView(
+    //                   reverse: true,
+    //                   child: Container(
+    //                     padding:
+    //                         const EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 150.0),
+    //                     child: TextHighlight(
+    //                       text: _text,
+    //                       words: _highlights,
+    //                       textStyle: const TextStyle(
+    //                         fontSize: 20,
+    //                         color: Colors.black,
+    //                         fontWeight: FontWeight.w400,
+    //                       ),
+    //                     ),
+    //                   ),
+    //                 ),
+    //               ],
+    //             ),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 
   void _listen() async {

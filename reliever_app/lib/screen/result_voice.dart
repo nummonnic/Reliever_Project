@@ -20,7 +20,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
   String speechDiary;
   _ShowDiaryVoiceState(this.speechDiary);
 
-  List<bool> isSelectedTitle;
+  List<bool> isSelectedTitle; 
   String _titleVoice = "";
   String _descriptVoice = "Test";
   List<String> state = ["good", "bad"];

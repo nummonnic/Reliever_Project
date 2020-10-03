@@ -5,6 +5,7 @@ class EventModel extends DatabaseItem {
   final String title;
   final String description;
   final DateTime eventDate;
+
   
 
   EventModel({this.id, this.title, this.description, this.eventDate,})

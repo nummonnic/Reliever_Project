@@ -85,7 +85,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                     ],
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 10,
                   ),
                   Text(
                     "      Hello there, \n          Add My Diary",
@@ -112,10 +112,6 @@ class _AddEventScreenState extends State<AddEventScreen> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           padding: EdgeInsets.all(30),
-                          // padding: EdgeInsets.symmetric(
-                          //   horizontal: 30,
-                          //   vertical: 30,
-                          // ),
                           child: Column(
                             children: <Widget>[
                               TextFormField(
@@ -134,7 +130,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 40),
+                              SizedBox(height: 20),
                               TextFormField(
                                 controller: _description,
                                 minLines: 3,

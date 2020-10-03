@@ -65,7 +65,8 @@ class _chooseClipMainState extends State<ChooseClipMain> {
                 lists[4];
             
             if (stress >= 8) {
-              return ActivityClip3();
+              // return ActivityClip3();
+              return ActivityClip2();
             } else if (stress >= 5) {
               return ActivityClip2();
             } else{

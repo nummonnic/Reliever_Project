@@ -39,7 +39,8 @@ class _ActivityState extends State<ActivityClip> {
                     shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(18.0),
                     ),
-                    color: Color(0xff27496d),
+                    // color: Color(0xff),
+                    color: Colors.black,
                     child: Container(
                       child: Center(
                           child: Text(
@@ -55,10 +56,10 @@ class _ActivityState extends State<ActivityClip> {
                           builder: (_) => new AlertDialog(
                                 title: new Text("Video Clip"),
                                 content: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.27,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.8,
+                                    // height: MediaQuery.of(context).size.height *
+                                    //     0.27,
+                                    // width:
+                                    //     MediaQuery.of(context).size.width * 0.8,
                                     // child: ChewieListItem(
                                     //   videoPlayerController:
                                     //       VideoPlayerController.asset(

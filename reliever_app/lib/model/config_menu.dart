@@ -11,13 +11,15 @@ List<Map> drawerItems = [
     'icon': Icons.portrait,
     'title': 'Result',
     'route': ResultScreen.route,
-    'selectState': 1
+    'selectState': 1,
+    'isSelected': true,
   },
   {
     'icon': Icons.calendar_today,
     'title': 'Diary',
     'route': DiaryScreen.routeName,
-    'selectState': 2
+    'selectState': 2,
+    'isSelected': false,
   },
   // {
   //   'icon': Icons.attachment,
@@ -29,12 +31,14 @@ List<Map> drawerItems = [
     'icon': Icons.cached,
     'title': 'Measure ',
     'route': LoadingProcess.routeName,
-    'selectState': 4
+    'selectState': 4,
+    'isSelected': false,
   },
   {
     'icon': Icons.favorite,
     'title': 'Feedback',
     'route': ProgressScreen.routeName,
-    'selectState': 5
+    'selectState': 5,
+    'isSelected': false,
   },
 ];

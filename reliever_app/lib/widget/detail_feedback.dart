@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:relieverapp/database/event_firestore_service.dart';
 import 'package:relieverapp/model/event.dart';
 
+
 import '../database/feedback_firestore_service.dart';
 import '../model/feedback.dart';
 import '../database/event_firestore_service.dart';
@@ -47,11 +48,11 @@ class _DetailFeedbackState extends State<DetailFeedback> {
       (feedback) {
         DateTime date = DateTime(feedback.rateDate.month, 12);
         // if (date == _month) {
-        if (!map.containsKey(feedback.rate)) {
-          map[feedback.rate] = 1;
-        } else {
-          map[feedback.rate] += 1;
-        }
+          if (!map.containsKey(feedback.rate)) {
+            map[feedback.rate] = 1;
+          } else {
+            map[feedback.rate] += 1;
+          }
         // }
       },
     );
@@ -63,7 +64,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
         }
       },
     );
-    // res.forEach((k,v) => weightData.add(Weight(k,v)));
+
     return resultRates;
   }
 
@@ -169,7 +170,8 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                 ? PieChart(
                                     dataMap: data,
                                     colorList: _colors,
-                                    animationDuration: Duration(milliseconds: 1500),
+                                    animationDuration:
+                                        Duration(milliseconds: 1500),
                                     chartLegendSpacing: 32.0,
                                     chartRadius:
                                         MediaQuery.of(context).size.width / 2.7,
@@ -184,7 +186,8 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                     initialAngle: 0,
                                     chartValueStyle:
                                         defaultChartValueStyle.copyWith(
-                                      color: Colors.blueGrey[900].withOpacity(0.9),
+                                      color:
+                                          Colors.blueGrey[900].withOpacity(0.9),
                                     ),
                                     chartType: ChartType.disc,
                                   )
@@ -214,11 +217,14 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                       data.addAll(
                                         {
                                           'Calm': _feedback["Calm"].toDouble(),
-                                          'Happy': _feedback["Happy"].toDouble(),
+                                          'Happy':
+                                              _feedback["Happy"].toDouble(),
                                           'Surprised':
                                               _feedback["Surprised"].toDouble(),
-                                          'Funny': _feedback["Funny"].toDouble(),
-                                          'Unknown': _feedback["Unknown"].toDouble(),
+                                          'Funny':
+                                              _feedback["Funny"].toDouble(),
+                                          'Unknown':
+                                              _feedback["Unknown"].toDouble(),
                                         },
                                       );
                                     },
@@ -238,7 +244,9 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                 width: 300,
                                 decoration: BoxDecoration(
                                   color: Color(0xfffe3dfc8),
-                                  borderRadius: BorderRadius.all(Radius.circular(10),),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
@@ -276,83 +284,101 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                             ),
                                           ),
                                           DataCell(
-                                            Text(_feedback["Calm"].toString(),
+                                            Text(
+                                              _feedback["Calm"].toString(),
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.black,
-                                              ),),
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
                                       DataRow(
                                         cells: <DataCell>[
                                           DataCell(
-                                            Text("Happy",
+                                            Text(
+                                              "Happy",
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.black,
-                                              ),),
+                                              ),
+                                            ),
                                           ),
                                           DataCell(
-                                            Text(_feedback["Happy"].toString(),
+                                            Text(
+                                              _feedback["Happy"].toString(),
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.black,
-                                              ),),
-                                          ),
-                                        ],
-                                      ),
-                                      DataRow(
-                                        cells: <DataCell>[
-                                          DataCell(
-                                            Text("Surprised",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),),
-                                          ),
-                                          DataCell(
-                                            Text(_feedback["Surprised"].toString(),
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),),
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
                                       DataRow(
                                         cells: <DataCell>[
                                           DataCell(
-                                            Text("Funny",
+                                            Text(
+                                              "Surprised",
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.black,
-                                              ),),
+                                              ),
+                                            ),
                                           ),
                                           DataCell(
-                                            Text(_feedback["Funny"].toString(),
+                                            Text(
+                                              _feedback["Surprised"].toString(),
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.black,
-                                              ),),
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
                                       DataRow(
                                         cells: <DataCell>[
                                           DataCell(
-                                            Text("Unknown",
+                                            Text(
+                                              "Funny",
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.black,
-                                              ),),
+                                              ),
+                                            ),
                                           ),
                                           DataCell(
-                                            Text(_feedback["Unknown"].toString(),
+                                            Text(
+                                              _feedback["Funny"].toString(),
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.black,
-                                              ),),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      DataRow(
+                                        cells: <DataCell>[
+                                          DataCell(
+                                            Text(
+                                              "Unknown",
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ),
+                                          DataCell(
+                                            Text(
+                                              _feedback["Unknown"].toString(),
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.black,
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),

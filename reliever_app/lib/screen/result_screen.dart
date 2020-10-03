@@ -19,6 +19,7 @@ class ResultScreen extends StatelessWidget {
       body: Stack(children: [
         DrawerScreen(),
         DescriptionResult(),
+
         //StressLevelHandler(),
         //ActivityText(),
       ]),

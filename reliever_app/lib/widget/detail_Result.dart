@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 import 'chooseClipMain.dart';
 //import '../widget/chooseClip.dart';
@@ -21,110 +22,153 @@ class _DescriptionResultState extends State<DescriptionResult> {
 
   @override
   Widget build(BuildContext context) {
-    return 
-        AnimatedContainer(
-      decoration: BoxDecoration(
-        color: Color(0xff27496d),
-        borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0),
-      ),
-      transform: Matrix4.translationValues(xOffset, yOffset, 0)
-        ..scale(scaleFactor),
-      duration: Duration(milliseconds: 250),
-      child: Column(
+    return Container(
+      // color: Colors.amber,
+      child: Stack(
         children: <Widget>[
-          SizedBox(height: 40),
-          //Padding(
-          //  padding: const EdgeInsets.only(
-          //      left: 12.0, right: 12.0, top: 30.0, bottom: 8.0),
-          //child:
-          Row(
-            children: [
-              isDrawerOpen
-                  ? IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          xOffset = 0;
-                          yOffset = 0;
-                          scaleFactor = 1;
-                          isDrawerOpen = false;
-                        });
-                      })
-                  : IconButton(
-                      icon: Icon(
-                        Icons.menu,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          xOffset = 230;
-                          yOffset = 150;
-                          scaleFactor = 0.6;
-                          isDrawerOpen = true;
-                        });
-                      },
-                    )
-            ],
-          ),
-          //),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+          AnimatedContainer(
+            decoration: BoxDecoration(
+              color: Color(0xff27496d),
+              borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0),
+            ),
+            transform: Matrix4.translationValues(xOffset, yOffset, 0)
+              ..scale(scaleFactor),
+            duration: Duration(milliseconds: 250),
+            child: ListView(
               children: <Widget>[
-                Text(
-                  'Stress Level',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40.0,
-                    fontFamily: "Circular Air Light",
-                    letterSpacing: 1.0,
+                // Column(
+                //   children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 10.0, right: 10.0, bottom: 3.0),
+                  child: Row(
+                    children: [
+                      isDrawerOpen
+                          ? IconButton(
+                              icon: Icon(
+                                Icons.arrow_back_ios,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    xOffset = 0;
+                                    yOffset = 0;
+                                    scaleFactor = 1;
+                                    isDrawerOpen = false;
+                                  },
+                                );
+                              },
+                            )
+                          : IconButton(
+                              icon: Icon(
+                                Icons.menu,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    xOffset = 230;
+                                    yOffset = 150;
+                                    scaleFactor = 0.6;
+                                    isDrawerOpen = true;
+                                  },
+                                );
+                              },
+                            ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(0.0),
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 20,
+                          bottom: 20,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Stress Level',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 40.0,
+                                fontFamily: "Circular Air Light",
+                                letterSpacing: 1.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // BoxDecoration(),
+                      Container(
+                        // color: Colors.white,
+                        width: MediaQuery.of(context).size.height,
+                        // height: 540,
+                        height: MediaQuery.of(context).size.height - 145,
+                        decoration: BoxDecoration(
+                          borderRadius: isDrawerOpen
+                              ? BorderRadius.circular(40)
+                              : BorderRadius.only(
+                                  topLeft: Radius.circular(60.0),
+                                  topRight: Radius.circular(60.0),
+                                ),
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: ListView(
+                            children: <Widget>[
+                              MoodText(),
+                              Padding(
+                                padding: const EdgeInsets.all(0.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Stack(
+                                      children: <Widget>[
+                                        Container(
+                                          width: 220,
+                                          height: 260,
+                                          alignment: Alignment.center,
+                                          child: PercentHandler(),
+                                        ),
+                                        Container(
+                                          width: 220,
+                                          height: 240,
+                                          alignment: Alignment.center,
+                                          child: StressLevelHandler(),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              ActivityText(),
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: ChooseClipMain(),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 20),
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(60),
-                  topRight: Radius.circular(60),
-                ),
-              ),
-              //child: Padding(
-              //padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
-              child: ListView(
-                children: <Widget>[
-                  //       Container(
-                  // child: Stack(children: <Widget>[
-                  MoodText(),
-                  StressLevelHandler(),
-                  PercentText(),
-                  PercentHandler(),
-                  ActivityText(),
-                  ChooseClipMain(),
-                  Row(
-                    children: <Widget>[
-                      SizedBox(height: 10),
-                    ],
-                  )
-                  //ShowLevel(),
-                  // ]))
-                ],
-              ),
-              //),
-            ),
-          ),
         ],
       ),
     );
-    //);
   }
 }
 
@@ -144,9 +188,11 @@ class MoodText extends StatelessWidget {
             Text(
               'Your Current Mood',
               style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xff27496d)),
+                fontSize: 30,
+                fontWeight: FontWeight.w800,
+                color: Color(0xff27496d),
+                // fontStyle: FontStyle.italic
+              ),
             ),
           ],
         ),
@@ -161,20 +207,20 @@ class ActivityText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-        child: Container(
-            //height: MediaQuery.of(context).size.height,
-            //width: MediaQuery.of(context).size.height,
-            child: Column(
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      child: Container(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text('Suggested Activities',
                 style: TextStyle(
                     fontSize: 30,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w800,
                     color: Color(0xff27496d))),
           ],
-        )));
+        ),
+      ),
+    );
   }
 }
 
@@ -184,11 +230,11 @@ class PercentText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-        child: Container(
-            //height: MediaQuery.of(context).size.height,
-            //width: MediaQuery.of(context).size.height,
-            child: Column(
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      child: Container(
+        //height: MediaQuery.of(context).size.height,
+        //width: MediaQuery.of(context).size.height,
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Text('Percent of Stress',
@@ -197,6 +243,8 @@ class PercentText extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     color: Color(0xff27496d))),
           ],
-        )));
+        ),
+      ),
+    );
   }
 }

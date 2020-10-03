@@ -74,7 +74,7 @@ class _ProcessingState extends State<Processing>
       duration: Duration(milliseconds: 250),
       child: Column(
         children: <Widget>[
-          SizedBox(height: 40),
+          // SizedBox(height: 40),
           Padding(
             padding: const EdgeInsets.only(
                 left: 12.0, right: 12.0, top: 30.0, bottom: 8.0),
