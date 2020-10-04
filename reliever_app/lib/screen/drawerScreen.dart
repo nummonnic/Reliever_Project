@@ -11,11 +11,9 @@ class DrawerScreen extends StatefulWidget {
 
 class _DrawerScreenState extends State<DrawerScreen> {
   int selectedMenu = 0;
-  // List<bool> isSelected;
 
   @override
   void initState() {
-    // isSelected = [false, false, false, false];
     // TODO: implement initState
     super.initState();
   }
@@ -25,14 +23,16 @@ class _DrawerScreenState extends State<DrawerScreen> {
     BuildContext context,
   ) {
     return Container(
-      color: Color(0xffba9378),
+      color: Color(0xff455c61),
       padding: EdgeInsets.only(top: 50, bottom: 20, left: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              CircleAvatar(),
+              CircleAvatar(
+                backgroundColor: Colors.brown,
+              ),
               SizedBox(
                 width: 10,
               ),
@@ -59,84 +59,77 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ),
           Column(
             children: drawerItems
-                .map((element) => GestureDetector(
-                      onTap: () {},
-                      child: Padding(
-                        padding: const EdgeInsets.all(25.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pushNamed(element['route']);
-                            selectedMenu = element['selectState'];
-                            // if (element['title'] != 'Result') {
-                            //   element['isSelected'] = false;
-                            // }
-                            // element['isSelected'] = true;
-                            //print("Select: " + context.toString());
-                          },
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                element['icon'],
-                                color: Colors.white,
-                                // element['isSelected']
-                                //     ? Colors.white
-                                //     : Colors.white54,
-                                size: 20,
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text(
-                                element['title'],
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    // element['isSelected']
-                                    //     ? Colors.white
-                                    //     : Colors.white54,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20),
-                              ),
-                            ],
-                          ),
+                .map(
+                  (element) => GestureDetector(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.all(25.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(element['route']);
+                          selectedMenu = element['selectState'];
+                        },
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              element['icon'],
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                              element['title'],
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                            ),
+                          ],
                         ),
                       ),
-                    ))
+                    ),
+                  ),
+                )
                 .toList(),
           ),
-          Row(children: [
-            Icon(
-              Icons.settings,
-              color: Colors.white54,
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              "Settings",
-              style: TextStyle(
+          Row(
+            children: [
+              Icon(
+                Icons.settings,
                 color: Colors.white54,
-                fontWeight: FontWeight.bold,
               ),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Container(
-              width: 2,
-              height: 20,
-              color: Colors.white54,
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              "Log out",
-              style: TextStyle(
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                "Settings",
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Container(
+                width: 2,
+                height: 20,
                 color: Colors.white54,
-                fontWeight: FontWeight.bold,
               ),
-            )
-          ])
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                "Log out",
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ],
+          )
         ],
       ),
     );

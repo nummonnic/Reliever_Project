@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 //import '../widget/clipDialog.dart';
-import '../widget/showVideo.dart';
-import '../widget/rateDialog.dart';
+import './showVideo.dart';
+import './rateDialog.dart';
 
 class ActivityClip3 extends StatefulWidget {
   ActivityClip3({Key key, this.title}) : super(key: key);

@@ -3,7 +3,7 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:highlight_text/highlight_text.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
-import '../screen/result_voice.dart';
+import '../screen/diary/result_voice.dart';
 
 class SpeechScreen extends StatefulWidget {
   SpeechScreen({Key key}) : super(key: key);
@@ -115,7 +115,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
                     ),
                     Container(
                       // color: Colors.white,
-                      height: 400,
+                      height: 500,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                           color: Colors.white,

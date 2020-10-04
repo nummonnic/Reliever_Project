@@ -66,7 +66,7 @@ class _percentHandlerState extends State<PercentHandler> {
               children: <Widget>[
                 CircularPercentIndicator(
                   radius: 200.0,
-                  progressColor: Colors.redAccent,
+                  progressColor: Color(0xffa14e2d),
                   percent: percent,
                   animation: true,
                   lineWidth: 15,

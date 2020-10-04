@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:video_player/video_player.dart';
 //import '../widget/clipDialog.dart';
-import '../widget/showVideo.dart';
+import './showVideo.dart';
 // import '../widget/rateDialog.dart';
-import '../model/feedback.dart';
-import '../database/feedback_firestore_service.dart';
-import '../screen/result_screen.dart';
+import '../../model/feedback.dart';
+import '../../database/feedback_firestore_service.dart';
+import '../../screen/main/result_screen.dart';
 
 class ActivityClip2 extends StatefulWidget {
   final String title;
@@ -74,7 +74,7 @@ class _ActivityState extends State<ActivityClip2> {
                 shape: RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(18.0),
                 ),
-                color: Color(0xff27496d),
+                color: Color(0xffc98a3c),
                 child: Container(
                   child: Center(
                     child: Text(

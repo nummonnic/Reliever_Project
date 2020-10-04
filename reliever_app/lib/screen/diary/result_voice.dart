@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import '../model/event.dart';
-import '../database/event_firestore_service.dart';
-import '../screen/diary_screen.dart';
+import '../../model/event.dart';
+import '../../database/event_firestore_service.dart';
+import './diary_screen.dart';
 
 class ShowDiaryVoice extends StatefulWidget {
   final String speechDiary;

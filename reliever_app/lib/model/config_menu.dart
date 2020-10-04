@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../screen/result_screen.dart';
-import '../screen/diary_screen.dart';
-import '../screen/trackProgress_screen.dart';
-import '../screen/loading_question.dart';
-import '../screen/feedback_progress.dart';
+import '../screen/main/result_screen.dart';
+import '../screen/diary/diary_screen.dart';
+// import '../screen/trackProgress_screen.dart';
+import '../screen/loading/loading_question.dart';
+import '../screen/chart/feedback_progress.dart';
 
 List<Map> drawerItems = [
   {
@@ -21,12 +21,6 @@ List<Map> drawerItems = [
     'selectState': 2,
     'isSelected': false,
   },
-  // {
-  //   'icon': Icons.attachment,
-  //   'title': 'Progress',
-  //   'route': TrackProgress.routeName,
-  //   'selectState': 3
-  // },
   {
     'icon': Icons.cached,
     'title': 'Measure ',

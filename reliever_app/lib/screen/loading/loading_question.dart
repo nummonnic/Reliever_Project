@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 //import '../widget/sample.dart';
-import '../widget/processing.dart';
-import 'drawerScreen.dart';
+import '../../widget/processing.dart';
+import '../drawerScreen.dart';
 
 class LoadingProcess extends StatelessWidget {
   static const routeName = '/loadingProcess-screen';
@@ -11,11 +11,12 @@ class LoadingProcess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: <Widget>[
-        DrawerScreen(),
-        Processing(),
-      ],
-    ));
+      body: Stack(
+        children: <Widget>[
+          DrawerScreen(),
+          Processing(),
+        ],
+      ),
+    );
   }
 }

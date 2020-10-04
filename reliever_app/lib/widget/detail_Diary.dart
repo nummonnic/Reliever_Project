@@ -3,8 +3,8 @@ import 'package:table_calendar/table_calendar.dart';
 
 import '../database/event_firestore_service.dart';
 import '../model/event.dart';
-import '../screen/add_event_screen.dart';
-import '../screen/view_event.dart';
+import '../screen/diary/add_event_screen.dart';
+import '../screen/diary/view_event.dart';
 //import '../widget/try.dart';
 
 class DiaryDetail extends StatefulWidget {
@@ -19,6 +19,7 @@ class _DiaryDetailState extends State<DiaryDetail> {
   double yOffset = 0;
   double scaleFactor = 1;
   bool isDrawerOpen = false;
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -250,9 +251,9 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(40),
-                              color: Color(0xffc87d26),
+                              color: Color(0xffc98a3c),
                             ),
-                            height: 190,
+                            height: 280,
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: ListView(

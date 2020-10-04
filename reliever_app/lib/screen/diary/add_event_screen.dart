@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import '../model/event.dart';
-import '../database/event_firestore_service.dart';
-import '../template/background.dart';
-import '../screen/add_voice_screen.dart';
+import '../../model/event.dart';
+import '../../database/event_firestore_service.dart';
+import './add_voice_screen.dart';
 
 class AddEventScreen extends StatefulWidget {
   final EventModel note;
@@ -38,14 +37,10 @@ class _AddEventScreenState extends State<AddEventScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
-    var width = screenSize.width;
-    var height = screenSize.height;
-
     return Stack(
       children: <Widget>[
         Container(
-          child: BackGround(),
+          // child: BackGround(),
         ),
         Scaffold(
           backgroundColor: Color(0xff27496d),
@@ -65,7 +60,6 @@ class _AddEventScreenState extends State<AddEventScreen> {
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          //print('done');
                           Navigator.pop(context);
                         },
                       ),
@@ -217,9 +211,11 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                                 );
                                               }
                                               Navigator.pop(context);
-                                              setState(() {
-                                                processing = false;
-                                              });
+                                              setState(
+                                                () {
+                                                  processing = false;
+                                                },
+                                              );
                                             }
                                           },
                                           child: Text(

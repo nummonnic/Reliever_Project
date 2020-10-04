@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
 
-import 'chooseClipMain.dart';
-//import '../widget/chooseClip.dart';
-import '../widget/percent.dart';
-import '../database/stress_level_handler.dart';
+import './chooseClipMain.dart';
+import '../../widget/percent.dart';
+import '../../database/stress_level_handler.dart';
 
 class DescriptionResult extends StatefulWidget {
-  //static const routeName = '/desResult-screen';
   DescriptionResult({Key key}) : super(key: key);
 
   @override
@@ -23,7 +20,6 @@ class _DescriptionResultState extends State<DescriptionResult> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.amber,
       child: Stack(
         children: <Widget>[
           AnimatedContainer(
@@ -36,8 +32,6 @@ class _DescriptionResultState extends State<DescriptionResult> {
             duration: Duration(milliseconds: 250),
             child: ListView(
               children: <Widget>[
-                // Column(
-                //   children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 10.0, right: 10.0, bottom: 3.0),
@@ -104,12 +98,9 @@ class _DescriptionResultState extends State<DescriptionResult> {
                           ],
                         ),
                       ),
-                      // BoxDecoration(),
                       Container(
-                        // color: Colors.white,
                         width: MediaQuery.of(context).size.height,
-                        // height: 540,
-                        height: MediaQuery.of(context).size.height - 145,
+                        height: MediaQuery.of(context).size.height - 170,
                         decoration: BoxDecoration(
                           borderRadius: isDrawerOpen
                               ? BorderRadius.circular(40)
@@ -180,8 +171,6 @@ class MoodText extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
       child: Container(
-        //height: MediaQuery.of(context).size.height,
-        //width: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -191,7 +180,6 @@ class MoodText extends StatelessWidget {
                 fontSize: 30,
                 fontWeight: FontWeight.w800,
                 color: Color(0xff27496d),
-                // fontStyle: FontStyle.italic
               ),
             ),
           ],
@@ -232,8 +220,6 @@ class PercentText extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
       child: Container(
-        //height: MediaQuery.of(context).size.height,
-        //width: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[

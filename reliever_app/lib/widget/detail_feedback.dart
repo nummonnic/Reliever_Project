@@ -1,14 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
-import 'package:intl/intl.dart';
-import 'package:relieverapp/database/event_firestore_service.dart';
-import 'package:relieverapp/model/event.dart';
-
 
 import '../database/feedback_firestore_service.dart';
 import '../model/feedback.dart';
-import '../database/event_firestore_service.dart';
 
 class DetailFeedback extends StatefulWidget {
   DetailFeedback({Key key}) : super(key: key);
@@ -47,13 +42,12 @@ class _DetailFeedbackState extends State<DetailFeedback> {
     feedbacks.forEach(
       (feedback) {
         DateTime date = DateTime(feedback.rateDate.month, 12);
-        // if (date == _month) {
-          if (!map.containsKey(feedback.rate)) {
-            map[feedback.rate] = 1;
-          } else {
-            map[feedback.rate] += 1;
-          }
-        // }
+
+        if (!map.containsKey(feedback.rate)) {
+          map[feedback.rate] = 1;
+        } else {
+          map[feedback.rate] += 1;
+        }
       },
     );
     resultRates = map;
@@ -199,11 +193,6 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(15.0),
-                              // child: Padding(
-                              //   padding: const EdgeInsets.only(left: 10, right: 10),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              //     children: <Widget>[
                               child: RaisedButton(
                                 color: Color(0xff27496d),
                                 child: Text(
@@ -233,14 +222,9 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                 },
                               ),
                             ),
-                            // _feedback.map((key, value) => null),
                             Padding(
                               padding: const EdgeInsets.all(15.0),
                               child: Container(
-                                // decoration: BoxDecoration(
-                                //   // borderRadius: BorderRadius.all(Radius.circular(3))
-                                // ),
-                                // color: Color(0xfffffaf00),
                                 width: 300,
                                 decoration: BoxDecoration(
                                   color: Color(0xfffe3dfc8),
@@ -387,13 +371,6 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                 ),
                               ),
                             ),
-                            // for (var i = 0; i < elements.lenght(); i++) {
-                            //   DataTable(
-                            //   columns: <DataColumn> [
-
-                            //   ],
-                            // ),
-                            // }
                           ],
                         ),
                       )

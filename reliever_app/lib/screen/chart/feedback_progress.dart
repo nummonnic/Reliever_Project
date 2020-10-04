@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../widget/detail_feedback.dart';
-import 'drawerScreen.dart';
+import '../../widget/detail_feedback.dart';
+import '../drawerScreen.dart';
 
 class ProgressScreen extends StatelessWidget {
   static const routeName = '/add_progress-page';
@@ -17,8 +17,5 @@ class ProgressScreen extends StatelessWidget {
         ],
       ),
     );
-    // return MaterialApp(
-    //   home: DetailFeedback(),
-    // );
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widget/detail_addVoice.dart';
-
-//import '../template/background.dart';
+import '../../widget/detail_addVoice.dart';
 
 class AddVoiceScreen extends StatelessWidget {
   static const routeName = '/add_voice-page';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:relieverapp/database/event_firestore_service.dart';
 import 'package:relieverapp/model/event.dart';
-import '../screen/diary_screen.dart';
+import './diary_screen.dart';
 
 class EventDetailsPage extends StatelessWidget {
   final EventModel event;

@@ -134,165 +134,149 @@ class _ProcessingState extends State<Processing>
             ),
           ),
           SizedBox(height: MediaQuery.of(context).size.height / 12),
-          // Center(
-          //   child: Column(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: <Widget>[
-          //       Text(
-          //         "Measure Stress Level",
-          //         style: TextStyle(
-          //             fontWeight: FontWeight.bold,
-          //             fontSize: 20,
-          //             color: Colors.white),
-          //       ),
-          //     ],
-          //   ),
-          // ),
           SizedBox(height: MediaQuery.of(context).size.height / 12),
           Container(
             width: 400.0,
             height: 220.0,
             child: Center(
-              //    child: RotationTransition(
-              //  turns: animation_rotation,
               child: Stack(
                 children: <Widget>[
-                  
                   Container(
                     child: RotationTransition(
-                        turns: animation_rotation,
-                        child: Stack(
-                          children: <Widget>[
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(pi / 4),
-                                  (radius * 5) * sin(pi / 4)),
-                              child: Dot(
-                                radius: 20.0,
-                                color: Color(0xffbb3b0e),
-                              ),
+                      turns: animation_rotation,
+                      child: Stack(
+                        children: <Widget>[
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(pi / 4),
+                                (radius * 5) * sin(pi / 4)),
+                            child: Dot(
+                              radius: 20.0,
+                              color: Color(0xffbb3b0e),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(1.5 * pi / 4),
-                                  (radius * 5) * sin(1.5 * pi / 4)),
-                              child: Dot(
-                                radius: 30.0,
-                                color: Color(0xffdd7631),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(1.5 * pi / 4),
+                                (radius * 5) * sin(1.5 * pi / 4)),
+                            child: Dot(
+                              radius: 30.0,
+                              color: Color(0xffdd7631),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(2 * pi / 4),
-                                  (radius * 5) * sin(2 * pi / 4)),
-                              child: Dot(
-                                radius: 10.0,
-                                color: Color(0xff708160),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(2 * pi / 4),
+                                (radius * 5) * sin(2 * pi / 4)),
+                            child: Dot(
+                              radius: 10.0,
+                              color: Color(0xff708160),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(2.5 * pi / 4),
-                                  (radius * 5) * sin(2.5 * pi / 4)),
-                              child: Dot(
-                                radius: 40.0,
-                                color: Color(0xffd8c593),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(2.5 * pi / 4),
+                                (radius * 5) * sin(2.5 * pi / 4)),
+                            child: Dot(
+                              radius: 40.0,
+                              color: Color(0xffd8c593),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(3 * pi / 4),
-                                  (radius * 5) * sin(3 * pi / 4)),
-                              child: Dot(
-                                radius: 15.0,
-                                color: Color(0xffdd7631),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(3 * pi / 4),
+                                (radius * 5) * sin(3 * pi / 4)),
+                            child: Dot(
+                              radius: 15.0,
+                              color: Color(0xffdd7631),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(3.5 * pi / 4),
-                                  (radius * 5) * sin(3.5 * pi / 4)),
-                              child: Dot(
-                                radius: 35.0,
-                                color: Color(0xffbb3b0e),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(3.5 * pi / 4),
+                                (radius * 5) * sin(3.5 * pi / 4)),
+                            child: Dot(
+                              radius: 35.0,
+                              color: Color(0xffbb3b0e),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(4 * pi / 4),
-                                  (radius * 5) * sin(4 * pi / 4)),
-                              child: Dot(
-                                radius: 20.0,
-                                color: Color(0xff708160),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(4 * pi / 4),
+                                (radius * 5) * sin(4 * pi / 4)),
+                            child: Dot(
+                              radius: 20.0,
+                              color: Color(0xff708160),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(4.5 * pi / 4),
-                                  (radius * 5) * sin(4.5 * pi / 4)),
-                              child: Dot(
-                                radius: 50.0,
-                                color: Color(0xffdd7631),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(4.5 * pi / 4),
+                                (radius * 5) * sin(4.5 * pi / 4)),
+                            child: Dot(
+                              radius: 50.0,
+                              color: Color(0xffdd7631),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(5 * pi / 4),
-                                  (radius * 5) * sin(5 * pi / 4)),
-                              child: Dot(
-                                radius: 10.0,
-                                color: Color(0xffd8c593),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(5 * pi / 4),
+                                (radius * 5) * sin(5 * pi / 4)),
+                            child: Dot(
+                              radius: 10.0,
+                              color: Color(0xffd8c593),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(5.5 * pi / 4),
-                                  (radius * 5) * sin(5.5 * pi / 4)),
-                              child: Dot(
-                                radius: 30.0,
-                                color: Color(0xffbb3b0e),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(5.5 * pi / 4),
+                                (radius * 5) * sin(5.5 * pi / 4)),
+                            child: Dot(
+                              radius: 30.0,
+                              color: Color(0xffbb3b0e),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(6 * pi / 4),
-                                  (radius * 5) * sin(6 * pi / 4)),
-                              child: Dot(
-                                radius: 15.0,
-                                color: Color(0xffd8c593),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(6 * pi / 4),
+                                (radius * 5) * sin(6 * pi / 4)),
+                            child: Dot(
+                              radius: 15.0,
+                              color: Color(0xffd8c593),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(6.5 * pi / 4),
-                                  (radius * 5) * sin(6.5 * pi / 4)),
-                              child: Dot(
-                                radius: 50.0,
-                                color: Color(0xff708160),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(6.5 * pi / 4),
+                                (radius * 5) * sin(6.5 * pi / 4)),
+                            child: Dot(
+                              radius: 50.0,
+                              color: Color(0xff708160),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(7 * pi / 4),
-                                  (radius * 5) * sin(7 * pi / 4)),
-                              child: Dot(
-                                radius: 30.0,
-                                color: Color(0xffbb3b0e),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(7 * pi / 4),
+                                (radius * 5) * sin(7 * pi / 4)),
+                            child: Dot(
+                              radius: 30.0,
+                              color: Color(0xffbb3b0e),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(7.5 * pi / 4),
-                                  (radius * 5) * sin(7.5 * pi / 4)),
-                              child: Dot(
-                                radius: 10.0,
-                                color: Color(0xffdd7631),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(7.5 * pi / 4),
+                                (radius * 5) * sin(7.5 * pi / 4)),
+                            child: Dot(
+                              radius: 10.0,
+                              color: Color(0xffdd7631),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(8 * pi / 4),
-                                  (radius * 5) * sin(8 * pi / 4)),
-                              child: Dot(
-                                radius: 40.0,
-                                color: Color(0xffd8c593),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(8 * pi / 4),
+                                (radius * 5) * sin(8 * pi / 4)),
+                            child: Dot(
+                              radius: 40.0,
+                              color: Color(0xffd8c593),
                             ),
-                            Transform.translate(
-                              offset: Offset((radius * 5) * cos(8.5 * pi / 4),
-                                  (radius * 5) * sin(8.5 * pi / 4)),
-                              child: Dot(
-                                radius: 30.0,
-                                color: Color(0xff708160),
-                              ),
+                          ),
+                          Transform.translate(
+                            offset: Offset((radius * 5) * cos(8.5 * pi / 4),
+                                (radius * 5) * sin(8.5 * pi / 4)),
+                            child: Dot(
+                              radius: 30.0,
+                              color: Color(0xff708160),
                             ),
-                          ],
-                        ),),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   Container(
                     child: Center(

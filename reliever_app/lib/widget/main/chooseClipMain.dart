@@ -3,9 +3,9 @@ import 'dart:convert';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import '../widget/chooseClip.dart';
-import '../widget/chooseClip2.dart';
-import '../widget/chooseClip3.dart';
+import './chooseClip.dart';
+import './chooseClip2.dart';
+import './chooseClip3.dart';
 import 'package:http/http.dart' as http;
 
 class ChooseClipMain extends StatefulWidget {
