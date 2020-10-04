@@ -27,7 +27,7 @@ class _ActivityState extends State<ActivityClip2> {
   //final List<String> numbers = ['meditation', 'vi1', 'vi3'];
   final List<String> numbers = ['Breathing', 'Meditation', 'Pray'];
   final List<String> urlList = [
-    'https://www.youtube.com/watch?v=PmBYdfv5RSk',
+    'https://youtu.be/0Mo6ZjYaptc',
     'https://www.youtube.com/watch?v=inpok4MKVLM',
     'https://www.youtube.com/watch?v=SiZWLQozD4Y'
   ];

@@ -327,8 +327,8 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
                                                                         //   height: 10,
                                                                         //   color: Colors.amber,
                                                                         // ),
-                                                                        Text(
-                                                                            "photo"),
+                                                                        // Text(
+                                                                        //     "photo"),
                                                                         SizedBox(
                                                                           width:
                                                                               40,

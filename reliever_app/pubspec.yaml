@@ -78,6 +78,11 @@ flutter:
    - assets/normalLevel.png
    - assets/stressLevel.png
    - assets/vstressLevel.png
+   - assets/Work.png
+   - assets/Society.png
+   - assets/Sleep.png
+   - assets/Emotional.png
+   - assets/Eat.png
 
 fonts: 
   - family: Circular
