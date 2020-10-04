@@ -20,7 +20,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
   String speechDiary;
   _ShowDiaryVoiceState(this.speechDiary);
 
-  List<bool> isSelectedTitle; 
+  List<bool> isSelectedTitle;
   String _titleVoice = "";
   String _descriptVoice = "Test";
   List<String> state = ["good", "bad"];
@@ -122,14 +122,24 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
-                                        Text(
-                                          "Photo",
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              color: isSelectedTitle[0]
-                                                  ? Colors.white
-                                                  : Colors.black),
+                                        Container(
+                                          width: 50,
+                                          height: 50,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/happyLevel.png"))),
+                                          ),
                                         ),
+                                        // Text(
+                                        //   "Photo",
+                                        //   style: TextStyle(
+                                        //       fontSize: 15,
+                                        //       color: isSelectedTitle[0]
+                                        //           ? Colors.white
+                                        //           : Colors.black),
+                                        // ),
                                         SizedBox(
                                           height: 10,
                                         ),
@@ -150,19 +160,29 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                                       ? Colors.red[800]
                                       : Colors.white,
                                   child: Padding(
-                                    padding: EdgeInsets.all(40.0),
+                                    padding: EdgeInsets.all(30.0),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
-                                        Text(
-                                          "Photo",
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              color: isSelectedTitle[1]
-                                                  ? Colors.white
-                                                  : Colors.black),
+                                        Container(
+                                          width: 50,
+                                          height: 50,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/stressLevel.png"))),
+                                          ),
                                         ),
+                                        // Text(
+                                        //   "Photo",
+                                        //   style: TextStyle(
+                                        //       fontSize: 15,
+                                        //       color: isSelectedTitle[1]
+                                        //           ? Colors.white
+                                        //           : Colors.black),
+                                        // ),
                                         SizedBox(
                                           height: 10,
                                         ),
@@ -216,7 +236,6 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                         lastDate: DateTime(_eventDate.year + 5),
                       );
                       if (picked != null) {
-                        
                         setState(
                           () {
                             _eventDate = picked;
@@ -253,7 +272,6 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                         title: _titleVoice,
                         description: _descriptVoice,
                         eventDate: _eventDate,
-                        
                       ),
                     );
 
