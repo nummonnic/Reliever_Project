@@ -43,6 +43,7 @@ dependencies:
   percent_indicator: ^2.1.1
   pie_chart: ^3.1.1
   google_fonts: ^1.0.0
+  youtube_player_flutter: ^7.0.0+7
 
 dev_dependencies:
   flutter_test:
@@ -67,15 +68,12 @@ flutter:
    - assets/Asset7.png
    - assets/images/bad1.png
    - assets/normal.png
-   - assets/stress.png
+  # - assets/stress.png
   #  - assets/Happy.png
    - assets/Calm.png
    - assets/Surprised.png
    - assets/Funny.png
    - assets/Sleepy.png
-   - assets/videos/vi1.mp4
-   - assets/videos/vi3.mp4
-   - assets/videos/meditation.mp4
    - assets/happyLevel.png
    - assets/normalLevel.png
    - assets/stressLevel.png

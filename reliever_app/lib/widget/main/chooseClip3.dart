@@ -14,7 +14,8 @@ class ActivityClip3 extends StatefulWidget {
 }
 
 class _ActivityState extends State<ActivityClip3> {
-  final List<String> numbers = ['vi1', 'vi3', 'meditation'];
+  //final List<String> numbers = ['vi1', 'vi3', 'meditation'];
+  final List<String> numbers = ['Yoga', 'Imagination', 'Meditation'];
   @override
   Widget build(BuildContext context) {
     return Container(

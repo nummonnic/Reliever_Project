@@ -10,7 +10,7 @@ import './screen/diary/add_voice_screen.dart';
 import './screen/diary/result_voice.dart';
 import './widget/main/voice_descript.dart';
 import './screen/chart/feedback_progress.dart';
-
+import './widget/main/showYoutube.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
         ShowDiaryVoice.routeName: (ctx) => ShowDiaryVoice(),
         DetailVoice.routeName: (ctx) => DetailVoice(),
         ProgressScreen.routeName: (ctx) => ProgressScreen(),
+        YoutubeVideo.routeName: (ctx) => YoutubeVideo(),
       },
     );
   }

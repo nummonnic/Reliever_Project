@@ -7,18 +7,30 @@ import './showVideo.dart';
 import '../../model/feedback.dart';
 import '../../database/feedback_firestore_service.dart';
 import '../../screen/main/result_screen.dart';
+//import './youtubeVideo.dart';
+import './showYoutube.dart';
 
 class ActivityClip2 extends StatefulWidget {
+  final String url;
   final String title;
   final FeedbackModel rateNote;
-  ActivityClip2({Key key, this.title, this.rateNote}) : super(key: key);
+  ActivityClip2({Key key, this.title, this.rateNote, this.url})
+      : super(key: key);
 
   @override
   _ActivityState createState() => _ActivityState();
 }
 
 class _ActivityState extends State<ActivityClip2> {
-  final List<String> numbers = ['meditation', 'vi1', 'vi3'];
+  String url;
+  _ActivityState({this.url});
+  //final List<String> numbers = ['meditation', 'vi1', 'vi3'];
+  final List<String> numbers = ['Breathing', 'Meditation', 'Pray'];
+  final List<String> urlList = [
+    'https://www.youtube.com/watch?v=PmBYdfv5RSk',
+    'https://www.youtube.com/watch?v=inpok4MKVLM',
+    'https://www.youtube.com/watch?v=SiZWLQozD4Y'
+  ];
   final List<String> pic = [
     // 'assets/images/LG5.png',
     // 'assets/images/stress.png',
@@ -84,69 +96,87 @@ class _ActivityState extends State<ActivityClip2> {
                   ),
                 ),
                 onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (_) => new AlertDialog(
-                      content: Container(
-                        // color: Colors.orange,
-                        height: 300,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 5),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text("Video Clip"),
-                                  IconButton(
-                                    icon: Icon(
-                                      Icons.close,
-                                      color: Colors.black,
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              ),
-                              ChewieListItem(
-                                videoPlayerController:
-                                    VideoPlayerController.asset(
-                                        'assets/videos/meditation.mp4'),
-                              ),
-                              FlatButton(
-                                onPressed: () {
-                                  _showRatingDialog();
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.only(top: 5),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: <Widget>[
-                                      Text(
-                                        'Next',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 15.0,
-                                        ),
-                                      ),
-                                      SizedBox(width: 5.0),
-                                      Icon(
-                                        Icons.arrow_forward,
-                                        color: Colors.black,
-                                        size: 20.0,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                  url = urlList[index].toString();
+                  //  Navigator.of(context).pushNamed(YoutubeVideo.routeName);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => YoutubeVideo(
+                              url: url,
+                            )),
                   );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => YoutubeVideo(),
+                  //   )
+                  // );
+                  //print(urlList[index].toString());
+
+                  // showDialog(
+                  //   context: context,
+                  //   builder: (_) => new AlertDialog(
+                  //     content: Container(
+                  //       // color: Colors.orange,
+                  //       height: 500,
+                  //       child: Padding(
+                  //         padding: EdgeInsets.only(left: 5),
+                  //         child: Column(
+                  //           children: <Widget>[
+                  //             Row(
+                  //               mainAxisAlignment:
+                  //                   MainAxisAlignment.spaceBetween,
+                  //               children: <Widget>[
+                  //                 Text("Video Clip"),
+                  //                 IconButton(
+                  //                   icon: Icon(
+                  //                     Icons.close,
+                  //                     color: Colors.black,
+                  //                   ),
+                  //                   onPressed: () {
+                  //                     Navigator.of(context).pop();
+                  //                   },
+                  //                 ),
+                  //               ],
+                  //             ),
+                  //             YoutubeVideo(),
+                  //             // ChewieListItem(
+                  //             //   videoPlayerController:
+                  //             //       VideoPlayerController.asset(
+                  //             //           //'assets/videos/meditation.mp4'),
+                  //             //           'assets/videos/Breathing.mp4'),
+                  //             // ),
+                  //             FlatButton(
+                  //               onPressed: () {
+                  //                 _showRatingDialog();
+                  //               },
+                  //               child: Padding(
+                  //                 padding: EdgeInsets.only(top: 5),
+                  //                 child: Row(
+                  //                   mainAxisAlignment: MainAxisAlignment.end,
+                  //                   children: <Widget>[
+                  //                     Text(
+                  //                       'Next',
+                  //                       style: TextStyle(
+                  //                         color: Colors.black,
+                  //                         fontSize: 15.0,
+                  //                       ),
+                  //                     ),
+                  //                     SizedBox(width: 5.0),
+                  //                     Icon(
+                  //                       Icons.arrow_forward,
+                  //                       color: Colors.black,
+                  //                       size: 20.0,
+                  //                     ),
+                  //                   ],
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // );
                 },
               ),
             ),

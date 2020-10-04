@@ -17,10 +17,15 @@ class _ActivityState extends State<ActivityClip> {
   String rate;
   _ActivityState(this.rate);
   final List<String> numbers = [
-    'vi3',
-    'meditation',
-    'vi1',
+    'Basic Exercise',
+    'Nature Sound',
+    'Music',
   ];
+  // final List<String> numbers = [
+  //   'vi3',
+  //   'meditation',
+  //   'vi1',
+  // ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,7 +57,8 @@ class _ActivityState extends State<ActivityClip> {
                     content: Container(
                       child: ChewieListItem(
                         videoPlayerController: VideoPlayerController.asset(
-                            'assets/videos/meditation.mp4'),
+                            // 'assets/videos/meditation.mp4'),
+                            'assets/videos/Exercise.mp4'),
                       ),
                     ),
                     actions: <Widget>[
