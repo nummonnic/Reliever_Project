@@ -45,6 +45,23 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
     // return Scaffold(
     //   body: Text("data: " + widget.url),
     // );
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     backgroundColor: Color(0xff27496d),
+    //     title: Text('Activity Video'),
+    //   ),
+    //   body: Container(
+    //     child: Center(
+    //     child: SingleChildScrollView(
+    //       child: Column(
+    //         children: <Widget>[
+    //           YoutubePlayer(controller: _controller)
+    //         ]
+    //       )
+    //     )
+    //     )
+    //   ),
+    // );
     return Padding(
       padding: const EdgeInsets.all(2.0),
       child: YoutubePlayer(

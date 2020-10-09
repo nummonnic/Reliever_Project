@@ -24,7 +24,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
   ) {
     return Container(
       color: Color(0xff455c61),
-      padding: EdgeInsets.only(top: 50, bottom: 20, left: 10),
+      padding: EdgeInsets.only(top: 50, left: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
