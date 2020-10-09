@@ -11,7 +11,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 //   }
 // }
 
-class YoutubeVideo extends StatefulWidget{
+class YoutubeVideo extends StatefulWidget {
   static const routeName = '/show_video';
   final String url;
   YoutubeVideo({Key key, this.url}) : super(key: key);
@@ -25,28 +25,42 @@ class YoutubeVideo extends StatefulWidget{
   @override
   _YoutubeVideoState createState() => _YoutubeVideoState(url);
 }
-class _YoutubeVideoState extends State<YoutubeVideo>{
+
+class _YoutubeVideoState extends State<YoutubeVideo> {
   String url;
   _YoutubeVideoState(this.url);
   //String videoUrl = url;
 
-
   YoutubePlayerController _controller;
 
-   @override
-  void initState(){
-    _controller = YoutubePlayerController(initialVideoId: YoutubePlayer.convertUrlToId(url));
+  @override
+  void initState() {
+    _controller = YoutubePlayerController(
+        initialVideoId: YoutubePlayer.convertUrlToId(url));
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     // return Scaffold(
     //   body: Text("data: " + widget.url),
     // );
     return Padding(
       padding: const EdgeInsets.all(2.0),
-      child: YoutubePlayer(controller: _controller),
+      child: YoutubePlayer(
+        controller: _controller,
+        // onReady: () {
+        //   print("It is playing");
+        // },
+        // // onEnded: () {
+
+        // // },
+        // onEnded: (_controller) {
+        //   return Container(
+        //     color: Colors.blue,
+        //   );
+        // },
+      ),
     );
   }
 }

@@ -22,17 +22,29 @@ class _DetailFeedbackState extends State<DetailFeedback> {
   DateTime _date;
   Map<String, double> map = Map();
   Map<String, double> _feedback = Map();
+  final List<String> pic = ['Calm', 'Surprised', 'Funny', 'Sleepy', 'Calm'];
+  // Map<String, double> _colors = Map();
   var test = "";
   var listRates = [];
   var listResults = [];
   var datas;
   var elements;
+  int _countRate = 0;
 
   @override
   void initState() {
     _date = new DateTime.now();
     _feedback = {};
+    // _colors = {};
     super.initState();
+  }
+
+  countRate(List<FeedbackModel> feedbacks) {
+    int _count = 0;
+    for (int i = 0; i < feedbacks.length; i++) {
+      _count++;
+    }
+    return _count;
   }
 
   groupRate(List<FeedbackModel> feedbacks) {
@@ -63,11 +75,11 @@ class _DetailFeedbackState extends State<DetailFeedback> {
   }
 
   List<Color> _colors = [
-    Colors.teal,
-    Colors.blueAccent,
-    Colors.amberAccent,
-    Colors.redAccent,
-    Colors.grey
+    Color(0xffebc34d),
+    Color(0xffe7e2dd),
+    Color(0xff7698a0),
+    Color(0xffbeb795),
+    Color(0xff3c3c54),
   ];
 
   @override
@@ -81,6 +93,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
             if (allFeedbacks.isNotEmpty) {
               datas = allFeedbacks;
               _feedback = groupRate(allFeedbacks);
+              _countRate = countRate(allFeedbacks);
             } else {
               _feedback = {"f": 1, "g": 1, "h": 3};
             }
@@ -90,26 +103,38 @@ class _DetailFeedbackState extends State<DetailFeedback> {
           return Container(
             child: AnimatedContainer(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Color(0xffecebeb),
                 borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0),
               ),
               transform: Matrix4.translationValues(xOffset, yOffset, 0)
                 ..scale(scaleFactor),
               duration: Duration(milliseconds: 250),
-              child: ListView(
+              child: Stack(
                 children: <Widget>[
+                  Container(
+                    //color: Colors.amber,
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(isDrawerOpen ? 40 : 0.0),
+                        bottomLeft: Radius.circular(50.0),
+                        bottomRight: Radius.circular(50.0),
+                      ),
+                      color: Color(0xff27496d),
+                    ),
+                  ),
                   Column(
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(
-                            left: 10.0, right: 10.0, bottom: 15.0),
+                            top: 20, left: 10.0, right: 10.0, bottom: 0.0),
                         child: Row(
                           children: [
                             isDrawerOpen
                                 ? IconButton(
                                     icon: Icon(
                                       Icons.arrow_back_ios,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                     ),
                                     onPressed: () {
                                       setState(
@@ -125,7 +150,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                 : IconButton(
                                     icon: Icon(
                                       Icons.menu,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                     ),
                                     onPressed: () {
                                       setState(
@@ -141,239 +166,360 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(0.0),
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              'Report Summary of feedback',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold),
+                      Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              left: 25,
+                              top: 2,
                             ),
-                            Text(
-                              "data",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            _loadChart
-                                ? PieChart(
-                                    dataMap: data,
-                                    colorList: _colors,
-                                    animationDuration:
-                                        Duration(milliseconds: 1500),
-                                    chartLegendSpacing: 32.0,
-                                    chartRadius:
-                                        MediaQuery.of(context).size.width / 2.7,
-                                    showChartValuesInPercentage: true,
-                                    showChartValues: true,
-                                    showChartValuesOutside: false,
-                                    chartValueBackgroundColor: Colors.grey[200],
-                                    showLegends: true,
-                                    legendPosition: LegendPosition.right,
-                                    decimalPlaces: 1,
-                                    showChartValueLabel: true,
-                                    initialAngle: 0,
-                                    chartValueStyle:
-                                        defaultChartValueStyle.copyWith(
-                                      color:
-                                          Colors.blueGrey[900].withOpacity(0.9),
-                                    ),
-                                    chartType: ChartType.disc,
-                                  )
-                                : SizedBox(
-                                    height: 150,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Report Summary',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30.0,
+                                    fontFamily: "Circular Air Light",
+                                    letterSpacing: 1.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: RaisedButton(
-                                color: Color(0xff27496d),
-                                child: Text(
-                                  'Click to Show Chart',
-                                  style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: () {
-                                  setState(
-                                    () {
-                                      _loadChart = true;
-                                      data.addAll(
-                                        {
-                                          'Calm': _feedback["Calm"].toDouble(),
-                                          'Happy':
-                                              _feedback["Happy"].toDouble(),
-                                          'Surprised':
-                                              _feedback["Surprised"].toDouble(),
-                                          'Funny':
-                                              _feedback["Funny"].toDouble(),
-                                          'Unknown':
-                                              _feedback["Unknown"].toDouble(),
-                                        },
-                                      );
-                                    },
+                              ],
+                            ),
+                          ),
+                          // SizedBox(
+                          //   height: 20,
+                          // ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 20,
+                              bottom: 15,
+                              left: 15,
+                              right: 15,
+                            ),
+                            child: Container(
+                              height: 160,
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                padding: EdgeInsets.only(
+                                  left: 16,
+                                  right: 6,
+                                ),
+                                itemCount: _colors.length,
+                                itemBuilder: (context, index) {
+                                  return Container(
+                                    margin: EdgeInsets.only(right: 20),
+                                    //height: 10,
+                                    width: 210,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(28),
+                                      color: _colors[index],
+                                    ),
+                                    child: Stack(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 10, left: 20),
+                                                    child: Image.asset(
+                                                      'assets/images/' +
+                                                          pic[index]
+                                                              .toString() +
+                                                          '.png',
+                                                      height: 50,
+                                                      width: 50,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 10.0, left: 15),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: <Widget>[
+                                                    Text(
+                                                      pic[index],
+                                                      style: TextStyle(
+                                                          fontSize: 25,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              Colors.black38),
+                                                    ),
+                                                    // Text(
+                                                    //   _feedback[pic[index]].toString(),
+                                                    //   style: TextStyle(
+                                                    //       fontSize: 30,
+                                                    //       fontWeight:
+                                                    //           FontWeight.bold, color: Colors.black38),
+                                                    // )
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    right: 10.0),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: <Widget>[
+                                                    Text(
+                                                      _feedback[pic[index]]
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          fontSize: 35,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              Colors.black38),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   );
-                                  print(_feedback);
                                 },
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Container(
-                                width: 300,
-                                decoration: BoxDecoration(
-                                  color: Color(0xfffe3dfc8),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(10),
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              FlatButton(
+                                onPressed: () {
+                                  _showFeedbackAlert();
+                                },
+                                child: Container(
+                                  height: 50,
+                                  width: 130,
+                                  decoration: BoxDecoration(
+                                    color: Colors.orange,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(
+                                        "Show Feedback",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                        ),
+                                      )
+                                    ],
                                   ),
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: DataTable(
-                                    columns: <DataColumn>[
-                                      DataColumn(
-                                        label: Text(
-                                          "Feedback",
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.black,
+                              )
+                              // RaisedButton(
+                              //   textColor: Colors.white,
+                              //   color: Colors.amber,
+                              //   onPressed: () {},
+                              //   child: new Text("Show Feedback"),
+                              // ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 15,
+                            ),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.46,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft:
+                                      Radius.circular(isDrawerOpen ? 40 : 0.0),
+                                  topLeft: Radius.circular(60),
+                                  topRight: Radius.circular(60),
+                                ),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 5),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 9,
+                                        left: 40,
+                                        right: 40,
+                                      ),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: <Widget>[
+                                              Text(
+                                                "Feedback Statistic",
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              FlatButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    _loadChart = true;
+                                                    data.addAll(
+                                                      {
+                                                        'Calm':
+                                                            _feedback["Calm"]
+                                                                .toDouble(),
+                                                        'Happy':
+                                                            _feedback["Happy"]
+                                                                .toDouble(),
+                                                        'Surprised': _feedback[
+                                                                "Surprised"]
+                                                            .toDouble(),
+                                                        'Funny':
+                                                            _feedback["Funny"]
+                                                                .toDouble(),
+                                                        'Unknown':
+                                                            _feedback["Unknown"]
+                                                                .toDouble(),
+                                                      },
+                                                    );
+                                                  });
+                                                },
+                                                child: Container(
+                                                  height: 40,
+                                                  width: 100,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.blueGrey,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: <Widget>[
+                                                      Text(
+                                                        "Show Chart",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.white),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              )
+                                            ],
                                           ),
+                                          // SizedBox(
+                                          //   height: 15,
+                                          // ),
+                                          _loadChart
+                                              ? PieChart(
+                                                  dataMap: data,
+                                                  colorList: _colors,
+                                                  animationDuration: Duration(
+                                                      milliseconds: 1500),
+                                                  chartLegendSpacing: 32.0,
+                                                  chartRadius:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .width /
+                                                          2.7,
+                                                  showChartValuesInPercentage:
+                                                      true,
+                                                  showChartValues: true,
+                                                  showChartValuesOutside: false,
+                                                  chartValueBackgroundColor:
+                                                      Colors.grey[200],
+                                                  showLegends: true,
+                                                  legendPosition:
+                                                      LegendPosition.right,
+                                                  decimalPlaces: 1,
+                                                  showChartValueLabel: true,
+                                                  initialAngle: 0,
+                                                  chartValueStyle:
+                                                      defaultChartValueStyle
+                                                          .copyWith(
+                                                    color: Colors.blueGrey[900]
+                                                        .withOpacity(0.9),
+                                                  ),
+                                                  chartType: ChartType.disc,
+                                                )
+                                              : SizedBox(),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
+                                      child: Container(
+                                        height: 50,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xffE09543),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                left: 15,
+                                                right: 15,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: <Widget>[
+                                                  Text(
+                                                    "Feedback History",
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 18),
+                                                  ),
+                                                  Text(
+                                                    _countRate.toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 18),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                      DataColumn(
-                                        label: Text(
-                                          "Number",
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                    rows: <DataRow>[
-                                      DataRow(
-                                        cells: <DataCell>[
-                                          DataCell(
-                                            Text(
-                                              "Calm",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                          DataCell(
-                                            Text(
-                                              _feedback["Calm"].toString(),
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      DataRow(
-                                        cells: <DataCell>[
-                                          DataCell(
-                                            Text(
-                                              "Happy",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                          DataCell(
-                                            Text(
-                                              _feedback["Happy"].toString(),
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      DataRow(
-                                        cells: <DataCell>[
-                                          DataCell(
-                                            Text(
-                                              "Surprised",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                          DataCell(
-                                            Text(
-                                              _feedback["Surprised"].toString(),
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      DataRow(
-                                        cells: <DataCell>[
-                                          DataCell(
-                                            Text(
-                                              "Funny",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                          DataCell(
-                                            Text(
-                                              _feedback["Funny"].toString(),
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      DataRow(
-                                        cells: <DataCell>[
-                                          DataCell(
-                                            Text(
-                                              "Unknown",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                          DataCell(
-                                            Text(
-                                              _feedback["Unknown"].toString(),
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                      )
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ],
@@ -381,6 +527,223 @@ class _DetailFeedbackState extends State<DetailFeedback> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  _showFeedbackAlert() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text("Feedback Summary"),
+            // Icon(Icons.cancel,)
+          ],
+        ),
+        content: Container(
+          height: 320,
+          width: 300,
+          // ListView.builder(
+          //   scrollDirection: Axis.vertical,
+          //   itemCount: pic.length,
+          //   itemBuilder: (context, index) {
+          //     return DataTable(
+          //       columns: <DataColumn>[
+          //         DataColumn(
+          //           label: Text(
+          //             "Feedback",
+          //             style: TextStyle(
+          //               fontSize: 20,
+          //               color: Colors.black,
+          //             ),
+          //           ),
+          //         ),
+          //         DataColumn(
+          //           label: Text(
+          //             "Number",
+          //             style: TextStyle(
+          //               fontSize: 20,
+          //               color: Colors.black,
+          //             ),
+          //           ),
+          //         ),
+          //       ],
+          //       rows: <DataRow>[
+          //         DataRow(
+          //           cells: <DataCell>[
+          //             DataCell(
+          //               Text(
+          //                 pic[index],
+          //                 style: TextStyle(
+          //                   fontSize: 15,
+          //                   color: Colors.black,
+          //                 ),
+          //               ),
+          //             ),
+          //             DataCell(
+          //               Text(
+          //                 _feedback[pic[index]].toString(),
+          //                 style: TextStyle(
+          //                   fontSize: 15,
+          //                   color: Colors.black,
+          //                 ),
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ],
+          //     );
+          //   },
+          // ),
+
+          child: ListView(
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                    child: DataTable(
+                      columns: <DataColumn>[
+                        DataColumn(
+                          label: Text(
+                            "Feedback",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        DataColumn(
+                          label: Text(
+                            "Number",
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                      rows: <DataRow>[
+                        DataRow(
+                          cells: <DataCell>[
+                            DataCell(
+                              Text(
+                                "Calm",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            DataCell(
+                              Text(
+                                _feedback["Calm"].toString(),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        DataRow(
+                          cells: <DataCell>[
+                            DataCell(
+                              Text(
+                                "Happy",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            DataCell(
+                              Text(
+                                _feedback["Happy"].toString(),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        DataRow(
+                          cells: <DataCell>[
+                            DataCell(
+                              Text(
+                                "Surprised",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            DataCell(
+                              Text(
+                                _feedback["Surprised"].toString(),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        DataRow(
+                          cells: <DataCell>[
+                            DataCell(
+                              Text(
+                                "Funny",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            DataCell(
+                              Text(
+                                _feedback["Funny"].toString(),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        DataRow(
+                          cells: <DataCell>[
+                            DataCell(
+                              Text(
+                                "Unknown",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            DataCell(
+                              Text(
+                                _feedback["Unknown"].toString(),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

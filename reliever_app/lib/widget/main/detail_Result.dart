@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:relieverapp/database/feedback_firestore_service.dart';
+import 'package:relieverapp/model/feedback.dart';
 
 import './chooseClipMain.dart';
 import '../../widget/percent.dart';
@@ -16,6 +18,49 @@ class _DescriptionResultState extends State<DescriptionResult> {
   double yOffset = 0;
   double scaleFactor = 1;
   bool isDrawerOpen = false;
+  final List<String> pic = ['Calm', 'Surprised', 'Funny', 'Sleepy'];
+  final _key = GlobalKey<ScaffoldState>();
+  final _formKey = GlobalKey<FormState>();
+  String _rate = "";
+  DateTime _date;
+
+  final PageController _pageController = PageController(initialPage: 0);
+  int _currentPage = 0;
+  final int _numPage = 2;
+
+  List<Widget> _buildPageIndicator() {
+    List<Widget> list = [];
+    for (int i = 0; i < _numPage; i++) {
+      list.add(
+        i == _currentPage ? _indicator(true) : _indicator(false),
+      );
+    }
+    return list;
+  }
+
+  Widget _indicator(bool isActive) {
+    return AnimatedContainer(
+      duration: Duration(
+        microseconds: 150,
+      ),
+      margin: EdgeInsets.symmetric(horizontal: 8.0),
+      height: 8.0,
+      width: isActive ? 24.0 : 16.0,
+      decoration: BoxDecoration(
+        color: isActive ? Colors.black : Colors.red,
+        borderRadius: BorderRadius.all(
+          Radius.circular(12),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _date = DateTime.now();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,57 +143,112 @@ class _DescriptionResultState extends State<DescriptionResult> {
                           ],
                         ),
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.height,
-                        height: MediaQuery.of(context).size.height - 170,
-                        decoration: BoxDecoration(
-                          borderRadius: isDrawerOpen
-                              ? BorderRadius.circular(40)
-                              : BorderRadius.only(
-                                  topLeft: Radius.circular(60.0),
-                                  topRight: Radius.circular(60.0),
-                                ),
-                          color: Colors.white,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: ListView(
-                            children: <Widget>[
-                              MoodText(),
-                              Padding(
-                                padding: const EdgeInsets.all(0.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              width: MediaQuery.of(context).size.height,
+                              height: MediaQuery.of(context).size.height * 0.7,
+                              decoration: BoxDecoration(
+                                borderRadius: isDrawerOpen
+                                    ? BorderRadius.circular(40)
+                                    : BorderRadius.only(
+                                        topLeft: Radius.circular(20.0),
+                                        topRight: Radius.circular(20.0),
+                                        bottomLeft: Radius.circular(20.0),
+                                        bottomRight: Radius.circular(20.0),
+                                      ),
+                                color: Colors.white,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child:
+                                    // Column(
+                                    //   children: <Widget>[
+                                    PageView(
+                                  physics: ClampingScrollPhysics(),
+                                  controller: _pageController,
+                                  onPageChanged: (int page) {
+                                    setState(() {
+                                      _currentPage = page;
+                                    });
+                                  },
                                   children: <Widget>[
-                                    Stack(
+                                    Column(
+                                      //crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
-                                        Container(
-                                          width: 220,
-                                          height: 260,
-                                          alignment: Alignment.center,
-                                          child: PercentHandler(),
+                                        MoodText(),
+                                        SizedBox(
+                                          height: 20,
                                         ),
-                                        Container(
-                                          width: 220,
-                                          height: 240,
-                                          alignment: Alignment.center,
-                                          child: StressLevelHandler(),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Stack(
+                                              children: <Widget>[
+                                                Container(
+                                                  width: 220,
+                                                  height: 260,
+                                                  alignment: Alignment.center,
+                                                  child: PercentHandler(),
+                                                ),
+                                                Container(
+                                                  width: 220,
+                                                  height: 240,
+                                                  alignment: Alignment.center,
+                                                  child: StressLevelHandler(),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        ActivityText(),
+                                        SizedBox(
+                                          height: 30,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: ChooseClipMain(),
+                                        ),
+                                        SizedBox(
+                                          height: 50,
+                                        ),
+                                        RaisedButton(
+                                          padding: const EdgeInsets.all(8.0),
+                                          textColor: Colors.white,
+                                          color: Colors.brown,
+                                          onPressed: () {
+                                            print("object");
+
+                                            _showRatingVideo();
+                                          },
+                                          child: new Text("Rate Video"),
                                         ),
                                       ],
                                     ),
                                   ],
                                 ),
                               ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              ActivityText(),
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: ChooseClipMain(),
-                              ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: _buildPageIndicator(),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -156,6 +256,98 @@ class _DescriptionResultState extends State<DescriptionResult> {
                 ),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  _showRatingVideo() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Rate Video"),
+        content: Container(
+          key: _key,
+          height: 250,
+          width: 300,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Container(
+                height: 100,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: pic.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          FlatButton(
+                            onPressed: () {
+                              print(pic[index]);
+                              _rate = pic[index];
+                            },
+                            child: Container(
+                              height: 80,
+                              width: 80,
+                              color: Colors.white,
+                              child: Column(
+                                children: <Widget>[
+                                  Image.asset(
+                                    'assets/images/' +
+                                        pic[index].toString() +
+                                        '.png',
+                                    height: 50,
+                                    width: 50,
+                                  ),
+                                  SizedBox(
+                                    height: 4,
+                                  ),
+                                  Text(pic[index].toString())
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              FlatButton(
+                onPressed: () async {
+                  setState(() {
+                    if (_rate == "") {
+                      _rate = "unknown";
+                    }
+                  });
+                  print("check: " + _rate);
+
+                  await rateDBS.createItem(
+                    FeedbackModel(
+                      rate: _rate,
+                      rateDate: _date,
+                    ),
+                  );
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Save Feedback",
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Colors.orange,
+              ),
+            ],
           ),
         ],
       ),
