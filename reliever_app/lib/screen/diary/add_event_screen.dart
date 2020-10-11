@@ -102,7 +102,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                             horizontal: 20,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Color(0xfff5f2ed),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           padding: EdgeInsets.all(30),
@@ -117,8 +117,8 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                 style: style,
                                 decoration: InputDecoration(
                                   labelText: "Title",
-                                  filled: true,
-                                  fillColor: Colors.white,
+                                  // filled: true,
+                                  // fillColor: Colors.white,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -159,7 +159,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                     setState(
                                       () {
                                         _eventDate = picked;
-                                        print("object");
+                                        // print("object");
                                         print(widget.note);
                                       },
                                     );
@@ -178,8 +178,8 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                       child: Material(
                                         elevation: 5.0,
                                         borderRadius:
-                                            BorderRadius.circular(30.0),
-                                        color: Color(0xFFf5b971),
+                                            BorderRadius.circular(10.0),
+                                        color: Color(0xFFecb45b),
                                         child: MaterialButton(
                                           onPressed: () async {
                                             if (_formKey.currentState
@@ -221,7 +221,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                           child: Text(
                                             "Save",
                                             style: style.copyWith(
-                                              color: Color(0xFF222831),
+                                              color: Colors.black,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 20,
                                             ),

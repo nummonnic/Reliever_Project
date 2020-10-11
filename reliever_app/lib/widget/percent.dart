@@ -65,24 +65,19 @@ class _percentHandlerState extends State<PercentHandler> {
             return Column(
               children: <Widget>[
                 CircularPercentIndicator(
-                  radius: 200.0,
+                  radius: 170.0,
                   progressColor: Color(0xffa14e2d),
                   percent: percent,
                   animation: true,
-                  lineWidth: 15,
+                  lineWidth: 10,
                   circularStrokeCap: CircularStrokeCap.round,
-                  //center: Text(percentText,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-
-                  // center: Text(
-                  //   percentTextShow + "%",
-                  //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  // ),
+                  
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(0.0),
                   child: Text(
                     stressName,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                 ),
               ],

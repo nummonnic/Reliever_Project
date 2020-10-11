@@ -73,7 +73,7 @@ class _ActivityState extends State<ActivityClip> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.25,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: numbers.length,
@@ -81,7 +81,7 @@ class _ActivityState extends State<ActivityClip> {
           return Padding(
             padding: EdgeInsets.all(20.0),
             child: Container(
-              width: 200,
+              width: 150,
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(18.0),
@@ -89,9 +89,14 @@ class _ActivityState extends State<ActivityClip> {
                 color: Color(0xffc98a3c),
                 child: Container(
                   child: Center(
-                    child: Text(
-                      numbers[index].toString(),
-                      style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          numbers[index].toString(),
+                          style: TextStyle(color: Colors.white, fontSize: 17.0),
+                        ),
+                      ],
                     ),
                   ),
                 ),

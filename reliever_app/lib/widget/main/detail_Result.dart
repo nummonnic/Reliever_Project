@@ -64,202 +64,411 @@ class _DescriptionResultState extends State<DescriptionResult> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      decoration: BoxDecoration(
+        color: Color(0xff1a3c5a),
+        borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0),
+      ),
+      transform: Matrix4.translationValues(xOffset, yOffset, 0)
+        ..scale(scaleFactor),
+      duration: Duration(milliseconds: 250),
       child: Stack(
         children: <Widget>[
-          AnimatedContainer(
-            decoration: BoxDecoration(
-              color: Color(0xff27496d),
-              borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0),
-            ),
-            transform: Matrix4.translationValues(xOffset, yOffset, 0)
-              ..scale(scaleFactor),
-            duration: Duration(milliseconds: 250),
-            child: ListView(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 10.0, right: 10.0, bottom: 3.0),
-                  child: Row(
-                    children: [
-                      isDrawerOpen
-                          ? IconButton(
-                              icon: Icon(
-                                Icons.arrow_back_ios,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                setState(
-                                  () {
-                                    xOffset = 0;
-                                    yOffset = 0;
-                                    scaleFactor = 1;
-                                    isDrawerOpen = false;
-                                  },
-                                );
-                              },
+          Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 10.0,
+                  right: 10.0,
+                  bottom: 0.0,
+                  top: 23.0,
+                ),
+                child: Row(
+                  children: [
+                    isDrawerOpen
+                        ? IconButton(
+                            icon: Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(
+                                () {
+                                  xOffset = 0;
+                                  yOffset = 0;
+                                  scaleFactor = 1;
+                                  isDrawerOpen = false;
+                                },
+                              );
+                            },
+                          )
+                        : IconButton(
+                            icon: Icon(
+                              Icons.menu,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(
+                                () {
+                                  xOffset = 230;
+                                  yOffset = 150;
+                                  scaleFactor = 0.6;
+                                  isDrawerOpen = true;
+                                },
+                              );
+                            },
+                          ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 35,
+                  bottom: 15,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Stress Level',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35.0,
+                        fontFamily: "Circular Air Light",
+                        letterSpacing: 1.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 120,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.637,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: isDrawerOpen
+                          ? BorderRadius.only(
+                              topLeft: Radius.circular(50.0),
+                              topRight: Radius.circular(50.0),
+                              bottomLeft: Radius.circular(40),
                             )
-                          : IconButton(
-                              icon: Icon(
-                                Icons.menu,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                setState(
-                                  () {
-                                    xOffset = 230;
-                                    yOffset = 150;
-                                    scaleFactor = 0.6;
-                                    isDrawerOpen = true;
-                                  },
-                                );
-                              },
+                          : BorderRadius.only(
+                              topLeft: Radius.circular(50.0),
+                              topRight: Radius.circular(50.0),
                             ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(0.0),
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 20,
-                          bottom: 20,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 100,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Stress Level',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 40.0,
-                                fontFamily: "Circular Air Light",
-                                letterSpacing: 1.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+                        ActivityText(),
+                        Padding(
+                          padding: const EdgeInsets.all(0.0),
+                          child: ChooseClipMain(),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Container(
-                              width: MediaQuery.of(context).size.height,
-                              height: MediaQuery.of(context).size.height * 0.7,
-                              decoration: BoxDecoration(
-                                borderRadius: isDrawerOpen
-                                    ? BorderRadius.circular(40)
-                                    : BorderRadius.only(
-                                        topLeft: Radius.circular(20.0),
-                                        topRight: Radius.circular(20.0),
-                                        bottomLeft: Radius.circular(20.0),
-                                        bottomRight: Radius.circular(20.0),
-                                      ),
-                                color: Colors.white,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child:
-                                    // Column(
-                                    //   children: <Widget>[
-                                    PageView(
-                                  physics: ClampingScrollPhysics(),
-                                  controller: _pageController,
-                                  onPageChanged: (int page) {
-                                    setState(() {
-                                      _currentPage = page;
-                                    });
-                                  },
-                                  children: <Widget>[
-                                    Column(
-                                      //crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        MoodText(),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Stack(
-                                              children: <Widget>[
-                                                Container(
-                                                  width: 220,
-                                                  height: 260,
-                                                  alignment: Alignment.center,
-                                                  child: PercentHandler(),
-                                                ),
-                                                Container(
-                                                  width: 220,
-                                                  height: 240,
-                                                  alignment: Alignment.center,
-                                                  child: StressLevelHandler(),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        ActivityText(),
-                                        SizedBox(
-                                          height: 30,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: ChooseClipMain(),
-                                        ),
-                                        SizedBox(
-                                          height: 50,
-                                        ),
-                                        RaisedButton(
-                                          padding: const EdgeInsets.all(8.0),
-                                          textColor: Colors.white,
-                                          color: Colors.brown,
-                                          onPressed: () {
-                                            print("object");
+                        SizedBox(
+                          height: 0,
+                        ),
 
-                                            _showRatingVideo();
-                                          },
-                                          child: new Text("Rate Video"),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: _buildPageIndicator(),
-                            ),
-                          ],
-                        ),
+                        // RaisedButton(
+                        //   padding: const EdgeInsets.all(0.0),
+                        //   textColor: Colors.white,
+                        //   color: Colors.brown,
+                        //   onPressed: () {
+                        //     _showRatingVideo();
+                        //   },
+                        //   // child: new Text("Rate Video"),
+                        //   child: Container(
+
+                        //   ),
+                        // ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 5.6,
+              ),
+              Center(
+                child: Container(
+                  height: 260,
+                  width: MediaQuery.of(context).size.width / 1.08,
+                  decoration: BoxDecoration(
+                    color: Color(0xffe1dacb),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Stack(
+                        children: <Widget>[
+                          Container(
+                            width: 220,
+                            height: 200,
+                            alignment: Alignment.center,
+                            child: PercentHandler(),
+                          ),
+                          Container(
+                            width: 220,
+                            height: 200,
+                            alignment: Alignment.center,
+                            child: StressLevelHandler(),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 2.95,
+              ),
+              RaisedButton(
+                padding: const EdgeInsets.all(0.0),
+                // textColor: Colors.white,
+                // color: Colors.brown,
+                color: Colors.white,
+                onPressed: () {
+                  _showRatingVideo();
+                },
+                // child: new Text("Rate Video"),
+                child: Container(
+                  height: 50,
+                  width: 130,
+                  decoration: BoxDecoration(
+                      color: Color(0xffc2452c),
+                      borderRadius: BorderRadius.circular(10)
+                      // shape: BoxShape.circle,
+                      ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      new Text("Rate Video",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                          )),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
+
+    // return Container(
+    //   child: Stack(
+    //     children: <Widget>[
+    //       AnimatedContainer(
+    //         decoration: BoxDecoration(
+    //           color: Color(0xff27496d),
+    //           borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0),
+    //         ),
+    //         transform: Matrix4.translationValues(xOffset, yOffset, 0)
+    //           ..scale(scaleFactor),
+    //         duration: Duration(milliseconds: 250),
+    //         child: ListView(
+    //           children: <Widget>[
+    //             Padding(
+    //               padding: const EdgeInsets.only(
+    //                   left: 10.0, right: 10.0, bottom: 3.0),
+    //               child: Row(
+    //                 children: [
+    //                   isDrawerOpen
+    //                       ? IconButton(
+    //                           icon: Icon(
+    //                             Icons.arrow_back_ios,
+    //                             color: Colors.white,
+    //                           ),
+    //                           onPressed: () {
+    //                             setState(
+    //                               () {
+    //                                 xOffset = 0;
+    //                                 yOffset = 0;
+    //                                 scaleFactor = 1;
+    //                                 isDrawerOpen = false;
+    //                               },
+    //                             );
+    //                           },
+    //                         )
+    //                       : IconButton(
+    //                           icon: Icon(
+    //                             Icons.menu,
+    //                             color: Colors.white,
+    //                           ),
+    //                           onPressed: () {
+    //                             setState(
+    //                               () {
+    //                                 xOffset = 230;
+    //                                 yOffset = 150;
+    //                                 scaleFactor = 0.6;
+    //                                 isDrawerOpen = true;
+    //                               },
+    //                             );
+    //                           },
+    //                         ),
+    //                 ],
+    //               ),
+    //             ),
+    //             Padding(
+    //               padding: const EdgeInsets.all(0.0),
+    //               child: Column(
+    //                 children: <Widget>[
+    //                   Padding(
+    //                     padding: const EdgeInsets.only(
+    //                       left: 20,
+    //                       bottom: 20,
+    //                     ),
+    //                     child: Row(
+    //                       mainAxisAlignment: MainAxisAlignment.start,
+    //                       children: <Widget>[
+    //                         Text(
+    //                           'Stress Level',
+    //                           style: TextStyle(
+    //                             color: Colors.white,
+    //                             fontSize: 40.0,
+    //                             fontFamily: "Circular Air Light",
+    //                             letterSpacing: 1.0,
+    //                             fontWeight: FontWeight.bold,
+    //                           ),
+    //                         ),
+    //                       ],
+    //                     ),
+    //                   ),
+    //                   Padding(
+    //                     padding: const EdgeInsets.all(20.0),
+    //                     child: Column(
+    //                       mainAxisAlignment: MainAxisAlignment.center,
+    //                       children: <Widget>[
+    //                         Container(
+    //                           width: MediaQuery.of(context).size.height,
+    //                           height: MediaQuery.of(context).size.height * 0.7,
+    //                           decoration: BoxDecoration(
+    //                             borderRadius: isDrawerOpen
+    //                                 ? BorderRadius.circular(40)
+    //                                 : BorderRadius.only(
+    //                                     topLeft: Radius.circular(20.0),
+    //                                     topRight: Radius.circular(20.0),
+    //                                     bottomLeft: Radius.circular(20.0),
+    //                                     bottomRight: Radius.circular(20.0),
+    //                                   ),
+    //                             color: Colors.white,
+    //                           ),
+    //                           child: Padding(
+    //                             padding: const EdgeInsets.all(20.0),
+    //                             child:
+    //                                 // Column(
+    //                                 //   children: <Widget>[
+    //                                 PageView(
+    //                               physics: ClampingScrollPhysics(),
+    //                               controller: _pageController,
+    //                               onPageChanged: (int page) {
+    //                                 setState(() {
+    //                                   _currentPage = page;
+    //                                 });
+    //                               },
+    //                               children: <Widget>[
+    //                                 Column(
+    //                                   //crossAxisAlignment: CrossAxisAlignment.center,
+    //                                   mainAxisAlignment:
+    //                                       MainAxisAlignment.center,
+    //                                   children: <Widget>[
+    //                                     MoodText(),
+    //                                     SizedBox(
+    //                                       height: 20,
+    //                                     ),
+    //                                     Row(
+    //                                       mainAxisAlignment:
+    //                                           MainAxisAlignment.center,
+    //                                       children: <Widget>[
+    //                                         Stack(
+    //                                           children: <Widget>[
+    //                                             Container(
+    //                                               width: 220,
+    //                                               height: 260,
+    //                                               alignment: Alignment.center,
+    //                                               child: PercentHandler(),
+    //                                             ),
+    //                                             Container(
+    //                                               width: 220,
+    //                                               height: 240,
+    //                                               alignment: Alignment.center,
+    //                                               child: StressLevelHandler(),
+    //                                             ),
+    //                                           ],
+    //                                         ),
+    //                                       ],
+    //                                     ),
+    //                                   ],
+    //                                 ),
+    //                                 Column(
+    //                                   mainAxisAlignment:
+    //                                       MainAxisAlignment.center,
+    //                                   children: <Widget>[
+    //                                     ActivityText(),
+    //                                     SizedBox(
+    //                                       height: 30,
+    //                                     ),
+    //                                     Padding(
+    //                                       padding: const EdgeInsets.all(10.0),
+    //                                       child: ChooseClipMain(),
+    //                                     ),
+    //                                     SizedBox(
+    //                                       height: 50,
+    //                                     ),
+    //                                     RaisedButton(
+    //                                       padding: const EdgeInsets.all(8.0),
+    //                                       textColor: Colors.white,
+    //                                       color: Colors.brown,
+    //                                       onPressed: () {
+    //                                         print("object");
+
+    //                                         _showRatingVideo();
+    //                                       },
+    //                                       child: new Text("Rate Video"),
+    //                                     ),
+    //                                   ],
+    //                                 ),
+    //                               ],
+    //                             ),
+    //                           ),
+    //                         ),
+    //                         SizedBox(
+    //                           height: 30,
+    //                         ),
+    //                         Row(
+    //                           mainAxisAlignment: MainAxisAlignment.center,
+    //                           children: _buildPageIndicator(),
+    //                         ),
+    //                       ],
+    //                     ),
+    //                   ),
+    //                 ],
+    //               ),
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 
   _showRatingVideo() {
@@ -269,7 +478,7 @@ class _DescriptionResultState extends State<DescriptionResult> {
         title: Text("Rate Video"),
         content: Container(
           key: _key,
-          height: 250,
+          height: 130,
           width: 300,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -387,16 +596,19 @@ class ActivityText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text('Suggested Activities',
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xff27496d))),
+            Text(
+              'Suggested Activities',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w800,
+                color: Color(0xff27496d),
+              ),
+            ),
           ],
         ),
       ),

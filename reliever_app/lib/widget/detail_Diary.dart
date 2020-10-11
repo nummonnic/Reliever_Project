@@ -253,7 +253,7 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
                               borderRadius: BorderRadius.circular(40),
                               color: Color(0xffc98a3c),
                             ),
-                            height: 280,
+                            height: MediaQuery.of(context).size.height * 0.28,
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: ListView(
