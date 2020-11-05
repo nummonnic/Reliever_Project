@@ -85,7 +85,7 @@ class EventDetailsPage extends StatelessWidget {
                                 child: Column(
                                   children: <Widget>[
                                     Text(
-                                      event.title,
+                                      event.emotion,
                                       style: TextStyle(
                                         fontSize: 40,
                                         color: Colors.black,
