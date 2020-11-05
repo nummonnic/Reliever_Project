@@ -24,7 +24,7 @@ class _RateVideoState extends State<RateVideo> {
 
     'Calm',
     // 'Happy',
-    'Surprised',
+    'Nothing',
     'Funny',
     'Sleepy'
   ];

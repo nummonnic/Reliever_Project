@@ -43,7 +43,7 @@ class _ActivityState extends State<ActivityClip3> {
 
     'Calm',
     // 'Happy',
-    'Surprised',
+    'Nothing',
     'Funny',
     'Sleepy'
   ];

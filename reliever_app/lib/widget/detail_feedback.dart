@@ -22,7 +22,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
   DateTime _date;
   Map<String, double> map = Map();
   Map<String, double> _feedback = Map();
-  final List<String> pic = ['Calm', 'Surprised', 'Funny', 'Sleepy', 'Calm'];
+  final List<String> pic = ['Calm', 'Nothing', 'Funny', 'Happy', 'Unknown'];
   // Map<String, double> _colors = Map();
   var test = "";
   var listRates = [];
@@ -75,11 +75,11 @@ class _DetailFeedbackState extends State<DetailFeedback> {
   }
 
   List<Color> _colors = [
-    Color(0xffebc34d),
-    Color(0xffe7e2dd),
-    Color(0xff7698a0),
-    Color(0xffbeb795),
-    Color(0xff3c3c54),
+    Color(0xffe8a44e),
+    Color(0xff4763a5),
+    Color(0xffea5c5d),
+    Color(0xff8fd2e6),
+    Color(0xffece53a),
   ];
 
   @override
@@ -316,7 +316,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                   height: 50,
                                   width: 130,
                                   decoration: BoxDecoration(
-                                    color: Colors.orange,
+                                    color: Colors.blueGrey,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Column(
@@ -390,15 +390,16 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                                         'Calm':
                                                             _feedback["Calm"]
                                                                 .toDouble(),
-                                                        'Happy':
-                                                            _feedback["Happy"]
-                                                                .toDouble(),
                                                         'Nothing': _feedback[
-                                                                "Surprised"]
+                                                                "Nothing"]
                                                             .toDouble(),
                                                         'Funny':
                                                             _feedback["Funny"]
                                                                 .toDouble(),
+                                                        'Happy':
+                                                            _feedback["Happy"]
+                                                                .toDouble(),
+
                                                         'Unknown':
                                                             _feedback["Unknown"]
                                                                 .toDouble(),
@@ -477,7 +478,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                       child: Container(
                                         height: 50,
                                         decoration: BoxDecoration(
-                                          color: Color(0xffE09543),
+                                          color: Color(0xffe94e4f),
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),

@@ -55,20 +55,20 @@ class EventDetailsPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Container(
-                          height: 130,
-                          width: 130,
-                          color: Colors.brown,
-                          child: Center(
-                            child: Text(
-                              "photo",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ),
+                        // Container(
+                        //   height: 130,
+                        //   width: 130,
+                        //   color: Colors.brown,
+                        //   child: Center(
+                        //     child: Text(
+                        //       "photo",
+                        //       style: TextStyle(
+                        //         color: Colors.white,
+                        //         fontSize: 20,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                     Padding(
