@@ -48,8 +48,8 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
             return Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
               child: Container(
-                width: 150,
-                height: 150,
+                width: 120,
+                height: 120,
                 child: Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(

@@ -44,7 +44,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( 
       key: _key,
       body: Container(
         key: _formKey,

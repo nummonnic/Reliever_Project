@@ -250,22 +250,27 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                                       MainAxisAlignment
                                                           .spaceBetween,
                                                   children: <Widget>[
-                                                    Text(
-                                                      pic[index],
-                                                      style: TextStyle(
-                                                          fontSize: 25,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color:
-                                                              Colors.black38),
-                                                    ),
-                                                    // Text(
-                                                    //   _feedback[pic[index]].toString(),
-                                                    //   style: TextStyle(
-                                                    //       fontSize: 30,
-                                                    //       fontWeight:
-                                                    //           FontWeight.bold, color: Colors.black38),
-                                                    // )
+                                                    index == 1
+                                                        ? Text(
+                                                            "Nothing",
+                                                            style: TextStyle(
+                                                                fontSize: 25,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black38),
+                                                          )
+                                                        : Text(
+                                                            pic[index],
+                                                            style: TextStyle(
+                                                                fontSize: 25,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black38),
+                                                          ),
                                                   ],
                                                 ),
                                               ),
@@ -388,7 +393,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                                         'Happy':
                                                             _feedback["Happy"]
                                                                 .toDouble(),
-                                                        'Surprised': _feedback[
+                                                        'Nothing': _feedback[
                                                                 "Surprised"]
                                                             .toDouble(),
                                                         'Funny':
@@ -674,7 +679,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                           cells: <DataCell>[
                             DataCell(
                               Text(
-                                "Surprised",
+                                "Nothing",
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.black,
