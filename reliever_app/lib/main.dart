@@ -11,7 +11,7 @@ import './screen/diary/result_voice.dart';
 import './widget/main/voice_descript.dart';
 import './screen/chart/feedback_progress.dart';
 import './widget/main/showYoutube.dart';
-import './model/predict_emotion.dart';
+import './screen/summary_diary.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         DetailVoice.routeName: (ctx) => DetailVoice(),
         ProgressScreen.routeName: (ctx) => ProgressScreen(),
         YoutubeVideo.routeName: (ctx) => YoutubeVideo(),
-        PredictEmotion.routeName: (ctx) => PredictEmotion(),
+        SummaryDiary.routeName: (ctx) => SummaryDiary(),
       },
     );
   }

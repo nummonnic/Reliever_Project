@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:relieverapp/model/predict_emotion.dart';
+import 'package:relieverapp/screen/summary_diary.dart';
 import 'package:intl/intl.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 import '../../model/event.dart';
 import '../../database/event_firestore_service.dart';
 import './add_voice_screen.dart';
+import '../../model/predict_emotion.dart';
 
 class AddEventScreen extends StatefulWidget {
   final EventModel note;
@@ -38,35 +37,12 @@ class _AddEventScreenState extends State<AddEventScreen> {
   @override
   void initState() {
     super.initState();
-    _title = TextEditingController(
-        text: widget.note != null ? widget.note.title : "");
-    _description = TextEditingController(
-        text: widget.note != null ? widget.note.description : "");
+    // _title = TextEditingController(
+    //     text: widget.note != null ? widget.note.title : "");
+    // _description = TextEditingController(
+    //     text: widget.note != null ? widget.note.description : "");
     _eventDate = DateTime.now();
     processing = false;
-  }
-
-  //Method to predict the diary
-  Future<String> predictPrice(var body) async {
-    var client = new http.Client();
-    var uri = Uri.parse("https://emotionreliever.herokuapp.com/predict");
-    Map<String, String> headers = {"Content-type": "application/json"};
-    String jsonString = json.encode(body);
-    
-    try {
-      var resp = await client.post(uri, headers: headers, body: jsonString);
-      //var resp=await http.get(Uri.parse("http://192.168.1.101:5000"));
-      if (resp.statusCode == 200) {
-        print("DATA FETCHED SUCCESSFULLY");
-        var result = json.decode(resp.body);
-        print(result["prediction"]);
-        return result["prediction"];
-      }
-    } catch (e) {
-      print("EXCEPTION OCCURRED: $e");
-      return "wow" + null;
-    }
-    return null;
   }
 
   @override
@@ -240,33 +216,28 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                       RaisedButton(
                                         color: Color(0xffecb45b),
                                         onPressed: () async {
-                                          //prediction
+                                          //Initialize value
                                           diary = _description.text;
-                                          var body = [
-                                            {
-                                              "diaryInput": diary,
-                                            }
-                                          ];
-                                          // var resp = await predictPrice(body);
-                                          print(body);
-                                          // print("object: " + resp.toString());
-
                                           selectedDate = DateFormat('yMMMMd')
                                               .format(_eventDate);
-                                          // diary = _description.text;
-                                          print("Predict the emotion");
-                                          // print("Date: " +
-                                          //     selectedDate.toString());
-                                          // print("Diary: " + diary);
-                                          // Navigator.pushNamed(context,
-                                          //     PredictEmotion.routeName);
+
+                                          //prediction
+                                          var body = 
+                                            {'sentance': diary}
+                                          ;
+                                          var resp = await predictEmotion(body);
+                                          // print(body);
+                                          // print("object: " + resp.toString());
+                                          
+                                          //route to summary page
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  PredictEmotion(
+                                                  SummaryDiary(
                                                 selectedDate: selectedDate,
                                                 diary: diary,
+                                                emotion: resp,
                                               ),
                                             ),
                                           );

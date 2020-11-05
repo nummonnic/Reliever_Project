@@ -269,7 +269,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                     );
                     await eventDBS.createItem(
                       EventModel(
-                        title: _titleVoice,
+                        emotion: _titleVoice,
                         description: _descriptVoice,
                         eventDate: _eventDate,
                       ),
