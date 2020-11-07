@@ -5,6 +5,7 @@ import 'package:relieverapp/model/feedback.dart';
 import './chooseClipMain.dart';
 import '../../widget/percent.dart';
 import '../../database/stress_level_handler.dart';
+import 'package:flutter/services.dart';
 
 class DescriptionResult extends StatefulWidget {
   DescriptionResult({Key key}) : super(key: key);
@@ -14,6 +15,14 @@ class DescriptionResult extends StatefulWidget {
 }
 
 class _DescriptionResultState extends State<DescriptionResult> {
+  // @override
+  // void dispose() {
+  //   SystemChrome.setPreferredOrientations([
+  //     DeviceOrientation.portraitDown,
+  //     DeviceOrientation.portraitUp,
+  //   ]);
+  //   super.dispose();
+  // }
   double xOffset = 0; //set X axis and Y axis
   double yOffset = 0;
   double scaleFactor = 1;
@@ -27,7 +36,6 @@ class _DescriptionResultState extends State<DescriptionResult> {
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
   final int _numPage = 2;
-
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
     for (int i = 0; i < _numPage; i++) {
@@ -61,9 +69,15 @@ class _DescriptionResultState extends State<DescriptionResult> {
     super.initState();
     _date = DateTime.now();
   }
-
   @override
   Widget build(BuildContext context) {
+    
+//     SystemChrome.setPreferredOrientations([
+//    DeviceOrientation.portraitDown,
+//    DeviceOrientation.portraitUp,
+//    DeviceOrientation.landscapeRight,
+//     DeviceOrientation.landscapeLeft,
+// ]);
     return AnimatedContainer(
       decoration: BoxDecoration(
         color: Color(0xff1a3c5a),

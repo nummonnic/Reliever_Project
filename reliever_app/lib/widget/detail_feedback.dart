@@ -4,7 +4,7 @@ import 'package:pie_chart/pie_chart.dart';
 
 import '../database/feedback_firestore_service.dart';
 import '../model/feedback.dart';
-
+import 'package:flutter/services.dart';
 class DetailFeedback extends StatefulWidget {
   DetailFeedback({Key key}) : super(key: key);
 
@@ -84,6 +84,12 @@ class _DetailFeedbackState extends State<DetailFeedback> {
 
   @override
   Widget build(BuildContext context) {
+//     SystemChrome.setPreferredOrientations([
+//    DeviceOrientation.portraitDown,
+//    DeviceOrientation.portraitUp,
+//    DeviceOrientation.landscapeRight,
+//     DeviceOrientation.landscapeLeft,
+// ]);
     return Container(
       child: StreamBuilder<List<FeedbackModel>>(
         stream: rateDBS.streamList(),
@@ -123,6 +129,8 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                       color: Color(0xff27496d),
                     ),
                   ),
+                  ListView(
+                   children: <Widget>[
                   Column(
                     children: <Widget>[
                       Padding(
@@ -356,9 +364,12 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                   topRight: Radius.circular(60),
                                 ),
                               ),
+                              
                               child: Padding(
                                 padding: const EdgeInsets.only(bottom: 5),
-                                child: Column(
+                                child :ListView(
+                                  children: <Widget>[
+                                Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
@@ -472,6 +483,9 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                         ],
                                       ),
                                     ),
+                                    SizedBox(
+                            height: 20,
+                          ),
                                     Padding(
                                       padding: const EdgeInsets.only(
                                           left: 10, right: 10),
@@ -482,6 +496,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),
+                                        
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -521,6 +536,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                     ),
                                   ],
                                 ),
+  ])
                               ),
                             ),
                           ),
@@ -528,6 +544,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                       ),
                     ],
                   ),
+  ])
                 ],
               ),
             ),

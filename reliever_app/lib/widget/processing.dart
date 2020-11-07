@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import '../widget/processing_question.dart';
-
+import 'package:flutter/services.dart';
 class Processing extends StatefulWidget {
   Processing({Key key}) : super(key: key);
 
@@ -94,6 +94,12 @@ class _ProcessingState extends State<Processing>
 
   @override
   Widget build(BuildContext context) {
+//     SystemChrome.setPreferredOrientations([
+//    DeviceOrientation.portraitDown,
+//    DeviceOrientation.portraitUp,
+//    DeviceOrientation.landscapeRight,
+//     DeviceOrientation.landscapeLeft,
+// ]);
     var random = new Random();
     var height = MediaQuery.of(context).size.height;
 
@@ -136,6 +142,8 @@ class _ProcessingState extends State<Processing>
               ),
             ],
           ),
+          ListView(
+  children: <Widget>[
           Column(
             children: <Widget>[
               Padding(
@@ -437,9 +445,9 @@ class _ProcessingState extends State<Processing>
           ),
           Column(
             children: <Widget>[
-              SizedBox(
-                height: height * 0.75,
-              ),
+              // SizedBox(
+              //   height: height * 0.75,
+              // ),
               Center(
                 child: Container(
                   height: 120,
@@ -467,7 +475,8 @@ class _ProcessingState extends State<Processing>
                 ),
               ),
             ],
-          ),
+          )
+  ]),
         ],
       ),
     );
