@@ -267,6 +267,7 @@ class _ShowDiaryVoiceState extends State<ShowDiaryVoice> {
                         _descriptVoice = speechDiary;
                       },
                     );
+                    
                     await eventDBS.createItem(
                       EventModel(
                         emotion: _titleVoice,

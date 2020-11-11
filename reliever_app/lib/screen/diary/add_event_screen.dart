@@ -37,10 +37,9 @@ class _AddEventScreenState extends State<AddEventScreen> {
   @override
   void initState() {
     super.initState();
-    // _title = TextEditingController(
-    //     text: widget.note != null ? widget.note.title : "");
     // _description = TextEditingController(
     //     text: widget.note != null ? widget.note.description : "");
+    _description = TextEditingController();
     _eventDate = DateTime.now();
     processing = false;
   }
@@ -220,15 +219,15 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                           diary = _description.text;
                                           selectedDate = DateFormat('yMMMMd')
                                               .format(_eventDate);
+                                          print("test: " + diary);
 
                                           //prediction
-                                          var body = 
-                                            {'sentance': diary}
-                                          ;
+                                          var body = {'sentance': diary};
                                           var resp = await predictEmotion(body);
+                                          // var resp = "test";
                                           // print(body);
                                           // print("object: " + resp.toString());
-                                          
+
                                           //route to summary page
                                           Navigator.push(
                                             context,
@@ -238,6 +237,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                                 selectedDate: selectedDate,
                                                 diary: diary,
                                                 emotion: resp,
+                                                date: _eventDate,
                                               ),
                                             ),
                                           );
@@ -606,10 +606,10 @@ class _AddEventScreenState extends State<AddEventScreen> {
     // );
   }
 
-  @override
-  void dispose() {
-    _title.dispose();
-    _description.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _title.dispose();
+  //   _description.dispose();
+  //   super.dispose();
+  // }
 }
