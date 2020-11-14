@@ -6,6 +6,7 @@ import '../database/event_firestore_service.dart';
 import '../model/event.dart';
 import '../screen/diary/add_event_screen.dart';
 import '../screen/diary/view_event.dart';
+import 'package:flutter/services.dart';
 //import '../widget/try.dart';
 
 class DiaryDetail extends StatefulWidget {
@@ -20,13 +21,25 @@ class _DiaryDetailState extends State<DiaryDetail> {
   double yOffset = 0;
   double scaleFactor = 1;
   bool isDrawerOpen = false;
-
+// @override
+// void initState(){
+//   super.initState();
+//   SystemChrome.setPreferredOrientations([
+//       DeviceOrientation.portraitDown,
+//     DeviceOrientation.portraitUp,
+//   ]);
+// }
   @override
   Widget build(BuildContext context) {
+//     SystemChrome.setPreferredOrientations([
+//    DeviceOrientation.portraitDown,
+//    DeviceOrientation.portraitUp,
+// ]);
     var screenSize = MediaQuery.of(context).size;
     var width = screenSize.width;
     var height = screenSize.height;
-    return AnimatedContainer(
+    return 
+    AnimatedContainer(
       decoration: BoxDecoration(
         color: Color(0xff1a3c5a),
         borderRadius: BorderRadius.circular(isDrawerOpen ? 40 : 0.0),
@@ -35,7 +48,9 @@ class _DiaryDetailState extends State<DiaryDetail> {
         ..scale(scaleFactor),
       duration: Duration(milliseconds: 250),
       child: SafeArea(
-        child: Column(
+        // child:Stack(
+        //   children: <Widget>[
+        child:Column(
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,6 +109,7 @@ class _DiaryDetailState extends State<DiaryDetail> {
             SizedBox(
               height: 5,
             ),
+            
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 3, right: 3,),
@@ -123,6 +139,16 @@ class _DiaryDetailState extends State<DiaryDetail> {
       ),
     );
   }
+  @override
+dispose(){
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  super.dispose();
+}
 }
 
 class DiaryCalenda extends StatefulWidget {
@@ -174,7 +200,8 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return 
+    Container(
       child: StreamBuilder<List<EventModel>>(
         stream: eventDBS.streamList(),
         builder: (context, snapshot) {
@@ -184,7 +211,9 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
               _events = _groupEvents(allEvents);
             }
           }
-          return Column(
+          return 
+
+          Column(
             children: <Widget>[
               Container(
                 child: Padding(
@@ -258,7 +287,7 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
                   ),
                 ),
               ),
-              Expanded(
+                Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),
                   child: Container(
@@ -273,7 +302,7 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
                         left: 30,
                         right: 20,
                       ),
-                      child: Column(
+                      child:Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
@@ -392,10 +421,13 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
                           ),
                         ],
                       ),
+                      
                     ),
                   ),
-                ),
+                )
+                    // ]),
               ),
+  //])
             ],
           );
         },

@@ -51,11 +51,13 @@ class _percentHandlerState extends State<PercentHandler> {
             // var stress = 0;
             double percent = (stress / 15);
             double percentText = percent * 100;
-            if (stress >= 10) {
-              stressName = "Very stress";
-            } else if (stress >= 8) {
-              stressName = "Middle stress";
-            } else if (stress >= 5) {
+            if (stress >= 8) {
+              stressName = "Stress";
+            } 
+            // else if (stress >= 5) {
+            //   stressName = "Middle stress";
+            // } 
+            else if (stress >= 5) {
               stressName = "Normal";
             } else {
               stressName = "Happy";
