@@ -70,14 +70,14 @@ flutter:
    - assets/images/bad1.png
    - assets/normal.png
   # - assets/stress.png
-   - assets/Happy.png
+   - assets/images/Happy.png
    - assets/Calm.png
    - assets/Surprised.png
    - assets/Funny.png
    - assets/Sleepy.png
    - assets/happyLevel.png
    - assets/normalLevel.png
-   - assets/stressLevel.png
+   - assets/images/stressLevel.png
    - assets/vstressLevel.png
    - assets/Work.png
    - assets/Society.png

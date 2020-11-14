@@ -53,7 +53,7 @@ class _stressLevelHandlerState extends State<StressLevelHandler> {
                 child: Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("assets/stressLevel.png"))),
+                          image: AssetImage("assets/images/stressLevel.png"))),
                 ),
               ),
             );
