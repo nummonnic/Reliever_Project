@@ -599,11 +599,16 @@ class PercentText extends StatelessWidget {
 //                                 height: 10,
 //                               ),
 //                               ActivityText(),
-//                               Padding(
+//                               Container(
+//                                 width: 200,
+//                                 alignment: Alignment.center,
+//                               child: Padding(
 //                                 padding: const EdgeInsets.all(10.0),
 //                                 child: ChooseClipMain(),
+//                               )),
+//                               SizedBox(
+//                                 height: 10,
 //                               ),
-                              
 //                               RaisedButton(
 //                               //margin: const EdgeInsets.only(top: 20),
 //                               padding: const EdgeInsets.all(0.0),
@@ -616,10 +621,10 @@ class PercentText extends StatelessWidget {
 //                               },
 //                               // child: new Text("Rate Video"),
 //                               child: Container(
-//                                 height: 40,
-//                                 width: 500,
+//                                 height: 50,
+//                                 width: 400,
 //                                 decoration: BoxDecoration(
-//                                     color: Color(0xfff06d4a),
+//                                     color: Color(0xff27496d),
 //                                     borderRadius: BorderRadius.circular(10)
 //                                     // shape: BoxShape.circle,
 //                                     ),
@@ -635,6 +640,9 @@ class PercentText extends StatelessWidget {
 //                                 ),
 //                               ),
 //                             ),
+//                             SizedBox(
+//                                 height: 10,
+//                               ),
                               
 //                             ],
 //                           ),

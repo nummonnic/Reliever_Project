@@ -29,7 +29,7 @@ class _ActivityState extends State<ActivityClip2> {
   final List<String> urlList = [
     'https://youtu.be/0Mo6ZjYaptc',
     'https://www.youtube.com/watch?v=inpok4MKVLM',
-    'https://www.youtube.com/watch?v=SiZWLQozD4Y'
+    'https://www.youtube.com/watch?v=rqwfKFXUouU'
   ];
   final List<String> pic = [
     // 'assets/images/LG5.png',
