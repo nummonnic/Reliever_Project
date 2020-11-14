@@ -98,6 +98,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
                       //Initialize value
                       diary = _text;
                       selectedDate = DateFormat('yMMMMd').format(_eventDate);
+                      print(_eventDate);
 
                       //prediction
                       var body = {'sentance': diary};
@@ -112,6 +113,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
                             selectedDate: selectedDate,
                             diary: diary,
                             emotion: resp,
+                            date: _eventDate,
                           ),
                         ),
                       );

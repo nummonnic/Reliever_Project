@@ -365,7 +365,7 @@ class _DiaryCalendaState extends State<DiaryCalenda> {
                                                   width: 30.0,
                                                   height: 30.0,
                                                   decoration: new BoxDecoration(
-                                                    color: Colors.orange,
+                                                    color: Colors.white38,
                                                     shape: BoxShape.circle,
                                                   ),
                                                 ),
