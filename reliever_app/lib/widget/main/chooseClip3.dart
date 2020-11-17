@@ -73,7 +73,7 @@ class _ActivityState extends State<ActivityClip3> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.25,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: numbers.length,

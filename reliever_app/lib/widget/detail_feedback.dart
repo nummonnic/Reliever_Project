@@ -291,9 +291,9 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                                                   children: <Widget>[
                                                     Text(
                                                       _feedback[pic[index]]
-                                                          .toString(),
+                                                          .toInt().toString()+" Times",
                                                       style: TextStyle(
-                                                          fontSize: 35,
+                                                          fontSize: 25,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           color:
@@ -662,7 +662,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                             ),
                             DataCell(
                               Text(
-                                _feedback["Calm"].toString(),
+                                _feedback["Calm"].toInt().toString()+" Times",
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.black,
@@ -684,7 +684,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                             ),
                             DataCell(
                               Text(
-                                _feedback["Happy"].toString(),
+                                _feedback["Happy"].toInt().toString()+" Times",
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.black,
@@ -706,7 +706,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                             ),
                             DataCell(
                               Text(
-                                _feedback["Surprised"].toString(),
+                                _feedback["Surprised"].toInt().toString()+" Times",
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.black,
@@ -728,7 +728,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                             ),
                             DataCell(
                               Text(
-                                _feedback["Funny"].toString(),
+                                _feedback["Funny"].toInt().toString()+" Times",
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.black,
@@ -750,7 +750,7 @@ class _DetailFeedbackState extends State<DetailFeedback> {
                             ),
                             DataCell(
                               Text(
-                                _feedback["Unknown"].toString(),
+                                _feedback["Unknown"].toInt().toString()+" Times",
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: Colors.black,
