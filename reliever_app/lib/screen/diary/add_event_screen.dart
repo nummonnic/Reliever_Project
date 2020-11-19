@@ -34,6 +34,8 @@ class _AddEventScreenState extends State<AddEventScreen> {
   String selectedDate = "";
   String diary = "";
 
+  GlobalKey<ScaffoldState> _pageScaffold = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     super.initState();
@@ -44,9 +46,67 @@ class _AddEventScreenState extends State<AddEventScreen> {
     processing = false;
   }
 
+  predictEmotionAndAddDiary() async {
+    setState(() {
+      processing = true;
+    });
+
+    //Initialize value
+    diary = _description.text;
+    selectedDate = DateFormat('yMMMMd').format(_eventDate);
+    print("test: " + diary);
+
+    //prediction
+    var body = {
+      'sentance': diary
+    };
+    var resp = await predictEmotion(body);
+
+    // since prediction can take a long time, user may have already close the screen
+    // so we have to verified that the screen is still "mounted" (not closed by user)
+    // before continuing
+    if (this.mounted) {
+      setState(() {
+        processing = false;
+      });
+
+      // if there's no error (prediction result retrieved successfully)
+      if (resp != null) {
+        //route to summary page
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+              SummaryDiary(
+                selectedDate: selectedDate,
+                diary: diary,
+                emotion: resp,
+                date: _eventDate,
+              ),
+          ),
+        );
+      }
+      else {
+        _pageScaffold.currentState.showSnackBar(
+          SnackBar(
+            content: Text("Cannot get prediction result from Server"),
+            action: SnackBarAction(
+              label: "TRY AGAIN", 
+              onPressed: () {
+                predictEmotionAndAddDiary();
+              },
+            ),
+          )
+        );
+      }
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _pageScaffold,
       body: Container(
         color: Color(0xff27496d),
         child: SafeArea(
@@ -76,8 +136,11 @@ class _AddEventScreenState extends State<AddEventScreen> {
                             color: Colors.white,
                             size: 30,
                           ),
-                          onPressed: () => Navigator.pushNamed(
-                              context, AddVoiceScreen.routeName),
+                          onPressed: ( // prevent clicking this button when predicting result
+                            !processing ?
+                            () => Navigator.pushNamed(context, AddVoiceScreen.routeName)
+                            : null
+                          )
                         ),
                       ],
                     ),
@@ -189,6 +252,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                     ),
                                     TextFormField(
                                       controller: _description,
+                                      enabled: !processing,   // prevent editing diary message when predicting result
                                       minLines: 6,
                                       maxLines: 10,
                                       validator: (value) => (value.isEmpty)
@@ -212,52 +276,40 @@ class _AddEventScreenState extends State<AddEventScreen> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: <Widget>[
-                                      RaisedButton(
-                                        color: Color(0xffecb45b),
-                                        onPressed: () async {
-                                          //Initialize value
-                                          diary = _description.text;
-                                          selectedDate = DateFormat('yMMMMd')
-                                              .format(_eventDate);
-                                          print("test: " + diary);
+                                      (
+                                        processing ?
+                                        OutlineButton(
+                                          onPressed: null,
+                                          child: SizedBox(
+                                            width: 20,
+                                            height: 20,
+                                            child: CircularProgressIndicator(
+                                              valueColor: AlwaysStoppedAnimation(Color(0xffecb45b)),
+                                            )
+                                          )
+                                        )
+                                        :
+                                        RaisedButton(
+                                          color: Color(0xffecb45b),
+                                          onPressed: !processing ? predictEmotionAndAddDiary : null,
 
-                                          //prediction
-                                          var body = {'sentance': diary};
-                                          var resp = await predictEmotion(body);
-                                          // var resp = "test";
-                                          // print(body);
-                                          // print("object: " + resp.toString());
-
-                                          //route to summary page
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SummaryDiary(
-                                                selectedDate: selectedDate,
-                                                diary: diary,
-                                                emotion: resp,
-                                                date: _eventDate,
-                                              ),
+                                          child: Container(
+                                            width: 55,
+                                            // color: Color(0xffecb45b),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Text("Next "),
+                                                Icon(
+                                                  Icons.arrow_forward,
+                                                  color: Colors.black,
+                                                  size: 20,
+                                                )
+                                              ],
                                             ),
-                                          );
-                                        },
-                                        child: Container(
-                                          width: 55,
-                                          // color: Color(0xffecb45b),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Text("Next "),
-                                              Icon(
-                                                Icons.arrow_forward,
-                                                color: Colors.black,
-                                                size: 20,
-                                              ),
-                                            ],
                                           ),
-                                        ),
+                                        )
+
                                       ),
                                     ],
                                   ),
@@ -399,6 +451,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
         ),
       ),
     );
+
     // return Stack(
     //   children: <Widget>[
     //     Container(

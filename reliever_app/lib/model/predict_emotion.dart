@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
     try {
       var resp = await client.post(uri, headers: headers, body: jsonString);
       // var resp=await http.get(Uri.parse("https://emotionreliever.herokuapp.com/predict"));
+      print("response body: ${resp.body}");
       if (resp.statusCode == 200) {
         print("DATA FETCHED SUCCESSFULLY");
         var result = json.decode(resp.body);

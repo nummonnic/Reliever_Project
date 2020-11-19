@@ -118,7 +118,7 @@ class _SummaryDiaryState extends State<SummaryDiary> {
                                   height: 10,
                                 ),
                                 Text(
-                                  selectedDate,
+                                  selectedDate != null ? selectedDate : "-",
                                   style: TextStyle(
                                     // fontWeight: FontWeight.w500,
                                     fontSize: 15,
@@ -142,7 +142,7 @@ class _SummaryDiaryState extends State<SummaryDiary> {
                                   height: 10,
                                 ),
                                 Text(
-                                  diary,
+                                  diary != null ? diary : "-",
                                   style: TextStyle(
                                     // fontWeight: FontWeight.w500,
                                     fontSize: 15,
@@ -166,7 +166,7 @@ class _SummaryDiaryState extends State<SummaryDiary> {
                                   height: 10,
                                 ),
                                 Text(
-                                  emotion,
+                                  emotion != null ? emotion : "-",
                                   style: TextStyle(
                                     // fontWeight: FontWeight.w500,
                                     fontSize: 15,

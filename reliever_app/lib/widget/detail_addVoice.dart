@@ -42,16 +42,77 @@ class _SpeechScreenState extends State<SpeechScreen> {
   DateTime _eventDate;
   String selectedDate = "";
 
+  bool processing;
+  GlobalKey<ScaffoldState> _pageScaffold = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     // TODO: implement initState
     _speech = stt.SpeechToText();
     _eventDate = DateTime.now();
+    processing = false;
+  }
+
+  predictEmotionAndAddDiary() async {
+    setState(() {
+      processing = true;
+    });
+
+    //Initialize value
+    diary = _text;
+    selectedDate = DateFormat('yMMMMd').format(_eventDate);
+    print("test: " + diary);
+
+    //prediction
+    var body = {
+      'sentance': diary
+    };
+    var resp = await predictEmotion(body);
+
+    // since prediction can take a long time, user may have already close the screen
+    // so we have to verified that the screen is still "mounted" (not closed by user)
+    // before continuing
+    if (this.mounted) {
+      setState(() {
+        processing = false;
+      });
+
+      // if there's no error (prediction result retrieved successfully)
+      if (resp != null) {
+        //route to summary page
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+              SummaryDiary(
+                selectedDate: selectedDate,
+                diary: diary,
+                emotion: resp,
+                date: _eventDate,
+              ),
+          ),
+        );
+      }
+      else {
+        _pageScaffold.currentState.showSnackBar(
+          SnackBar(
+            content: Text("Cannot get prediction result from Server"),
+            action: SnackBarAction(
+              label: "TRY AGAIN", 
+              onPressed: () {
+                predictEmotionAndAddDiary();
+              },
+            ),
+          )
+        );
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _pageScaffold,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: AvatarGlow(
         animate: _isListening,
@@ -61,9 +122,9 @@ class _SpeechScreenState extends State<SpeechScreen> {
         repeatPauseDuration: Duration(milliseconds: 100),
         repeat: true,
         child: FloatingActionButton(
-          onPressed: () {
-            _listen();
-          },
+          onPressed: (  // prevent clicking this button when predicting result
+            !processing ? _listen : null
+          ),
           backgroundColor: Color(0xffe6d4c0),
           child: Icon(
             _isListening ? Icons.mic : Icons.mic_none,
@@ -89,35 +150,26 @@ class _SpeechScreenState extends State<SpeechScreen> {
                       Navigator.pop(context);
                     },
                   ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
-                    ),
-                    onPressed: () async {
-                      //Initialize value
-                      diary = _text;
-                      selectedDate = DateFormat('yMMMMd').format(_eventDate);
-                      print(_eventDate);
-
-                      //prediction
-                      var body = {'sentance': diary};
-                      print(body);
-                      var resp = await predictEmotion(body);
-
-                      //route to summary page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SummaryDiary(
-                            selectedDate: selectedDate,
-                            diary: diary,
-                            emotion: resp,
-                            date: _eventDate,
-                          ),
-                        ),
-                      );
-                    },
+                  ( 
+                    processing ?
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      child: SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation(Color(0xffecb45b)),
+                        )
+                      )
+                    )
+                    :
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
+                      onPressed: !processing ? predictEmotionAndAddDiary : null,
+                    )
                   ),
                 ],
               ),
