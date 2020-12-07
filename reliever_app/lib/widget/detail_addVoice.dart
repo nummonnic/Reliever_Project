@@ -265,7 +265,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
                                   reverse: true,
                                   child: Container(
                                     child: TextHighlight(
-                                      text: (_text != null && _text.length > 0) ? _text : 'null',
+                                      text: (_text != null && _text.length > 0) ? _text : 'Press the button and start speaking',
                                       //text: _text,
                                       words: _highlights,
                                       textStyle: const TextStyle(

@@ -44,12 +44,16 @@ dependencies:
   pie_chart: ^3.1.1
   google_fonts: ^1.0.0
   youtube_player_flutter: ^7.0.0+7
+  flutter_launcher_icons: ^0.7.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
+flutter_icons:
+  image_path: Image/Icon.png
+  android: true
+  ios: true
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
